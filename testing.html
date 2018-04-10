@@ -19,12 +19,16 @@
 
     PIXI.loader.add("sprites/nickCage.png").load(setup);
 
-    function setup() {
+   var nick;
+ function setup() {
       var texture = PIXI.loader.resources["sprites/nickCage.png"].texture;;
-      var nick = new PIXI.Sprite(texture);
+      nick = new PIXI.Sprite(texture);
       app.stage.addChild(nick);
-    }
-
+      app.ticker.add(delta => gameloop(delta));   
+ }
+    function gameloop(delta){
+      nick.x+=1;
+ }
             
 
   </script>
