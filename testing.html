@@ -65,43 +65,6 @@ let up=keyboard(38);
 let right=keyboard(39); 
 let down=keyboard(40); 
 
-left.press = () => {
-nick.vx=-5;
-nick.vy=0;
-};
-right.press = () => {
-nick.vx=5;
-nick.vy=0;
-};
-up.press = () => {
-nick.vy=-5;
-nick.vx=0;
-};
-down.press = () => {
-nick.vy=5;
-nick.vx=0;
-};
-left.release = () => {
-if(!right.isDown&&nick.vy===0){
-nick.vx=0;
-}
-};
-right.release = () => {
-if(!left.isDown&&nick.vy===0){
-nick.vx=0;
-}
-};
-up.release = () => {
-if(!down.isDown&&nick.vx===0){
-nick.vy=0;
-}
-};
-down.release = () => {
-if(!up.isDown&&nick.vx===0){
-nick.vy=0;
-}
-};
-
      app.ticker.add(delta => gameloop(delta));   
  }
     function gameloop(delta){
