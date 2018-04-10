@@ -63,35 +63,33 @@ let left=keyboard(37), up=keyboard(38),right=keyboard(39),down=keyboard(40);
 
 left.press = () => {
 nick.vx=-5;
-}
+};
 right.press = () => {
 nick.vx=5;
-}
+};
 up.press = () => {
 nick.vx=-5;
-}
+};
 down.press = () => {
 nick.vx=5;
-}
+};
 left.release =() => {
 if(!right.isDown&&nick.vy===0){
 nick.vx=0;
 }
-}right.release =() => {
+};right.release =() => {
 if(!left.isDown&&nick.vy===0){
 nick.vx=0;
 }
-}up.release =() => {
+};up.release =() => {
 if(!down.isDown&&nick.vx===0){
 nick.vy=0;
 }
-}down.release =() => {
+};down.release =() => {
 if(!up.isDown&&nick.vx===0){
 nick.vy=0;
 }
-}
-
-
+};
 
      app.ticker.add(delta => gameloop(delta));   
  }
