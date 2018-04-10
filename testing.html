@@ -17,42 +17,6 @@
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
 
-function keyboard(keyCode) {
-  let key = {};
-  key.code = keyCode;
-  key.isDown = false;
-  key.isUp = true;
-  key.press = undefined;
-  key.release = undefined;
-  //The `downHandler`
-  key.downHandler = event => {
-    if (event.keyCode === key.code) {
-      if (key.isUp && key.press) key.press();
-      key.isDown = true;
-      key.isUp = false;
-    }
-    event.preventDefault();
-  };
-
-  //The `upHandler`
-  key.upHandler = event => {
-    if (event.keyCode === key.code) {
-      if (key.isDown && key.release) key.release();
-      key.isDown = false;
-      key.isUp = true;
-    }
-    event.preventDefault();
-  };
-
-  //Attach event listeners
-  window.addEventListener(
-    "keydown", key.downHandler.bind(key), false
-  );
-  window.addEventListener(
-    "keyup", key.upHandler.bind(key), false
-  );
-  return key;
-}
    var nick;
 
     PIXI.loader.add("sprites/nickCage.png").load(setup);
@@ -60,16 +24,12 @@ function keyboard(keyCode) {
       var texture = PIXI.loader.resources["sprites/nickCage.png"].texture;;
       nick = new PIXI.Sprite(texture);
       app.stage.addChild(nick);
-let left=keyboard(37);
-let up=keyboard(38); 
-let right=keyboard(39); 
-let down=keyboard(40); 
 
      app.ticker.add(delta => gameloop(delta));   
  }
     function gameloop(delta){
-      nick.x+=nick.vx;
-	nick.y+=nick.vy;
+      nick.x=app.renderer.plugins.interaction.mouse.global.x;
+	nick.y=app.renderer.plugins.interaction.mouse.global.y;
  }
             
 
