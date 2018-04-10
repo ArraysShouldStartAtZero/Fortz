@@ -66,15 +66,19 @@ let down=keyboard(40);
 
 left.press = () => {
 nick.vx=-5;
+nick.vy=0;
 };
 right.press = () => {
 nick.vx=5;
+nick.vy=0;
 };
 up.press = () => {
-nick.vx=-5;
+nick.vy=-5;
+nick.vx=0;
 };
 down.press = () => {
-nick.vx=5;
+nick.vy=5;
+nick.vx=0;
 };
 left.release = () => {
 if(!right.isDown&&nick.vy===0){
