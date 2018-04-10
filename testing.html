@@ -17,7 +17,6 @@
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
 
-    PIXI.loader.add("sprites/nickCage.png").load(setup);
 function keyboard(keyCode) {
   let key = {};
   key.code = keyCode;
@@ -55,6 +54,8 @@ function keyboard(keyCode) {
   return key;
 }
    var nick;
+
+    PIXI.loader.add("sprites/nickCage.png").load(setup);
  function setup() {
       var texture = PIXI.loader.resources["sprites/nickCage.png"].texture;;
       nick = new PIXI.Sprite(texture);
