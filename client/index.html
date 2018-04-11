@@ -9,11 +9,12 @@
     canvas {width: 100%; height: 100%;}
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
   <script src="js/Classes.js"></script>
   <script src="js/ControlHandler.js"></script>
   <script src="js/SpriteHandler.js"></script>
   <script src="js/UnitHandler.js"></script>
-  <script src="js/DatabaseHandler.js"></script>
+  <script src="js/SocketHandler.js"></script>
   <script src="js/MenuHandler.js"></script>
 </head>
 <body>
@@ -23,7 +24,9 @@
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
 
-            
+    //Create socket handler and begin communication
+    var sockHandler = new SocketHandler();
+    sockHandler.init();        
 
   </script>
 </body>
