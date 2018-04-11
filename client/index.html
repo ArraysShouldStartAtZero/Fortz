@@ -32,7 +32,22 @@
 	cY=dY;
 	
 //listeners for key presses
-     
+     let w=Keyboard('w');
+	let a=Keyboard('a');
+	let s=Keyboard('s');
+	let d=Keyboard('d');
+    w.press = () => {
+	cY--;
+	};
+	a.press = () => {
+	cX--;
+	};
+	s.press = () => {
+	cY++;
+	};
+	d.press = () => {
+	cX++;
+	};
 
   </script>
 </body>
