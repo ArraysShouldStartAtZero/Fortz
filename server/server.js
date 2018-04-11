@@ -16,4 +16,21 @@ var io = socket(server);
 //Register a callback for when clients connect
 io.on('connection', function(socket) {
   console.log('Made socket connection', socket.id);
+
+  socket.emit('hello-server', "Hello");
+
+  socket.on('hello-client', function(resp) {
+    console.log(resp.username + " said hello!");
+
+    var position = {
+      posX: 10,
+      posY: 20
+    };
+
+    socket.emit('position-server', position);
+  });
+
+  socket.on('disconnect', function() {
+    console.log("A socket connection was closed.");
+  });
 });
