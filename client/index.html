@@ -23,10 +23,15 @@
     document.body.appendChild(app.view);
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
+	var cX, cY, dX,dY;
 
     //Create socket handler and begin communication
     sock_handler_init();        
-	spawnPlayer();
+	///spawnPlayer();//TODO get fort and user position from server//assign dX,dY;
+	cX=dX;
+	cY=dY;
+	
+//listeners for key presses
      
 
   </script>
