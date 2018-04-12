@@ -7,14 +7,14 @@ var conn = mysql.createConnection({
   database: "world-data"
 });
 
-con.connect(function(err) {
+conn.connect(function(err) {
   if(err) throw err;
   console.log("Connected to database!");
 });
 
 /* Query Structure:
 var sql = "SELECT * FROM game_objects"
-con.query(sql, function(err, result) {
+conn.query(sql, function(err, result) {
   if(err) throw err;
   console.log("Result: " + result);
 });
