@@ -24,18 +24,19 @@
     document.body.appendChild(app.view);
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
-	var cX, cY, dX,dY;
+	var cX, cY, dX,dY;//d is default camera position for recentering , c is current camera position
 
     //Create socket handler and begin communication
-    sock_handler_init();        
+//    sock_handler_init();        
 	///spawnPlayer();//TODO get fort and user position from server//assign dX,dY;
 	cX=dX;
 	cY=dY;
 
-getSprite("sprites/nickCage.png");
+getSprite("sprites/nickCage.png");//add a sprite
 	
 //listeners for key presses 
-function move(difX,difY){
+function playerCamera_move(difX,difY){
+	//cX+=difX;cY+=difY;
 	var i;
 	for(i=0;i<app.stage.children.length;i++){
 		app.stage.getChildAt(i).x+=difX;
@@ -43,31 +44,33 @@ function move(difX,difY){
 	}
 }
 
+var changeInX=0, changeInY=0;
+
 let w=Keyboard(87);//w
 	let a=Keyboard(65);//a
 	let s=Keyboard(83);//s
 	let d=Keyboard(68);//d
     w.press = () => {
-	cY-=1;
-	move(0,-1);
+	changeInY=-5;//cY-=1;
+//	playerCamera_move(0,-1);
 	};
 	a.press = () => {
-	cX-=1;
-	move(-1,0);
+	changeInX=-5;//cX-=1;
+//	playerCamera_move(-1,0);
 	};
 	s.press = () => {
-	cY+=1;
-	move(0,1);
+	changeInY=5;//cY+=1;
+	//playerCamera_move(0,1);
 	};
 	d.press = () => {
-	cX+=1;
-	move(1,0);
+	changeInX=5;//cX+=1;
+	//playerCamera_move(1,0);
 	};
-
+//app.ticker.speed=1/10;
 app.ticker.add(delta => gameLoop(delta));
 
 function gameLoop(delta){
-
+	playerCamera_move(changeInX,changeInY);
 }
 
   </script>

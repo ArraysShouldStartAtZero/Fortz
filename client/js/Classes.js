@@ -29,8 +29,8 @@ this.resources=resources;
 
 }
 
-function Fort( posX, posY, user){
-  val tow1=new Structute("tower",posX,posY,100,"sprites/gry_twr.png",user);
+function Fort(posX, posY, user){
+  val tow1=new Structure("tower",posX,posY,100,"sprites/gry_twr.png",user);
   val wal1= new Structure("wall",posX, posY+64,100,"sprites/gry_wall.png",user);
   val tow2=new Structute("tower",posX,posY+128,100,"sprites/gry_twr.png",user);
   val wal2= new Structure("wall",posX+64, posY,100,"sprites/gry_wall.png",user);
