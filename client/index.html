@@ -11,6 +11,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
   <script src="js/Classes.js"></script>
+  <script src="js/Game.js"></script>
   <script src="js/ControlHandler.js"></script>
   <script src="js/SpriteHandler.js"></script>
   <script src="js/UnitHandler.js"></script>
@@ -23,10 +24,45 @@
     document.body.appendChild(app.view);
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
+	var cX, cY, dX,dY;
 
     //Create socket handler and begin communication
-    var sockHandler = new SocketHandler();
-    sockHandler.init();        
+    sock_handler_init();        
+	///spawnPlayer();//TODO get fort and user position from server//assign dX,dY;
+	cX=dX;
+	cY=dY;
+
+app.stage.addChild(getSprite("sprites/nickCage.png"));
+	
+//listeners for key presses 
+function move(difX,difY){
+	var i;
+	for(i=0;i<app.stage.children.length();i++){
+		app.stage.getChild(i).x-=difX;
+		app.stage.getChild(i).y-=difY;
+	}
+}
+
+let w=Keyboard('w');
+	let a=Keyboard('a');
+	let s=Keyboard('s');
+	let d=Keyboard('d');
+    w.press = () => {
+	cY--;
+	move(0,-1);
+	};
+	a.press = () => {
+	cX--;
+	move(-1,0);
+	};
+	s.press = () => {
+	cY++;
+	move(0,1);
+	};
+	d.press = () => {
+	cX++;
+	move(1,0);
+	};
 
   </script>
 </body>
