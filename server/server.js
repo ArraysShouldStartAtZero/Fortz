@@ -1,5 +1,6 @@
 var express = require('express');
 var socket = require('socket.io');
+var db = require('./js/DatabaseHandler.js');
 
 //Creates the server and has it start listening on port 3000 (will change port later on)
 var app = express();
