@@ -2,8 +2,8 @@ var mysql = require('mysql');
 
 var conn = mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "fortz.io",
+  user: "fortz_server",
+  password: "5%forNothing",
   database: "world-data"
 });
 
