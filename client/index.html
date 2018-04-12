@@ -46,26 +46,8 @@ function playerCamera_move(difX,difY){
 
 var changeInX=0, changeInY=0;
 
-let w=Keyboard(87);//w
-	let a=Keyboard(65);//a
-	let s=Keyboard(83);//s
-	let d=Keyboard(68);//d
-    w.press = () => {
-	changeInY=-5;//cY-=1;
-//	playerCamera_move(0,-1);
-	};
-	a.press = () => {
-	changeInX=-5;//cX-=1;
-//	playerCamera_move(-1,0);
-	};
-	s.press = () => {
-	changeInY=5;//cY+=1;
-	//playerCamera_move(0,1);
-	};
-	d.press = () => {
-	changeInX=5;//cX+=1;
-	//playerCamera_move(1,0);
-	};
+initListeners();
+
 //app.ticker.speed=1/10;
 app.ticker.add(delta => gameLoop(delta));
 

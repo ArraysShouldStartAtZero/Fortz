@@ -34,3 +34,44 @@ function Keyboard( keyCode ){
   );
   return key;
 }
+
+function initListeners(){
+let w=Keyboard(87);//w
+	let a=Keyboard(65);//a
+	let s=Keyboard(83);//s
+	let d=Keyboard(68);//d
+    w.press = () => {
+	changeInY=-5;
+	};
+	a.press = () => {
+	changeInX=-5;
+	};
+	s.press = () => {
+	changeInY=5;
+	};
+	d.press = () => {
+	changeInX=5;
+	};
+   w.release = () => {
+	if(s.isUp){
+	changeInY=0;
+	}
+	};
+	a.release = () => {
+	if(d.isUp){
+	changeInX=0;
+	}
+	};
+	s.release = () => {
+	if(w.isUp){
+	changeInY=0;
+	}
+	};
+	d.release = () => {
+	if(a.isUp){
+	changeInX=0;
+	}
+	};
+
+}
+
