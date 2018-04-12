@@ -38,8 +38,8 @@ getSprite("sprites/nickCage.png");
 function move(difX,difY){
 	var i;
 	for(i=0;i<app.stage.children.length;i++){
-		app.stage.getChild(i).x-=difX;
-		app.stage.getChild(i).y-=difY;
+		app.stage.getChildAt(i).x+=difX;
+		app.stage.getChildAt(i).y+=difY;
 	}
 }
 
@@ -48,19 +48,19 @@ let w=Keyboard(87);//w
 	let s=Keyboard(83);//s
 	let d=Keyboard(68);//d
     w.press = () => {
-	cY--;
+	cY-=1;
 	move(0,-1);
 	};
 	a.press = () => {
-	cX--;
+	cX-=1;
 	move(-1,0);
 	};
 	s.press = () => {
-	cY++;
+	cY+=1;
 	move(0,1);
 	};
 	d.press = () => {
-	cX++;
+	cX+=1;
 	move(1,0);
 	};
 
