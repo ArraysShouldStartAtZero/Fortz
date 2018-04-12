@@ -1,14 +1,14 @@
 //plagarized from PIXI tutorial
-function Keyboard( press ){
+function Keyboard( keyCode ){
  let key = {};
-  key.code = press;
+  key.code = keyCode;
   key.isDown = false;
   key.isUp = true;
   key.press = undefined;
   key.release = undefined;
   //The `downHandler`
   key.downHandler = event => {
-    if (event.press === key.code) {
+    if (event.keyCode === key.code) {
       if (key.isUp && key.press) key.press();
       key.isDown = true;
       key.isUp = false;
@@ -17,7 +17,7 @@ function Keyboard( press ){
   };
   //The `upHandler`
   key.upHandler = event => {
-    if (event.press === key.code) {
+    if (event.keyCode === key.code) {
       if (key.isDown && key.release) key.release();
       key.isDown = false;
       key.isUp = true;

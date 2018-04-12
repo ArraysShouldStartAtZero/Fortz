@@ -32,21 +32,21 @@
 	cX=dX;
 	cY=dY;
 
-app.stage.addChild(getSprite("sprites/nickCage.png"));
+getSprite("sprites/nickCage.png");
 	
 //listeners for key presses 
 function move(difX,difY){
 	var i;
-	for(i=0;i<app.stage.children.length();i++){
+	for(i=0;i<app.stage.children.length;i++){
 		app.stage.getChild(i).x-=difX;
 		app.stage.getChild(i).y-=difY;
 	}
 }
 
-let w=Keyboard('w');
-	let a=Keyboard('a');
-	let s=Keyboard('s');
-	let d=Keyboard('d');
+let w=Keyboard(87);//w
+	let a=Keyboard(65);//a
+	let s=Keyboard(83);//s
+	let d=Keyboard(68);//d
     w.press = () => {
 	cY--;
 	move(0,-1);
@@ -63,6 +63,12 @@ let w=Keyboard('w');
 	cX++;
 	move(1,0);
 	};
+
+app.ticker.add(delta => gameLoop(delta));
+
+function gameLoop(delta){
+
+}
 
   </script>
 </body>
