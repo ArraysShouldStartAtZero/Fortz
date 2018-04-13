@@ -24,6 +24,8 @@
     document.body.appendChild(app.view);
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
+    app.stage.interactiveChildren=true;
+
 	var cX=0, cY=0, dX=0,dY=0;//d is default camera position for recentering , c is current camera position
 
     //Create socket handler and begin communication
