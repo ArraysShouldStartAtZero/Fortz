@@ -36,21 +36,23 @@ function Keyboard( keyCode ){
 }
 
 function initListeners(){
+var moveSpd=5;
+
 let w=Keyboard(87);//w
 	let a=Keyboard(65);//a
 	let s=Keyboard(83);//s
 	let d=Keyboard(68);//d
     w.press = () => {
-	changeInY=-5;
+	changeInY=-moveSpd;
 	};
 	a.press = () => {
-	changeInX=-5;
+	changeInX=-moveSpd;
 	};
 	s.press = () => {
-	changeInY=5;
+	changeInY=moveSpd;
 	};
 	d.press = () => {
-	changeInX=5;
+	changeInX=moveSpd;
 	};
    w.release = () => {
 	if(s.isUp){
@@ -71,6 +73,25 @@ let w=Keyboard(87);//w
 	if(a.isUp){
 	changeInX=0;
 	}
+	};
+let shift = Keyboard(16);//shift for mov speed
+	shift.press = () => {
+	moveSpd=10;
+	};
+   	shift.release = () => {
+	moveSpd=5;
+	};
+let space = Keyboard(32);//shift for mov speed
+	space.press = () => {
+	var i;
+	var qwertyX=dX-cX;
+	var qwertyY=dY-cY;
+	for(i=0;i<app.stage.children.length;i++){
+		app.stage.getChildAt(i).x+=qwertyX;
+		app.stage.getChildAt(i).y+=qwertyY;
+	}
+	cX=dX;
+	cY=dY;
 	};
 
 }

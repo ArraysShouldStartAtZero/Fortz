@@ -24,7 +24,7 @@
     document.body.appendChild(app.view);
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
-	var cX, cY, dX,dY;//d is default camera position for recentering , c is current camera position
+	var cX=0, cY=0, dX=0,dY=0;//d is default camera position for recentering , c is current camera position
 
     //Create socket handler and begin communication
 //    sock_handler_init();        
@@ -36,7 +36,7 @@ getSprite("sprites/nickCage.png");//add a sprite
 	
 //listeners for key presses 
 function playerCamera_move(difX,difY){
-	//cX+=difX;cY+=difY;
+	cX+=difX;cY+=difY;
 	var i;
 	for(i=0;i<app.stage.children.length;i++){
 		app.stage.getChildAt(i).x+=difX;
