@@ -1,1 +1,4 @@
-//TODO
+function spawnResources(){
+
+
+}
