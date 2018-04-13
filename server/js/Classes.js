@@ -11,6 +11,8 @@ function GameObject (type, uid, posX, posY, health, owner) {
   this.posY = posY;
   this.health = health;
   this.owner = owner;
+
+//TODO send to database, send to players
 }
 
 
