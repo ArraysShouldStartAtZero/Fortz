@@ -1,23 +1,27 @@
-function GameObject (sprite, posX, posY) {
-  this.sprite = SpriteHandler.getSprite(sprite);
-  this.posX = posX;
+function GameObject (sprite, posX, posY,owner) {
+if(sprite=="sprites/resources.png"){
+this.sprite = SpriteHandler.getSpriteFromSheet(sprite,owner);
+}else{
+  this.sprite = SpriteHandler.getSprite(sprite,owner);
+}  
+this.posX = posX;
   this.posY = posY;
 }
 
 function Structure (type, posX, posY, health, sprite, owner) {
-  GameObject.call(this, sprite, posX, posY);
+  GameObject.call(this, sprite, posX, posY, owner);
   this.health = health;
   this.type = type;
 }
 
 function Unit (type, posX, posY, health, sprite, owner) {
-  GameObject.call(this, sprite, posX, posY);
+  GameObject.call(this, sprite, posX, posY, owner);
   this.health = health;
   this.type = type;
 }
 
 function Resource (value, posX, posY) {
-  GameObject.call(this, "//RESOURCE SPRITE HERE", posX, posY);
+  GameObject.call(this, "sprites/resources.png", posX, posY, "server");
   this.value = value;
 }
 
