@@ -8,6 +8,17 @@ function sock_handler_init() {
     socket.emit('hello-client', { username: "Peter Boilermaker" });
   });
 
+  socket.on('fort-placement-server', function{//spawn fort parts and camera start location
+	
+});
+
+  socket.on('update-server',function{//update object locations to stage from server
+
+});
+ socket.on('player-update-server',function{//player-detail specific updates from server
+
+});
+
   socket.on('position-server', function(pos) {
     console.log("Server says our position is: (" + pos.posX + ", " + pos.posY + ")");
   });

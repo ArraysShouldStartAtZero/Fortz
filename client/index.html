@@ -14,7 +14,6 @@
   <script src="js/Game.js"></script>
   <script src="js/ControlHandler.js"></script>
   <script src="js/SpriteHandler.js"></script>
-  <script src="js/UnitHandler.js"></script>
   <script src="js/SocketHandler.js"></script>
   <script src="js/MenuHandler.js"></script>
 </head>
@@ -34,7 +33,7 @@
 	cX=dX;
 	cY=dY;
 
-getSprite("sprites/nickCage.png");//add a sprite
+getSprite("sprites/nickCage.png","player");//add a sprite
 	
 //listeners for key presses 
 function playerCamera_move(difX,difY){
