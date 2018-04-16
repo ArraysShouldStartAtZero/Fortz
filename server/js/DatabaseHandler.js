@@ -25,7 +25,9 @@ function getAllObjects() {
   var sql = "SELECT * FROM game_objects";
   conn.query(sql, function(err, result) {
     if(err) throw err;
-    console.log("Result: " + result);
+    result.forEach((element, index, array) => {
+      console.log(element.type, " ", element.id, " ", element.pos_x, " ", element.pos_y, " ", element.owner, " ", element.health);
+    });
   });
 }
 
