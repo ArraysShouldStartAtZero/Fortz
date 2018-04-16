@@ -10,7 +10,8 @@ var conn = mysql.createConnection({
 conn.connect(function(err) {
   if(err) throw err;
   console.log("Connected to database!");
-  getAllObjects();
+  var objects = getAllObjects();
+  console.log(objects);
 });
 
 /* Query Structure:
@@ -23,12 +24,15 @@ conn.query(sql, function(err, result) {
 
 function getAllObjects() {
   var sql = "SELECT * FROM game_objects";
-  conn.query(sql, function(err, result) {
+  var objects = conn.query(sql, function(err, result) {
+    var objArr = [];
     if(err) throw err;
     result.forEach((element, index, array) => {
-      console.log(element.type, " ", element.id, " ", element.pos_x, " ", element.pos_y, " ", element.owner, " ", element.health);
+      objArr.push(element);
     });
+    return objArr;
   });
+  return objects;
 }
 
 function getPlayerBySocket(socketID) {
