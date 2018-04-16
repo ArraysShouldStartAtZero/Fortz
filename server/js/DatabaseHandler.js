@@ -24,13 +24,13 @@ conn.query(sql, function(err, result) {
 
 function getAllObjects() {
   var sql = "SELECT * FROM game_objects";
-  var objects = conn.query(sql, function(err, result) {
+  var objects = [];
+  conn.query(sql, function(err, result) {
     var objArr = [];
     if(err) throw err;
     result.forEach((element, index, array) => {
       objArr.push(element);
     });
-    return objArr;
   });
   return objects;
 }
