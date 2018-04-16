@@ -19,6 +19,7 @@ io.on('connection', function(socket) {
   console.log('Made socket connection', socket.id);
 
   socket.emit('hello-server', "Hello");
+  db.getAllObjects();
 
   socket.on('hello-client', function(resp) {
     console.log(resp.username + " said hello!");
