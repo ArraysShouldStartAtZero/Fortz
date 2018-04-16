@@ -10,6 +10,7 @@ var conn = mysql.createConnection({
 conn.connect(function(err) {
   if(err) throw err;
   console.log("Connected to database!");
+  getAllObjects();
 });
 
 /* Query Structure:
