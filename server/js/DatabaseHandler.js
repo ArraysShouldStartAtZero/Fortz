@@ -25,7 +25,7 @@ function getAllObjects() {
   conn.query(sql, function(err, result) {
     if(err) throw err;
     console.log("Result: " + result);
-  }
+  });
 }
 
 function getPlayerBySocket(socketID) {
