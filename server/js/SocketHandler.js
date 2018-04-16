@@ -8,6 +8,7 @@ io.on('connection', function(socket) {
 
 function hello-server(socket) {
   socket.emit('hello-server', 'Hello');
+  db.getAllObjects();
 }
 
 function user-unknown-server(username, socket) {

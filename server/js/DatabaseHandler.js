@@ -19,3 +19,23 @@ conn.query(sql, function(err, result) {
   console.log("Result: " + result);
 });
 */
+
+function getAllObjects() {
+  var sql = "SELECT * FROM game_objects";
+  conn.query(sql, function(err, result) {
+    if(err) throw err;
+    console.log("Result: " + result);
+  }
+}
+
+function getPlayerBySocket(socketID) {
+
+}
+
+function authUser(username) {
+
+}
+
+function prepareUser(username) {
+
+}
