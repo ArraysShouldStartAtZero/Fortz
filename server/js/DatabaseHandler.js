@@ -33,7 +33,7 @@ function getPlayerBySocket(socketID) {
 }
 
 function authUser(username) {
-
+  return true;
 }
 
 function prepareUser(username) {

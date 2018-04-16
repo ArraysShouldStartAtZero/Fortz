@@ -1,5 +1,6 @@
 var socket = require('socket.io');
 var db = require('DatabaseManager.js');
+db.getAllObjects();
 
 io.on('connection', function(socket) {
   console.log("New Client Connected (" + socket.id + ")");
@@ -8,7 +9,6 @@ io.on('connection', function(socket) {
 
 function hello-server(socket) {
   socket.emit('hello-server', 'Hello');
-  db.getAllObjects();
 }
 
 function user-unknown-server(username, socket) {
