@@ -1,3 +1,6 @@
+var highlighted=true;
+
+
 //plagarized from PIXI tutorial
 function Keyboard( keyCode ){
  let key = {};
@@ -96,5 +99,12 @@ let space = Keyboard(32);//shift for mov speed
 
 }
 
+function highlight(obj){
+if(!highlighted){
+obj.x+=10;
+highlighted=true;
+}else{
+
+}
 }
 
