@@ -14,7 +14,9 @@ conn.connect(function(err) {
 
 module.exports = {
   getAllObjects: getAllObjects,
+  getAllUnits: getAllUnits,
   getPlayerData: getPlayerData,
+  getAllPlayers: getAllPlayers,
   getPlayerRes: getPlayerRes,
   addPlayerRes: addPlayerRes,
   subtractPlayerRes, subtractPlayerRes,
@@ -25,7 +27,9 @@ module.exports = {
   authUser: authUser,
   prepareUser: prepareUser,
   buildFort: buildFort,
-  updateRadius: updateRadius
+  updateRadius: updateRadius,
+  collectResource: collectResource,
+  spawnNewResource: spawnNewResource
 };
 
 /* Query Structure:
@@ -42,6 +46,18 @@ conn.query(sql, function(err, result) {
    function provided. */
 function getAllObjects(callback) {
   var sql = "SELECT * FROM game_objects";
+  conn.query(sql, function(err, result) {
+    var objArr = [];
+    if(err) throw err;
+    result.forEach((element, index, array) => {
+      objArr.push(element);
+    });
+    callback(objArr);
+  });
+}
+
+function getAllUnits(callback) {
+  var sql = "SELECT * FROM game_objects WHERE type in ('WORKER', 'CAVLRY', 'INFNTR', 'ARTLRY')";
   conn.query(sql, function(err, result) {
     var objArr = [];
     if(err) throw err;
@@ -79,6 +95,29 @@ function getPlayerTargets(player, callback) {
       player.targets.push(element);
     });
     callback(player);
+  });
+}
+
+function getAllPlayers(callback) {
+  var sql = "SELECT * FROM users";
+  conn.query(sql, function(err, result) {
+    if(err) throw err;
+    var players = new Map(result.length);
+    result.forEach((element, index, array) => {
+      var player = new Player(element.username, element.resources, element.worker_radius, []);
+      players.set(player.name, player);
+    });
+    getAllPlayerTargets(players, callback);
+  });
+}
+
+function getAllPlayerTargets(players, callback) {
+  var sql = "SELECT * FROM targets";
+  conn.query(sql, function(err, result) {
+    result.forEach((element, index, array) => {
+      players.get(element.player).targets.push(element);
+    });
+    callback(players);
   });
 }
 
@@ -189,4 +228,12 @@ function updateRadius(playerName, radius) {
     if(err) throw err;
     console.log("Updated Radius for \'", playerName, "\' to ", radius);
   });
+}
+
+function collectResource(targetRes, player) {
+  //TODO
+}
+
+function spawnNewResource() {
+  //TODO
 }

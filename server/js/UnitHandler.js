@@ -2,12 +2,41 @@
 val maxVal=30;
 ////////////
 
-function playerSpawn(){
-Player("user",100,2,null);
+function updateWorker(unit, resources, player) {
+  var targetRes = findNearestResource(unit, resources, player);
+  if(Math.abs(targetRes.pos_x - unit.pos_x) <= 1 && Math.abs(targetRes.pos_y - unit.pos_y) <= 1) { //Collect resource
+    db.collectResource(targetRes, player);
+    db.spawnNewResource();
+  } else { //Head toward resource
+    //TODO
+  }
 }
 
-function workerController(centerX, centerY, radius){
-//TODO move worker pos to nearest resource within circle, then, upon contact, destroy resource and incr player resources repeat
+function updateSoldier(unit, player) {
+  //Find nearest target
+  //Head towerd target
+  //If at target, attack target
+  //If at other enemy object, attack object
+}
+
+//TODO limit this to worker_radius from stronghold
+function findNearestResource(worker, resources, player) {
+  var close_resource;
+  var res_dist = 1000
+  resources.forEach((res, index, array) => {
+    var dist = getDistance(res, worker);
+    if(dist < res_dist) {
+      res_dist = dist;
+      close_resource = res;
+    }
+  });
+  return close_resource;
+}
+
+function getDistance(object1, object2) {
+  var dx = Math.abs(object1.pos_x - object2.pos_x);
+  var dy = Math.abs(object1.pos_y - object2.pos_y);
+  return Math.sqrt(dx*dx + dy*dy);
 }
 
 

@@ -2,6 +2,7 @@ var express = require('express');
 var sock = require('socket.io');
 var sh = require('./js/SocketHandler.js');
 var db = require('./js/DatabaseHandler.js');
+var game = require('./js/Game.js');
 
 //Creates the server and has it start listening on port 3000 (will change port later on)
 var app = express();
@@ -49,3 +50,14 @@ io.on('connection', function(socket) {
 });
 
 console.log('Socket Handler Setup Complete');
+
+setInterval(
+
+function update() {
+  //Send out updates
+  sh.update_server();
+  sh.player_update_server();
+
+  //Run game logic
+  db.getAllUnits(game.update);
+}
