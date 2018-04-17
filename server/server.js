@@ -19,26 +19,26 @@ var io = sock(server);
 io.on('connection', function(socket) {
   console.log('Client Connected (', socket.id, ')');
 
-  sh.hello-server(socket);
+  sh.hello_server(socket);
 
   socket.on('hello-client', function(resp) {
-    sh.hello-client(resp, socket);
+    sh.hello_client(resp, socket);
   });
 
   socket.on('object-upgrade-client', function(resp) {
-    sh.object-upgrade-client(socket);
+    sh.object_upgrade_client(socket);
   });
 
   socket.on('worker-radius-change-client', function(resp) {
-    sh.worker-radius-change-client(socket, resp.radius);
+    sh.worker_radius_change_client(socket, resp.radius);
   });
 
   socket.on('unit-purchase-client', function(resp) {
-    sh.unit-purchase-client(socket, resp.type, resp.position);
+    sh.unit_purchase_client(socket, resp.type, resp.position);
   });
 
   socket.on('target-object-client', function(resp) {
-    sh.target-object-client(socket, resp.object_id);
+    sh.target_object_client(socket, resp.object_id);
   });
 
   socket.on('disconnect', function() {

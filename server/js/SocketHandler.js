@@ -4,15 +4,15 @@ var socketPlayerMap = new Map();
 var MAP_SIZE = 128;
 var MAX_RADIUS = 32;
 
-function hello-server(socket) {
+function hello_server(socket) {
   socket.emit('hello-server', 'Hello');
 }
 
-function user-unknown-server(username, socket) {
+function user_unknown_server(username, socket) {
   socket.emit('user-unknown-server', username);
 }
 
-function fort-placement-server(socket) {
+function fort_placement_server(socket) {
   var position = {
     posX: Math.floor(Math.random() * MAP_SIZE);
     posY: Math.floor(Math.random() * MAP_SIZE);
@@ -23,11 +23,11 @@ function fort-placement-server(socket) {
 
 //TODO somehow remove player from registry so they can't send more requests
 //as well as delete all of their game objects
-function game-over-server(socket) {
+function game_over_server(socket) {
   socket.emit('game-over-server', 'Game Over');
 }
 
-function player-update-server(socket) {
+function player_update_server(socket) {
   io.sockets.clients().forEach(function(socket) {
     db.getPlayerData(socketPlayerMap.get(socket.id), function(playerData) {
       socket.emit('player-update-server', playerData);
@@ -35,37 +35,37 @@ function player-update-server(socket) {
   });
 }
 
-function update-server(socket) {
+function update_server(socket) {
   db.getAllObjects(function(objects) {
     io.sockets.emit('update-server', objects);
   });
 }
 
-function hello-client(resp, socket) {
+function hello_client(resp, socket) {
   console.log(resp.username + " said hello!");
   var isValid = db.authUser(resp.username);
 
   if(isValid) {
     socketPlayerMap.set(socket.id, resp.username);
     db.prepareUser(resp.username);
-    fort-placement-server(socket);
+    fort_placement_server(socket);
   } else {
-    user-unknown-server(resp.username, socket);
+    user_unknown_server(resp.username, socket);
   }
 }
 
 //TODO later - not vital to basic game functioning
-function object-upgrade-client(socket) {
+function object_upgrade_client(socket) {
 
 }
 
-function worker-radius-change-client(socket, newRadius) {
+function worker_radius_change_client(socket, newRadius) {
   if(newRadius > 0 && newRadius <= MAX_RADIUS) {
     db.updateRadius(socketPlayerMap.get(socket.id), newRadius);
   }
 }
 
-function unit-purchase-client(socket, type, position) {
+function unit_purchase_client(socket, type, position) {
   var price = getUnitPrice(type);
   var player = socketPlayerMap.get(socket.id)
   if(price !== -1) {
@@ -93,6 +93,6 @@ function getUnitPrice(type) {
   }
 }
 
-function target-object-client(socket, object_id) {
+function target_object_client(socket, object_id) {
   db.addTarget(socketPlayerMap.get(socket.id), object_id);
 }
