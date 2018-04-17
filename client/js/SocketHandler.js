@@ -15,7 +15,12 @@ function sock_handler_init() {
 	spawnPlayer(dX,dY);
 });
 
-  socket.on('update-server',function(){//update object locations to stage from server
+  socket.on('update-server',function(objects){//update object locations to stage from server
+app.stage.removeChildren();
+val i;
+for(i=0;i<objects.length;i++){
+addGameObject(objects[i].type,objects[i].uid,objects[i].posX,objects[i].posY,objects[i].health,objects[i].owner);
+}
 
 });
 

@@ -1,47 +1,47 @@
-function GameObject (sprite, posX, posY,owner) {
+function GameObject (object,sprite, posX, posY,owner) {
 if(sprite=="sprites/resources.png"){
-this.sprite = SpriteHandler.getSpriteFromSheet(sprite,owner);
+object.sprite = getSpriteFromSheet(sprite,owner);
 }else{
-  this.sprite = SpriteHandler.getSprite(sprite,owner);
+  object.sprite = getSprite(sprite,owner);
 }  
-this.posX = posX;
-  this.posY = posY;
-}
+object.posX = posX;
+  object.posY = posY;
+object.owner=owner;
+};
 
 function Structure (type, posX, posY, health, sprite, owner) {
-  GameObject.call(this, sprite, posX, posY, owner);
-  this.health = health;
-  this.type = type;
-}
+ let struct={};
+ GameObject.call(this,struct, sprite, posX, posY, owner);
+ struct.health = health;
+  struct.type = type;
+return struct;
+};
 
-function Unit (type, posX, posY, health, sprite, owner) {
-  GameObject.call(this, sprite, posX, posY, owner);
-  this.health = health;
-  this.type = type;
-}
+function unit (type, posX, posY, health, sprite, owner) {
+let uniT={};
+  uniT.health = health;
+  uniT.type = type;
+  GameObject.call(this,uniT,sprite, posX, posY, "server");
+return uniT;
+};
 
 function Resource (value, posX, posY) {
-  GameObject.call(this, "sprites/resources.png", posX, posY, "server");
+let resource={};
+  GameObject.call(this,resource, "sprites/resources.png", posX, posY, "server");
   this.value = value;
-}
-
-function Player (posX, posY, alive, resources){
-this.posX=posX;
-this.posY=posY;
-this.alive=alive;
-this.resources=resources;
-
-}
+resource.value=value;
+return resource;
+};
 
 function Fort(posX, posY, user){
-  val tow1=new Structure("tower",posX,posY,100,"sprites/gry_twr.png",user);
-  val wal1= new Structure("wall",posX, posY+64,100,"sprites/gry_wall.png",user);
-  val tow2=new Structute("tower",posX,posY+128,100,"sprites/gry_twr.png",user);
-  val wal2= new Structure("wall",posX+64, posY,100,"sprites/gry_wall.png",user);
-  val tow3=new Structute("tower",posX+128,posY,100,"sprites/gry_twr.png",user);
-  val wal3= new Structure("wall",posX+128, posY+64,100,"sprites/gry_wall.png",user);
-  val tow4=new Structute("tower",posX+128,posY+128,100,"sprites/gry_twr.png",user);
-  val wal4= new Structure("wall",posX+64, posY+128,100,"sprites/gry_wall.png",user);
-  val keep;
-}
+  Structure("tower",posX,posY,100,"sprites/gry_twr.png",user);
+   Structure("wall",posX, posY+64,100,"sprites/gry_wall.png",user);
+ Structute("tower",posX,posY+128,100,"sprites/gry_twr.png",user);
+  Structure("wall",posX+64, posY,100,"sprites/gry_wall.png",user);
+new Structute("tower",posX+128,posY,100,"sprites/gry_twr.png",user);
+  new Structure("wall",posX+128, posY+64,100,"sprites/gry_wall.png",user);
+  Structute("tower",posX+128,posY+128,100,"sprites/gry_twr.png",user);
+ Structure("wall",posX+64, posY+128,100,"sprites/gry_wall.png",user);
+  
+};
 

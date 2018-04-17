@@ -1,5 +1,9 @@
-function playerSpawn(){
+///////////need to initialize elsewhere?
+val maxVal=30;
+////////////
 
+function playerSpawn(){
+Player("user",100,2,null);
 }
 
 function workerController(centerX, centerY, radius){
@@ -9,5 +13,5 @@ function workerController(centerX, centerY, radius){
 
 //run the following for the duration of the server's uptime
 function spawnResources(){
-	GameObject("resource", 0, /random/, /random/, /random (use as res value)/, "server");	
+	GameObject("resource", 0, Math.random()*MAP_SIZE, Math.random()*MAP_SIZE, Math.random()*maxVal, "server");//use obj health to store resource value
 }
