@@ -4,6 +4,10 @@ var socketPlayerMap = new Map();
 var MAP_SIZE = 128;
 var MAX_RADIUS = 32;
 
+module.exports = {
+  hello_server: hello_server(socket)
+};
+
 function hello_server(socket) {
   socket.emit('hello-server', 'Hello');
 }
