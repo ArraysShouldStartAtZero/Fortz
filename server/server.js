@@ -15,6 +15,8 @@ app.use(express.static('../client/'));
 //Socket.io setup
 var io = sock(server);
 
+console.log('Setting up Socket Handler');
+
 //Register a callback for when clients connect
 io.on('connection', function(socket) {
   console.log('Client Connected (', socket.id, ')');
@@ -45,3 +47,5 @@ io.on('connection', function(socket) {
     console.log("A socket connection was closed.");
   });
 });
+
+console.log('Socket Handler Setup Complete');
