@@ -19,7 +19,7 @@ var io = sock(server);
 io.on('connection', function(socket) {
   console.log('Client Connected (', socket.id, ')');
 
-  hello_server(socket);
+  sh.hello_server(socket);
 
   socket.on('hello-client', function(resp) {
     sh.hello_client(resp, socket);
