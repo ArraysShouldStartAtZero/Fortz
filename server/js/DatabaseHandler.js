@@ -165,5 +165,5 @@ function updateRadius(playerName, radius) {
   conn.query(sql, [radius, playerName], function(err, result) {
     if(err) throw err;
     console.log("Updated Radius for \'", playerName, "\' to ", radius);
-  }
+  });
 }
