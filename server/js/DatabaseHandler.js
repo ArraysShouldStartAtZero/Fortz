@@ -12,6 +12,21 @@ conn.connect(function(err) {
   console.log("Connected to database!");
 });
 
+module.exports = {
+  getAllObjects: getAllObjects,
+  getPlayerData: getPlayerData,
+  getPlayerRes: getPlayerRes,
+  addPlayerRes: addPlayerRes,
+  subtractPlayerRes, subtractPlayerRes,
+  createObject: createObject,
+  objectExists: objectExists,
+  addTarget: addTarget,
+  authUser: authUser,
+  prepareUser: prepareUser,
+  buildFort: buildFort,
+  updateRadius: updateRadius
+};
+
 /* Query Structure:
 var sql = "SELECT * FROM game_objects"
 conn.query(sql, function(err, result) {

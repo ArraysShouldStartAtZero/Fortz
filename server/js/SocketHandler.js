@@ -5,7 +5,17 @@ var MAP_SIZE = 128;
 var MAX_RADIUS = 32;
 
 module.exports = {
-  hello_server: hello_server
+  hello_server: hello_server,
+  user_unknown_server: user_unknown_server,
+  fort_placement_server: fort_placement_server,
+  game_over_server: game_over_server,
+  player_update_server: player_update_server,
+  update_server: update_server,
+  hello_client: hello_client,
+  object_upgrade_client: object_upgrade_client,
+  worker_radius_change_client: worker_radius_change_client,
+  unit_purchase_client: unit_purchase_client,
+  target_object_client: target_object_client,
 };
 
 function hello_server(socket) {
