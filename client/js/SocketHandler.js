@@ -26,8 +26,9 @@ addGameObject(objects[i].type,objects[i].uid,objects[i].posX,objects[i].posY,obj
 
  socket.on('user-unknown-server',function(){});
 
- socket.on('player-update-server',function(){//player-detail specific updates from server
-
+ socket.on('player-update-server',function(playerData){//player-detail specific updates from server
+player.resources=playerData.resources;
+player.workerRadius=playerData.workerRadius;
 });
 
   socket.on('game-over-server',function(){//display gameover-tryagain for player

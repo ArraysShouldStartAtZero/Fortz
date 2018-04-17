@@ -45,3 +45,11 @@ new Structute("tower",posX+128,posY,100,"sprites/gry_twr.png",user);
   
 };
 
+function Player(){
+var user={}
+user.resources=100;
+user.alive=true;
+user.workerRadius=2;
+
+return user;
+};
