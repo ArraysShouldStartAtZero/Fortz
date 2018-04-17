@@ -19,6 +19,7 @@ module.exports = {
   addPlayerRes: addPlayerRes,
   subtractPlayerRes, subtractPlayerRes,
   createObject: createObject,
+  removeAllPlayerObjects: removeAllPlayerObjects,
   objectExists: objectExists,
   addTarget: addTarget,
   authUser: authUser,
@@ -110,6 +111,13 @@ function addPlayerRes(player, amount) {
 function createObject(type, player, position) {
   var sql = "INSERT INTO game_objects (type, pos_x, pos_y, owner, health) VALUES (?, ?, ?, ?, ?)";
   conn.query(sql, [type, position.posX, position.posY, player, 100], function(err, result) {
+    if(err) throw err;
+  });
+}
+
+function removeAllPlayerObjects(player) {
+  var sql = "DELETE FROM game_objects WHERE owner = ?";
+  conn.query(sql, [player], function(err, result) {
     if(err) throw err;
   });
 }

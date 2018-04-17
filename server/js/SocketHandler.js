@@ -36,9 +36,9 @@ function fort_placement_server(socket) {
 }
 
 //TODO somehow remove player from registry so they can't send more requests
-//as well as delete all of their game objects
 function game_over_server(socket) {
   socket.emit('game-over-server', 'Game Over');
+  db.removeAllPlayerObjects(socketPlayerMap.get(socket.id));
 }
 
 function player_update_server(socket) {
