@@ -104,7 +104,8 @@ if(!highlighted){
 obj.x+=10;
 highlighted=true;
 }else{
-
+var tempID=getIdByLoc(obj.x,obj.y);
+socket.emit('target-object-client', { object_id: tempID });
 }
 }
 

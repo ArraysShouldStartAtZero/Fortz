@@ -5,7 +5,7 @@ function sock_handler_init() {
   //Send hello message to server
   socket.on('hello-server', function(message) {
     console.log("The server said hello");
-    socket.emit('hello-client', { username: "Peter Boilermaker" });
+    socket.emit('hello-client', { username: "Pete Boilermaker" });
   });
 
   socket.on('fort-placement-server', function(pos){//spawn fort parts and camera start location
@@ -17,7 +17,8 @@ function sock_handler_init() {
 
   socket.on('update-server',function(objects){//update object locations to stage from server
 app.stage.removeChildren();
-val i;
+objs=objects;
+var i;
 for(i=0;i<objects.length;i++){
 addGameObject(objects[i].type,objects[i].uid,objects[i].posX,objects[i].posY,objects[i].health,objects[i].owner);
 }
@@ -29,9 +30,11 @@ addGameObject(objects[i].type,objects[i].uid,objects[i].posX,objects[i].posY,obj
  socket.on('player-update-server',function(playerData){//player-detail specific updates from server
 player.resources=playerData.resources;
 player.workerRadius=playerData.workerRadius;
+player.targets=playerData.targets;
+
 });
 
-  socket.on('game-over-server',function(){//display gameover-tryagain for player
+  socket.on('game-over-server',function(message){//display gameover-tryagain for player
 	gameOver();
 });
 

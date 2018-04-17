@@ -1,6 +1,10 @@
+var MAX_SIZE=128;
+var objs=[];
+
+
 function addGameObject(type, uid, posX, posY, health, owner){
-val adjX=posX-cX;//adjusted positions for camera position
-val adjY=posY-cY;
+var adjX=posX-cX;//adjusted positions for camera position
+var adjY=posY-cY;
 if(type=='wall'||type=='tower'){
 Structure(type,adjX,adjY,health,owner);
 }else if(type=='soldier'||type=='cavalry'||type=='artilery'){
@@ -12,10 +16,20 @@ Resource(health,adjX,adjY);
 }
 
 function spawnPlayer(x,y){
-	new Fort(x+window.innerWidth/2,y+window.innerHeight/2, user);		
+	new Fort(x+window.innerWidth/2,y+window.innerHeight/2, player.name);		
 
 }
 
+
+function getIdByLoc(x, y){
+var i;
+for(i=0;i<objs.length;i++){
+if(objs[i].x==x&&objs[i].y==y){
+return objs[i].id;
+}
+}
+return 0;
+}
 
 function gameOver(){
 player.alive=false;
