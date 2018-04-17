@@ -14,8 +14,8 @@ function user_unknown_server(username, socket) {
 
 function fort_placement_server(socket) {
   var position = {
-    posX: Math.floor(Math.random() * MAP_SIZE);
-    posY: Math.floor(Math.random() * MAP_SIZE);
+    posX: Math.floor(Math.random() * MAP_SIZE),
+    posY: Math.floor(Math.random() * MAP_SIZE)
   }
   db.buildFort(position, socketPlayerMap.get(socket.id));
   socket.emit('fort-placement-server', position);
