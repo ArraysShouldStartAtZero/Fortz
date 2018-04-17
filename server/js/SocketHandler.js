@@ -1,4 +1,4 @@
-var db = require('./js/DatabaseHandler.js');
+var db = require('./DatabaseHandler.js');
 var socketPlayerMap = new Map();
 
 var MAP_SIZE = 128;
