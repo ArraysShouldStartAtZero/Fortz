@@ -16,3 +16,10 @@ function spawnPlayer(x,y){
 
 }
 
+
+function gameOver(){
+player.alive=false;
+//display an interactive 'you lost' message
+
+}
+

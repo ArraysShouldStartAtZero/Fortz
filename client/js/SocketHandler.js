@@ -32,7 +32,7 @@ player.workerRadius=playerData.workerRadius;
 });
 
   socket.on('game-over-server',function(){//display gameover-tryagain for player
-
+	gameOver();
 });
 
 }
