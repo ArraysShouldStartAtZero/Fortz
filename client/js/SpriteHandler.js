@@ -6,6 +6,46 @@ function initAssets(){
 	PIXI.loader.add("sprites/gry_wall.png");
 	PIXI.loader.add("sprites/resources.png");
 	PIXI.loader.add("sprites/nickCage.png");
+	PIXI.loader.add("sprites/radDec_bttn.png");
+	PIXI.loader.add("sprites/radInc_bttn.png");
+	PIXI.loader.add("sprites/buy_units_bttn.png");
+}
+
+function makeButtons(){
+PIXI.loader.load(setUp);
+	function setUp(){
+	var tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/buy_units_bttn.png"].texture);
+	tempBttn.interactive=true;
+	tempBttn.buttonMode=true;
+	tempBttn.x=window.innerWidth-128;
+	tempBttn.y=window.innerHeight-64;
+	tempBttn.on("click",function(event){
+	var pos={}
+	pos.posX=dX;
+	pos.posY=dy;
+		socket.emit('unit-purchase-client', {type: 'soldier' , position: pos});//only handle soldiers for now
+	});//buys a unit
+	 app.stage.addChild(tempBttn);
+tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/radDec_bttn.png"].texture);
+tempBttn.interactive=true;
+	tempBttn.buttonMode=true;
+	tempBttn.x=window.innerWidth-64;
+	tempBttn.y=window.innerHeight-64;
+	tempBttn.on("click",function(event){
+		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius-1});
+	});//decreases radius
+	 app.stage.addChild(tempBttn);
+tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/radInc_bttn.png"].texture);
+tempBttn.interactive=true;
+	tempBttn.buttonMode=true;
+	tempBttn.x=window.innerWidth-32;
+	tempBttn.y=window.innerHeight-64;
+	tempBttn.on("click",function(event){
+		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius+1});
+	});//increases radius
+	 app.stage.addChild(tempBttn);
+
+};
 }
 
 

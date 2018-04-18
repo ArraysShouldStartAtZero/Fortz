@@ -12,7 +12,7 @@ unit(type,adjX,adjY,health,owner);
 }else if(type=='resource'){
 Resource(health,adjX,adjY);
 }
-
+makeButtons();
 }
 
 function spawnPlayer(x,y){
