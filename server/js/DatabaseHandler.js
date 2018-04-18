@@ -1,5 +1,8 @@
 var mysql = require('mysql');
 
+var START_RESOURCE_NUM = 250;
+var MAX_RESOURCE = 50;
+
 var conn = mysql.createConnection({
   host: "localhost",
   user: "fortz_server",
@@ -15,6 +18,7 @@ conn.connect(function(err) {
 module.exports = {
   getAllObjects: getAllObjects,
   getAllUnits: getAllUnits,
+  moveUnit: moveUnit,
   getPlayerData: getPlayerData,
   getAllPlayers: getAllPlayers,
   getPlayerRes: getPlayerRes,
@@ -29,7 +33,8 @@ module.exports = {
   buildFort: buildFort,
   updateRadius: updateRadius,
   collectResource: collectResource,
-  spawnNewResource: spawnNewResource
+  spawnNewResource: spawnNewResource,
+  generateResources: generateResources
 };
 
 /* Query Structure:
@@ -65,6 +70,13 @@ function getAllUnits(callback) {
       objArr.push(element);
     });
     callback(objArr);
+  });
+}
+
+function moveUnit(unit, posX, posY) {
+  var sql = "UPDATE game_objects SET pos_x = ?, pos_y = ? where id = ?";
+  conn.query(sql, [posX, posY, unit.id], function(err, result) {
+    if(err) throw err;
   });
 }
 
@@ -231,9 +243,26 @@ function updateRadius(playerName, radius) {
 }
 
 function collectResource(targetRes, player) {
-  //TODO
+  var sql = "DELETE FROM game_objects WHERE id = ?";
+  conn.query(sql, [targetRes.id], function (err, result) {
+    if(err) throw err;
+  });
 }
 
 function spawnNewResource() {
-  //TODO
+  var position = {
+    posX: Math.floor(Math.random() * MAP_SIZE),
+    posY: Math.floor(Math.random() * MAP_SIZE)
+  }
+  var sql = "INSERT INTO game_objects (type, pos_x, pos_y, health) VALUES (?, ?, ?, ?)";
+  conn.query(sql, ['RESRCE', position.posX, position.posY, Math.random() * MAX_RESOURCE], function(err, result) {
+    if(err) throw err;
+  });
+}
+
+function generateResources() {
+  var i;
+  for(i = 0; i < START_RESOURCE_NUM; i++) {
+    spawnNewResource();
+  }
 }
