@@ -22,14 +22,14 @@ PIXI.loader.load(setUp);
 	tempBttn.on("click",function(event){
 	var pos={}
 	pos.posX=dX;
-	pos.posY=dy;
+	pos.posY=dY;
 		socket.emit('unit-purchase-client', {type: 'soldier' , position: pos});//only handle soldiers for now
 	});//buys a unit
 	 app.stage.addChild(tempBttn);
 tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/radDec_bttn.png"].texture);
 tempBttn.interactive=true;
 	tempBttn.buttonMode=true;
-	tempBttn.x=window.innerWidth-64;
+	tempBttn.x=window.innerWidth-32;
 	tempBttn.y=window.innerHeight-64;
 	tempBttn.on("click",function(event){
 		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius-1});
@@ -38,7 +38,7 @@ tempBttn.interactive=true;
 tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/radInc_bttn.png"].texture);
 tempBttn.interactive=true;
 	tempBttn.buttonMode=true;
-	tempBttn.x=window.innerWidth-32;
+	tempBttn.x=window.innerWidth-64;
 	tempBttn.y=window.innerHeight-64;
 	tempBttn.on("click",function(event){
 		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius+1});
