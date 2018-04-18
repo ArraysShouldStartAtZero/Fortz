@@ -54,7 +54,6 @@ function getAllObjects(callback) {
   conn.query(sql, function(err, result) {
     var objArr = [];
     if(err) {
-      console.log("It's in getAllObjects");
       throw err;
     }
     result.forEach((element, index, array) => {
@@ -68,7 +67,6 @@ function getAllUnits(callback) {
   var sql = "SELECT * FROM game_objects WHERE type IN ('WORKER', 'CAVLRY', 'INFNTR', 'ARTLRY')";
   conn.query(sql, function(err, result) {
     var objArr = [];
-    console.log("It's getAllUnits");
     if(err) throw err;
     result.forEach((element, index, array) => {
       objArr.push(element);
@@ -117,9 +115,8 @@ function getPlayerTargets(player, callback) {
 function getAllPlayers(callback) {
   var sql = "SELECT * FROM users";
   conn.query(sql, function(err, result) {
-    console.log("It's getAllPlayers");
     if(err) throw err;
-    var players = new Map(result.length);
+    var players = new Map();
     result.forEach((element, index, array) => {
       var player = new Player(element.username, element.resources, element.worker_radius, []);
       players.set(player.name, player);
@@ -131,7 +128,6 @@ function getAllPlayers(callback) {
 function getAllPlayerTargets(players, callback) {
   var sql = "SELECT * FROM targets";
   conn.query(sql, function(err, result) {
-    console.log("It's getAllPlayerTargets");
     result.forEach((element, index, array) => {
       players.get(element.player).targets.push(element);
     });
