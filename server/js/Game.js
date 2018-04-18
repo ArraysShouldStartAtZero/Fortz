@@ -4,7 +4,7 @@ var uh = require('./UnitHandler.js');
 var moveCounter = 0;
 
 module.exports = {
-  update: update;
+  update: update
 };
 
 function update(units) {
