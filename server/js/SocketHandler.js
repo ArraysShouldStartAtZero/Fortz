@@ -41,7 +41,7 @@ function game_over_server(socket) {
   db.removeAllPlayerObjects(socketPlayerMap.get(socket.id));
 }
 
-function player_update_server() {
+function player_update_server(io) {
   io.sockets.clients().forEach(function(socket) {
     db.getPlayerData(socketPlayerMap.get(socket.id), function(playerData) {
       socket.emit('player-update-server', playerData);
@@ -49,7 +49,7 @@ function player_update_server() {
   });
 }
 
-function update_server() {
+function update_server(io) {
   db.getAllObjects(function(objects) {
     io.sockets.emit('update-server', objects);
   });
