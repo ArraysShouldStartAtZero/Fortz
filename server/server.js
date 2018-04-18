@@ -55,7 +55,9 @@ setInterval(update, 500);
 
 function update() {
   //Send out updates
+  console.log("Running update_server");
   sh.update_server(io);
+  console.log("Running player_update_server");
   sh.player_update_server(io);
 
   //Run game logic
