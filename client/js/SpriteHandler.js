@@ -55,11 +55,11 @@ function getSprite(sprite, owner){
 	this.sprite=new PIXI.Sprite(PIXI.loader.resources[sprite].texture);
 		this.sprite.interactive=true;
 		this.sprite.buttonMode=true;
+if(player.name!=owner&&"server"!=owner){
 	this.sprite.on("click",function(event){//add specific listeners
 	highlight(event.target);
-	
 	});//Add mouse click listeners/actions to controlHandler
-	
+	}
 	 app.stage.addChild(this.sprite);
 return this.sprite;
 	};

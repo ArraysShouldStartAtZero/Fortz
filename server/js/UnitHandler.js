@@ -14,7 +14,15 @@ function updateWorker(unit, resources, player) {
 
 function updateSoldier(unit, player) {
   //Find nearest target
-  //Head towerd target
+var nearestTarget;
+if(player.targets.length<1){return;}
+else{nearestTarget=player.targets[0];}
+for(var i=1;i<player.targets.length;i++){
+if(getDistance(unit,nearestTarget)>getDistance(unit,player.targets.length)){
+nearestTarget=player.targets[i];
+}
+}
+  //Head toward target
   //If at target, attack target
   //If at other enemy object, attack object
 }

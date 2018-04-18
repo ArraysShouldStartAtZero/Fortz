@@ -1,4 +1,4 @@
-var highlighted=true;
+//var highlighted=true;
 
 
 //plagarized from PIXI tutorial
@@ -100,12 +100,12 @@ let space = Keyboard(32);//shift for mov speed
 }
 
 function highlight(obj){
-if(!highlighted){
-obj.x+=10;
-highlighted=true;
-}else{
+//if(!highlighted){
+//obj.x+=10;
+//highlighted=true;
+//}else{
 var tempID=getIdByLoc(obj.x,obj.y);
 socket.emit('target-object-client', { object_id: tempID });
-}
+//}
 }
 
