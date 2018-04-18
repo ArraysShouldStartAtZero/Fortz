@@ -53,7 +53,10 @@ function getAllObjects(callback) {
   var sql = "SELECT * FROM game_objects";
   conn.query(sql, function(err, result) {
     var objArr = [];
-    if(err) throw err;
+    if(err) {
+      console.log("It's in getAllObjects");
+      throw err;
+    }
     result.forEach((element, index, array) => {
       objArr.push(element);
     });

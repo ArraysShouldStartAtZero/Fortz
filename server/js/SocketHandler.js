@@ -42,7 +42,6 @@ function game_over_server(socket) {
 }
 
 function player_update_server(io) {
-  console.log(io.sockets.clients());
   Object.keys(io.sockets.clients).forEach(function(socket) {
     db.getPlayerData(socketPlayerMap.get(socket.id), function(playerData) {
       socket.emit('player-update-server', playerData);
