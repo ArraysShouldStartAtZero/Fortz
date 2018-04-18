@@ -55,8 +55,8 @@ setInterval(update, 500);
 
 function update() {
   //Send out updates
-  sh.update_server(io);
-  sh.player_update_server(io);
+  sh.update_server(sock);
+  sh.player_update_server(sock);
 
   //Run game logic
   db.getAllUnits(game.update);
