@@ -17,6 +17,7 @@ conn.connect(function(err) {
 
 module.exports = {
   getAllObjects: getAllObjects,
+  getAllResources: getAllResources,
   getAllUnits: getAllUnits,
   moveUnit: moveUnit,
   getPlayerData: getPlayerData,
@@ -56,6 +57,18 @@ function getAllObjects(callback) {
     if(err) {
       throw err;
     }
+    result.forEach((element, index, array) => {
+      objArr.push(element);
+    });
+    callback(objArr);
+  });
+}
+
+function getAllResources(callback) {
+  var sql = "SELECT * FROM game_objects WHERE type = 'RESRCE'";
+  conn.query(sql, function(err, result) {
+    var objArr = [];
+    if(err) throw err;
     result.forEach((element, index, array) => {
       objArr.push(element);
     });
