@@ -27,7 +27,7 @@
 	initAssets();
 
 var player=Player();
-
+	var but1,but2,but3;
 	var cX=0, cY=0, dX=0,dY=0;//d is default camera position for recentering , c is current camera position
 
     //Create socket handler and begin communication
@@ -36,16 +36,19 @@ var player=Player();
 	cX=dX;
 	cY=dY;
 
-var nick= unit('nick',dX,dY,1,'sprites/nickCage.png','player');//add a sprite
+var nick= unit('nick',dX,dY,1,'sprites/nickCage.png','player');//add a sprite\
+
 makeButtons();
 	
 //listeners for key presses 
 function playerCamera_move(difX,difY){
 	cX+=difX;cY+=difY;
 	var i;
-	for(i=0;i<app.stage.children.length;i++){
+	for(i=0;i<app.stage.children.length-3;i++){
+//if(app.stage.getChildIndex(but1)!=i||app.stage.getChildAt(but2)!=i||app.stage.getChildAt(but3)!=i){
 		app.stage.getChildAt(i).x+=difX;
 		app.stage.getChildAt(i).y+=difY;
+//}
 	}
 }
 

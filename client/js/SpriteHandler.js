@@ -14,36 +14,36 @@ function initAssets(){
 function makeButtons(){
 PIXI.loader.load(setUp);
 	function setUp(){
-	var tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/buy_units_bttn.png"].texture);
-	tempBttn.interactive=true;
-	tempBttn.buttonMode=true;
-	tempBttn.x=window.innerWidth-128;
-	tempBttn.y=window.innerHeight-64;
-	tempBttn.on("click",function(event){
+	but1=new PIXI.Sprite(PIXI.loader.resources["sprites/buy_units_bttn.png"].texture);
+	but1.interactive=true;
+	but1.buttonMode=true;
+	but1.x=window.innerWidth-128;
+	but1.y=window.innerHeight-64;
+	but1.on("click",function(event){
 	var pos={}
 	pos.posX=dX;
 	pos.posY=dY;
 		socket.emit('unit-purchase-client', {type: 'soldier' , position: pos});//only handle soldiers for now
 	});//buys a unit
-	 app.stage.addChild(tempBttn);
-tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/radDec_bttn.png"].texture);
-tempBttn.interactive=true;
-	tempBttn.buttonMode=true;
-	tempBttn.x=window.innerWidth-32;
-	tempBttn.y=window.innerHeight-64;
-	tempBttn.on("click",function(event){
+	 app.stage.addChild(but1);
+but2=new PIXI.Sprite(PIXI.loader.resources["sprites/radDec_bttn.png"].texture);
+but2.interactive=true;
+	but2.buttonMode=true;
+	but2.x=window.innerWidth-32;
+	but2.y=window.innerHeight-64;
+	but2.on("click",function(event){
 		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius-1});
 	});//decreases radius
-	 app.stage.addChild(tempBttn);
-tempBttn=new PIXI.Sprite(PIXI.loader.resources["sprites/radInc_bttn.png"].texture);
-tempBttn.interactive=true;
-	tempBttn.buttonMode=true;
-	tempBttn.x=window.innerWidth-64;
-	tempBttn.y=window.innerHeight-64;
-	tempBttn.on("click",function(event){
+	 app.stage.addChild(but2);
+but3=new PIXI.Sprite(PIXI.loader.resources["sprites/radInc_bttn.png"].texture);
+but3.interactive=true;
+	but3.buttonMode=true;
+	but3.x=window.innerWidth-64;
+	but3.y=window.innerHeight-64;
+	but3.on("click",function(event){
 		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius+1});
 	});//increases radius
-	 app.stage.addChild(tempBttn);
+	 app.stage.addChild(but3);
 
 };
 }
