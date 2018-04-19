@@ -36,7 +36,7 @@ return resource;
 function Fort(posX, posY, user){
   Structure("tower",posX,posY,100,"sprites/gry_twr.png",user);
    Structure("wall",posX, posY+64,100,"sprites/gry_wall.png",user);
- Structute("tower",posX,posY+128,100,"sprites/gry_twr.png",user);
+ Structure("tower",posX,posY+128,100,"sprites/gry_twr.png",user);
   Structure("wall",posX+64, posY,100,"sprites/gry_wall.png",user);
 new Structure("tower",posX+128,posY,100,"sprites/gry_twr.png",user);
   new Structure("wall",posX+128, posY+64,100,"sprites/gry_wall.png",user);
