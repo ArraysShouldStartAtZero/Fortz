@@ -5,8 +5,10 @@ var objs=[];
 function addGameObject(type, uid, posX, posY, health, owner){
 var adjX=posX-cX;//adjusted positions for camera position
 var adjY=posY-cY;
-if(type=='wall'||type=='tower'){
-Structure(type,adjX,adjY,health,owner);
+if(type=='wall'){
+Structure(type,adjX,adjY,health, 'sprites/gry_wall.png' ,owner);
+}else if(type=='tower'){
+Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
 }else if(type=='soldier'||type=='cavalry'||type=='artilery'){
 unit(type,adjX,adjY,health,owner);
 }else if(type=='resource'){

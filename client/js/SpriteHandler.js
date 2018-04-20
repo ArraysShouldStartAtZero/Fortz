@@ -77,7 +77,7 @@ but6.interactive=true;
 	but6.x=window.innerWidth-320;
 	but6.y=window.innerHeight-64;
 	but6.on("click",function(event){
-		//socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius+1});
+		upgrade();
 	});//upgrade unit
 	 app.stage.addChild(but6);
 

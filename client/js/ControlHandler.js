@@ -1,4 +1,5 @@
-//var highlighted=true;
+var highlighted=false;
+var upgradable=false;
 
 
 //plagarized from PIXI tutorial
@@ -97,6 +98,14 @@ let space = Keyboard(32);//shift for mov speed
 	cY=dY;
 	};
 
+}
+
+function upgrade(){
+//if(highlighted){
+socket.emit('object-upgrade-client' ,{ ID: 0 });
+//}else{
+//upgradable=true;
+//}
 }
 
 function highlight(obj){
