@@ -93,7 +93,7 @@ function getSprite(sprite, owner, posX, posY){
 		this.sprite.buttonMode=true;
 this.sprite.x=posX;
 this.sprite.y=posY;
-if(player.name!=owner&&"server"!=owner){
+if((player.name!=owner&&"server"!=owner)||sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
 	this.sprite.on("click",function(event){//add specific listeners
 	highlight(event.target);
 	});//Add mouse click listeners/actions to controlHandler

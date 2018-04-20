@@ -101,20 +101,29 @@ let space = Keyboard(32);//shift for mov speed
 }
 
 function upgrade(){
-//if(highlighted){
+if(highlighted){
 socket.emit('object-upgrade-client' ,{ ID: 0 });
-//}else{
-//upgradable=true;
-//}
+highlighted=false;
+upgradable =false;
+}else{
+upgradable=true;
+highlighted=false;
+}
 }
 
 function highlight(obj){
-//if(!highlighted){
-//obj.x+=10;
-//highlighted=true;
-//}else{
 var tempID=getIdByLoc(obj.x,obj.y);
+if(ubgradable==true){
+socket.emit('object-upgrade-client' ,{ object_id: temp_ID });
+upgradable =false;
+highlighted=false;
+}else{
+if(obj.type=='wall'||obj.type=='tower'){
+highlighted=true;
+}else{
 socket.emit('target-object-client', { object_id: tempID });
-//}
+highlighted=false;
+}
+}
 }
 
