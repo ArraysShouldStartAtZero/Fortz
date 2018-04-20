@@ -27,7 +27,7 @@
 	initAssets();
 
 var player=Player();
-	var but1,but2,but3;
+	var but1,but2,but3,but4,but5,but6;
 	var cX=0, cY=0, dX=0,dY=0;//d is default camera position for recentering , c is current camera position
 
     //Create socket handler and begin communication
@@ -44,7 +44,7 @@ makeButtons();
 function playerCamera_move(difX,difY){
 	cX+=difX;cY+=difY;
 	var i;
-	for(i=0;i<app.stage.children.length-3;i++){
+	for(i=0;i<app.stage.children.length-6;i++){
 //if(app.stage.getChildIndex(but1)!=i||app.stage.getChildAt(but2)!=i||app.stage.getChildAt(but3)!=i){
 		app.stage.getChildAt(i).x+=difX;
 		app.stage.getChildAt(i).y+=difY;

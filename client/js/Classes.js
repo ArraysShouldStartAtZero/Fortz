@@ -1,12 +1,12 @@
 function GameObject (object,sprite, posX, posY,owner) {
-if(sprite=="sprites/resources.png"){
-object.sprite = getSpriteFromSheet(sprite,owner);
-}else{
-  object.sprite = getSprite(sprite,owner);
-}  
 object.posX = posX;
   object.posY = posY;
 object.owner=owner;
+if(sprite=="sprites/resources.png"){
+object.sprite = getSpriteFromSheet(sprite,owner,posX,posY);
+}else{
+  object.sprite = getSprite(sprite,owner,posX,posY);
+}  
 };
 
 function Structure (type, posX, posY, health, sprite, owner) {
