@@ -14,7 +14,6 @@ unit(type,adjX,adjY,health,owner);
 }else if(type=='RESRCE'){
 Resource(health,adjX,adjY);
 }
-makeButtons();
 }
 
 

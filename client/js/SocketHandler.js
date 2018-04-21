@@ -22,7 +22,7 @@ var i;
 for(i=0;i<objects.length;i++){
 addGameObject(objects[i].type,objects[i].uid,objects[i].posX,objects[i].posY,objects[i].health,objects[i].owner);
 }
-
+makeButtons();
 });
 
  socket.on('user-unknown-server',function(){});
