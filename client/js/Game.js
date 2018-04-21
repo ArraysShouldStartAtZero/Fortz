@@ -5,13 +5,13 @@ var objs=[];
 function addGameObject(type, uid, posX, posY, health, owner){
 var adjX=posX-cX;//adjusted positions for camera position
 var adjY=posY-cY;
-if(type=='wall'){
+if(type=='WALL'){
 Structure(type,adjX,adjY,health, 'sprites/gry_wall.png' ,owner);
-}else if(type=='tower'){
+}else if(type=='TOWER'){
 Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
-}else if(type=='soldier'||type=='cavalry'||type=='artilery'){
+}else if(type=='INFNTR'||type=='CAVLRY'||type=='ARTLRY'){
 unit(type,adjX,adjY,health,owner);
-}else if(type=='resource'){
+}else if(type=='RESRCE'){
 Resource(health,adjX,adjY);
 }
 makeButtons();
