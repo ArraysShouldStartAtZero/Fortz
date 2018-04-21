@@ -25,6 +25,7 @@ for(i=0;i<objects.length;i++){
 addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
 }
 makeButtons();
+resourceCounter();
 });
 
  socket.on('user-unknown-server',function(){});

@@ -1,6 +1,11 @@
 var MAX_SIZE=128;
 var objs=[];
 
+function resourceCounter(){
+let counter=new PIXI.Text("Resources:"+player.resources);
+app.stage.addChild(counter);
+
+}
 
 function addGameObject(type, uid, posX, posY, health, owner){
 var adjX=posX*64-cX;//adjusted positions for camera position
