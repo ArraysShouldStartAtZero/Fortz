@@ -20,7 +20,7 @@ function update(units) {
         if(unit.type === "WORKER") {
           uh.updateWorker(unit, resources, players.get(unit.owner), move);
         } else {
-          uh.updateSoldier(unit, targets, players.get(unit.owner), move);
+          uh.updateSoldier(unit, players.get(unit.owner), move);
         }
       });
     });
