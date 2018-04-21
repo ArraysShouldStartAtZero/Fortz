@@ -9,6 +9,8 @@ if(type=='WALL'){
 Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
 }else if(type=='TOWER'){
 Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
+}else if(type=='STRGHD'){
+Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
 }else if(type=='INFNTR'||type=='CAVLRY'||type=='ARTLRY'){
 unit(type,adjX,adjY,health,owner);
 }else if(type=='RESRCE'){
