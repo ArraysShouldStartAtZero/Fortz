@@ -68,7 +68,7 @@ function getAllObjects(callback) {
 }
 
 function clearAllObjects() {
-  var sql = "DELETE * FROM game_objects";
+  var sql = "DELETE FROM game_objects";
   conn.query(sql, function(err, result) {
     if(err) throw err;
     console.log("Cleared all Game Objects");
