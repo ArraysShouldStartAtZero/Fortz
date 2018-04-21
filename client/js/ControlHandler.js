@@ -90,9 +90,9 @@ let space = Keyboard(32);//shift for mov speed
 	var i;
 	var qwertyX=dX-cX;
 	var qwertyY=dY-cY;
-	for(i=6;i<app.stage.children.length;i++){
-		app.stage.getChildAt(i).x+=qwertyX;
-		app.stage.getChildAt(i).y+=qwertyY;
+	for(i=0;i<objCont.children.length;i++){
+		objCont.getChildAt(i).x+=qwertyX;
+		objCont.getChildAt(i).y+=qwertyY;
 	}
 	cX=dX;
 	cY=dY;
