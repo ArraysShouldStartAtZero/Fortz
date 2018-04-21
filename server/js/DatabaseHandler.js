@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var classes = require('./Classes.js');
 
 var START_RESOURCE_NUM = 250;
 var MAX_RESOURCE = 50;
@@ -151,7 +152,7 @@ function getAllPlayers(callback) {
     if(err) throw err;
     var players = new Map();
     result.forEach((element, index, array) => {
-      var player = new Player(element.username, element.resources, element.worker_radius, []);
+      var player = new classes.Player(element.username, element.resources, element.worker_radius, []);
       players.set(player.name, player);
     });
     getAllPlayerTargets(players, callback);
