@@ -10,8 +10,8 @@ function sock_handler_init() {
 
   socket.on('fort-placement-server', function(pos){//spawn fort parts and camera start location
     //console.log("Server says our position is: (" + pos.posX + ", " + pos.posY + ")");
-	dX=pos.posX;
-	dY=pos.posY;
+	dX=pos.posX*64;
+	dY=pos.posY*64;
 });
 
   socket.on('update-server',function(objects){//update object locations to stage from server
