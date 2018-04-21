@@ -32,6 +32,7 @@ function updateWorker(unit, resources, player, move) {
 function updateSoldier(unit, player, move) {
   //Find nearest target
   var nearestTarget;
+  if(!player.targets) return;
   if(player.targets.length<1) return;
   else nearestTarget=player.targets[0];
   
