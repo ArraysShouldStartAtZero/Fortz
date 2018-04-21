@@ -24,8 +24,8 @@ PIXI.loader.load(setUp);
 	but1.y=window.innerHeight-64;
 	but1.on("click",function(event){
 	var pos={}
-	pos.posX=dX;
-	pos.posY=dY;
+	pos.posX=dX/64;
+	pos.posY=dY/64-1;
 		socket.emit('unit-purchase-client', {type: 'ARTLRY' , position: pos});//only handle soldiers for now
 	});//buys a unit
 	 app.stage.addChild(but1);
@@ -54,8 +54,8 @@ but4.interactive=true;
 	but4.y=window.innerHeight-64;
 	but4.on("click",function(event){
 	var pos={}
-	pos.posX=dX;
-	pos.posY=dY;
+	pos.posX=dX/64;
+	pos.posY=dY/64-1;
 		socket.emit('unit-purchase-client', {type: 'INFNTR' , position: pos});
 	});//purchase unit
 	 app.stage.addChild(but4);
@@ -66,8 +66,8 @@ but5.interactive=true;
 	but5.y=window.innerHeight-64;
 	but5.on("click",function(event){
 	var pos={}
-	pos.posX=dX;
-	pos.posY=dY;
+	pos.posX=dX/64;
+	pos.posY=dY/64-1;
 		socket.emit('unit-purchase-client', {type: 'CAVLRY' , position: pos});
 	});//purchase unit
 	 app.stage.addChild(but5);
