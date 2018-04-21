@@ -3,6 +3,7 @@ var classes = require('./Classes.js');
 
 var START_RESOURCE_NUM = 250;
 var MAX_RESOURCE = 50;
+var MAP_SIZE = 128;
 
 var conn = mysql.createConnection({
   host: "localhost",
