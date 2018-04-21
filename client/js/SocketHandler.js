@@ -12,7 +12,6 @@ function sock_handler_init() {
     //console.log("Server says our position is: (" + pos.posX + ", " + pos.posY + ")");
 	dX=pos.posX;
 	dY=pos.posY;
-	spawnPlayer(dX,dY);
 });
 
   socket.on('update-server',function(objects){//update object locations to stage from server
