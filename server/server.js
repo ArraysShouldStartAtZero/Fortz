@@ -55,7 +55,7 @@ db.clearAllObjects();
 
 db.generateResources();
 
-setInterval(update, 33);
+setInterval(update, 1000);
 
 function update() {
   //Send out updates
