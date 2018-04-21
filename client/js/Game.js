@@ -2,10 +2,9 @@ var MAX_SIZE=128;
 var objs=[];
 
 function resourceCounter(){
-let counter=new Text("Resources:"+player.resources);
+let counter=new Text("Resources:");
 app.stage.addChild(counter);
 counter.position.set(window.innerWidth-128,0);
-
 
 }
 
