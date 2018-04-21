@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var classes = require('./Classes.js');
 
-var START_RESOURCE_NUM = 250;
+var START_RESOURCE_NUM = 1000;
 var MAX_RESOURCE = 50;
 var MAP_SIZE = 128;
 
@@ -257,7 +257,8 @@ function buildFort(position, playerName) {
     ['TOWER', position.posX + 6, position.posY, playerName, 100],
     ['TOWER', position.posX, position.posY + 6, playerName, 100],
     ['TOWER', position.posX + 6, position.posY + 6, playerName, 100],
-    ['STRGHD', position.posX + 2, position.posY + 2, playerName, 200]
+    ['STRGHD', position.posX + 2, position.posY + 2, playerName, 200],
+    ['WORKER', position.posX + 7, position.posY + 7, playerName, 100]
   ];
   for(i=1; i<=5; i++) {
     values.push(['WALL', position.posX + i, position.posY, playerName, 100]);
