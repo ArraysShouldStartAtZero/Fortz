@@ -3,8 +3,8 @@ var objs=[];
 
 
 function addGameObject(type, uid, posX, posY, health, owner){
-var adjX=posX-cX;//adjusted positions for camera position
-var adjY=posY-cY;
+var adjX=posX*64-cX;//adjusted positions for camera position
+var adjY=posY*64-cY;
 if(type=='WALL'){
 Structure(type,adjX,adjY,health, 'sprites/gry_wall.png' ,owner);
 }else if(type=='TOWER'){
@@ -20,7 +20,7 @@ Resource(health,adjX,adjY);
 function getIdByLoc(x, y){
 var i;
 for(i=0;i<objs.length;i++){
-if(objs[i].x==x&&objs[i].y==y){
+if(objs[i].x*64==x&&objs[i].y*64==y){
 return objs[i].id;
 }
 }
