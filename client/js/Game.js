@@ -17,11 +17,6 @@ Resource(health,adjX,adjY);
 makeButtons();
 }
 
-function spawnPlayer(x,y){
-	new Fort(x+window.innerWidth/2,y+window.innerHeight/2, player.name);		
-
-}
-
 
 function getIdByLoc(x, y){
 var i;

@@ -102,7 +102,7 @@ let space = Keyboard(32);//shift for mov speed
 
 function upgrade(){
 if(highlighted){
-socket.emit('object-upgrade-client' ,{ ID: 0 });
+socket.emit('object-upgrade-client' ,{ ID: 0 });//implement when all other basics are done
 highlighted=false;
 upgradable =false;
 }else{
