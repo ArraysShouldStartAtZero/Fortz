@@ -3,8 +3,8 @@ var objs=[];
 
 function resourceCounter(){
 let counter=new Text("Resources:"+player.resources);
-counter.position.set(window.innerWidth-128,0);
 app.stage.addChild(counter);
+counter.position.set(window.innerWidth-128,0);
 
 
 }
