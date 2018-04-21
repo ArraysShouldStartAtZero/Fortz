@@ -10,7 +10,7 @@ module.exports = {
 function update(units) {
   moveCounter++;
   var move = false;
-  if(moveCounter >= 1) {
+  if(moveCounter >= 33) {
     move = true;
     moveCounter = 0;
   }
