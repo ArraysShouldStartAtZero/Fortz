@@ -44,8 +44,8 @@ function playerCamera_move(difX,difY){
 	var i;
 	for(i=0;i<app.stage.children.length-6;i++){
 //if(app.stage.getChildIndex(but1)!=i||app.stage.getChildAt(but2)!=i||app.stage.getChildAt(but3)!=i){
-		app.stage.getChildAt(i).x+=difX;
-		app.stage.getChildAt(i).y+=difY;
+		app.stage.getChildAt(i).x-=difX;
+		app.stage.getChildAt(i).y-=difY;
 //}
 	}
 }
