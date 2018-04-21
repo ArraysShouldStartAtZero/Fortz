@@ -11,7 +11,7 @@ Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
 Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
 }else if(type=='STRGHD'){
 Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
-}else if(type=='INFNTR'||type=='CAVLRY'||type=='ARTLRY'){
+}else if(type=='INFNTR'||type=='CAVLRY'||type=='ARTLRY'||type=='WORKER'){
 unit(type,adjX,adjY,health,owner);
 }else if(type=='RESRCE'){
 Resource(health,adjX,adjY);
