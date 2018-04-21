@@ -51,7 +51,9 @@ io.on('connection', function(socket) {
 
 console.log('Socket Handler Setup Complete');
 
-setInterval(update, 500);
+db.clearAllObjects();
+
+setInterval(update, 33);
 
 function update() {
   //Send out updates
