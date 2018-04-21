@@ -2,9 +2,8 @@ var MAX_SIZE=128;
 var objs=[];
 
 function resourceCounter(){
-let counter=new Text("Resources:");
+let counter=new PIXI.Text("Resources:"+player.resources);
 app.stage.addChild(counter);
-counter.position.set(window.innerWidth-128,0);
 
 }
 
