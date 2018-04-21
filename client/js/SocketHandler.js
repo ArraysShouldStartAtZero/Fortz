@@ -19,6 +19,7 @@ console.log("Got update!");
 app.stage.removeChildren();
 objs=objects;
 var i;
+console.log(objects);
 for(i=0;i<objects.length;i++){
 addGameObject(objects[i].type,objects[i].uid,objects[i].posX,objects[i].posY,objects[i].health,objects[i].owner);
 }
