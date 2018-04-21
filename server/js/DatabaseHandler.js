@@ -292,7 +292,7 @@ function collectResource(targetRes, player) {
   var sql = "DELETE FROM game_objects WHERE id = ?";
   conn.query(sql, [targetRes.id], function (err, result) {
     if(err) throw err;
-    addPlayerRes(player, targetRes.health);
+    addPlayerRes(player.name, targetRes.health);
   });
 }
 
