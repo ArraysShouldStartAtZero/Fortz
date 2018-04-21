@@ -1,0 +1,68 @@
+<!DOCTYPE text/html>
+<html>
+<head>
+  <title>
+    Fortz.io
+  </title>
+  <style>
+    body {margin: 0;}
+    canvas {width: 100%; height: 100%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+  <script src="js/Classes.js"></script>
+  <script src="js/Game.js"></script>
+  <script src="js/ControlHandler.js"></script>
+  <script src="js/SpriteHandler.js"></script>
+  <script src="js/SocketHandler.js"></script>
+  <script src="js/MenuHandler.js"></script>
+</head>
+<body>
+  <script>
+    let app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
+    document.body.appendChild(app.view);
+    app.renderer.backgroundColor = 0x33cc33;
+    app.renderer.autoResize = true;
+    app.stage.interactiveChildren=true;
+	initAssets();
+
+var player=Player();
+	var but1,but2,but3,but4,but5,but6;
+	var cX=0, cY=0, dX=0,dY=0;//d is default camera position for recentering , c is current camera position
+
+    //Create socket handler and begin communication
+    sock_handler_init();        
+	///spawnPlayer();//TODO get fort and user position from server//assign dX,dY;
+	cX=dX;
+	cY=dY;
+
+var nick= unit('nick',dX,dY,1,'sprites/nickCage.png','player');//add a sprite\
+
+makeButtons();
+	
+//listeners for key presses 
+function playerCamera_move(difX,difY){
+	cX+=difX;cY+=difY;
+	var i;
+	for(i=0;i<app.stage.children.length-6;i++){
+//if(app.stage.getChildIndex(but1)!=i||app.stage.getChildAt(but2)!=i||app.stage.getChildAt(but3)!=i){
+		app.stage.getChildAt(i).x+=difX;
+		app.stage.getChildAt(i).y+=difY;
+//}
+	}
+}
+
+var changeInX=0, changeInY=0;
+
+initListeners();
+
+//app.ticker.speed=1/10;
+app.ticker.add(delta => gameLoop(delta));
+
+function gameLoop(delta){
+	playerCamera_move(changeInX,changeInY);
+}
+
+  </script>
+</body>
+</html>

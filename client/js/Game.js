@@ -35,7 +35,6 @@ return 0;
 
 function gameOver(){
 player.alive=false;
-//display an interactive 'you lost' message
-
+window.location="gameover.html";
 }
 
