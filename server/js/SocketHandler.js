@@ -27,12 +27,24 @@ function user_unknown_server(username, socket) {
 }
 
 function fort_placement_server(socket) {
-  var position = {
-    posX: Math.floor(Math.random() * MAP_SIZE),
-    posY: Math.floor(Math.random() * MAP_SIZE)
-  }
-  db.buildFort(position, socketPlayerMap.get(socket.id));
-  socket.emit('fort-placement-server', position);
+  db.playerHasFort(socketPlayerMap.get(socket.id), function(hasFort) {
+    if(!hasFort) {
+      var position = {
+        posX: Math.floor(Math.random() * MAP_SIZE),
+        posY: Math.floor(Math.random() * MAP_SIZE)
+      };
+      db.buildFort(position, socketPlayerMap.get(socket.id));
+      socket.emit('fort-placement-server', position);
+    } else {
+      db.getFortPosition(socketPlayerMap.get(socket.id), function(posX, posY) {
+        var position = {
+          posX: posX,
+          posY: posY
+        };
+        socket.emit('fort-placement-server', position);
+      });
+    }
+  });
 }
 
 //TODO somehow remove player from registry so they can't send more requests

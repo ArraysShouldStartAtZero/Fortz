@@ -17,6 +17,8 @@ conn.connect(function(err) {
 
 module.exports = {
   getAllObjects: getAllObjects,
+  clearAllObjects: clearAllObjects,
+  playerHasFort: playerHasFort,
   getAllResources: getAllResources,
   getAllUnits: getAllUnits,
   moveUnit: moveUnit,
@@ -32,6 +34,7 @@ module.exports = {
   authUser: authUser,
   prepareUser: prepareUser,
   buildFort: buildFort,
+  getFortPosition: getFortPosition,
   updateRadius: updateRadius,
   collectResource: collectResource,
   spawnNewResource: spawnNewResource,
@@ -61,6 +64,23 @@ function getAllObjects(callback) {
       objArr.push(element);
     });
     callback(objArr);
+  });
+}
+
+function clearAllObjects() {
+  var sql = "DELETE * FROM game_objects";
+  conn.query(sql, function(err, result) {
+    if(err) throw err;
+    console.log("Cleared all Game Objects");
+  });
+}
+
+function playerHasFort(player, callback) {
+  var sql = "SELECT * FROM game_objects WHERE type = 'STRGHD' AND owner = ?";
+  conn.query(sql, [player], function(err, result) {
+    if(err) throw err;
+    if(result.length >= 1) callback(true);
+    else callback(false);
   });
 }
 
@@ -246,6 +266,14 @@ function buildFort(position, playerName) {
   conn.query(sql, [values], function(err, result) {
     if(err) throw err;
     console.log('Built Fort for \'', playerName, '\' at position (', position.posX, ', ', position.posY, ')');
+  });
+}
+
+function getFortPosition(player, callback) {
+  var sql = "SELECT * FROM game_objects WHERE type = 'STRGHD' AND owner = ?";
+  conn.query(sql, [player], function(err, result) {
+    if(err) throw err;
+    callback(result[0].pos_x - 2, result[0].pos_y - 2);
   });
 }
 
