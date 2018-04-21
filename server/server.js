@@ -53,6 +53,8 @@ console.log('Socket Handler Setup Complete');
 
 db.clearAllObjects();
 
+db.generateResources();
+
 setInterval(update, 33);
 
 function update() {
