@@ -1,6 +1,13 @@
 var MAX_SIZE=128;
 var objs=[];
 
+function resourceCounter(){
+let counter=new Text("Resources:"+player.resources);
+counter.x=window.innerWidth-128;
+counter.y=0;
+app.stage.addChild(counter);
+
+}
 
 function addGameObject(type, uid, posX, posY, health, owner){
 var adjX=posX*64-cX;//adjusted positions for camera position
