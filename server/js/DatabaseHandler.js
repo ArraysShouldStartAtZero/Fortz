@@ -299,8 +299,8 @@ function spawnNewResource() {
     posX: Math.floor(Math.random() * MAP_SIZE),
     posY: Math.floor(Math.random() * MAP_SIZE)
   }
-  var sql = "INSERT INTO game_objects (type, pos_x, pos_y, health) VALUES (?, ?, ?, ?)";
-  conn.query(sql, ['RESRCE', position.posX, position.posY, Math.random() * MAX_RESOURCE], function(err, result) {
+  var sql = "INSERT INTO game_objects (type, pos_x, pos_y, health, owner) VALUES (?, ?, ?, ?, ?)";
+  conn.query(sql, ['RESRCE', position.posX, position.posY, Math.random() * MAX_RESOURCE, 'server'], function(err, result) {
     if(err) throw err;
   });
 }
