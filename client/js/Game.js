@@ -7,6 +7,28 @@ app.stage.addChild(counter);
 
 }
 
+function removeChanged(objects){
+unitCont.removeChildren();
+structCont.removeChildren();//use this for now
+//for(val i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
+//	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'||objects//[i].type=='RESRCE'){
+//	let rmvble=false;
+//	for(val j=0;j<objs.length;j++){
+//		if(objs[j].id==objects[i].id){
+//		if(objs[j].pos_x==objects[i].pos_x&&objs[j].pos_y==objects[i].pos_y){
+//		break;
+//		}else{//handle
+//		
+//		}
+//		}
+//	}
+//	if(rmvble){
+//	
+//	}
+//	}
+//}
+}
+
 function addGameObject(type, uid, posX, posY, health, owner){
 var adjX=posX*64-cX;//adjusted positions for camera position
 var adjY=posY*64-cY;
@@ -27,7 +49,7 @@ Resource(health,adjX,adjY);
 function getIdByLoc(x, y){
 var i;
 for(i=0;i<objs.length;i++){
-if(objs[i].x*64==x&&objs[i].y*64==y){
+if(objs[i].pos_x*64==x&&objs[i].pos_y*64==y){
 return objs[i].id;
 }
 }

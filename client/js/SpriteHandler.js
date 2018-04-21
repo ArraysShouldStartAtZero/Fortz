@@ -96,9 +96,13 @@ this.sprite.y=posY;
 if((player.name!=owner&&"server"!=owner)||sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
 	this.sprite.on("click",function(event){//add specific listeners
 	highlight(event.target);
-	});//Add mouse click listeners/actions to controlHandler
+	});
 	}
-	 objCont.addChild(this.sprite);
+if(sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"||sprite=="sprites/gry_strghd.png"){ structCont.addChild(this.sprite);
+}else{
+unitCont.addChild(this.sprite);
+}
+	 
 return this.sprite;
 	};
 }
@@ -110,7 +114,7 @@ PIXI.loader.load(setUp);
 	var dispObjTemp=new PIXI.Sprite(PIXI.loader.resources[sprite].texture);
 	dispObjTemp.x=posX;
 dispObjTemp.y=posY;
-	 objCont.addChild(dispObjTemp);
+	 structCont.addChild(dispObjTemp);
 	};
 }
 
