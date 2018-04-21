@@ -18,7 +18,7 @@ function sock_handler_init() {
 
   socket.on('update-server',function(objects){//update object locations to stage from server
 console.log("Got update!");
-app.stage.removeChildren(6,app.stage.children.length-1);
+app.stage.removeChildren(5,app.stage.children.length-1);
 objs=objects;
 var i;
 for(i=0;i<objects.length;i++){
