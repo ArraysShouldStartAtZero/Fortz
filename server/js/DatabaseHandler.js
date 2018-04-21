@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 var classes = require('./Classes.js');
 
-var START_RESOURCE_NUM = 1000;
+var START_RESOURCE_NUM = 4096;
 var MAX_RESOURCE = 50;
 var MAP_SIZE = 128;
 
