@@ -4,6 +4,10 @@
   the game run faster. Updates will just pull all GameObjects from the
   database, parse them into this object, then push array of all objects out
   to the players */
+module.exports = {
+  Player: Player
+};
+
 function GameObject (type, uid, posX, posY, health, owner) {
   this.type = type;
   this.uid = uid;  
