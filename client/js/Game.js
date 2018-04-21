@@ -15,7 +15,7 @@ Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
 }else if(type=='TOWER'){
 Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
 }else if(type=='STRGHD'){
-Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
+Structure(type,adjX,adjY,health, 'sprites/gry_strghd.png' ,owner);
 }else if(type=='INFNTR'||type=='CAVLRY'||type=='ARTLRY'||type=='WORKER'){
 unit(type,adjX,adjY,health,owner);
 }else if(type=='RESRCE'){
