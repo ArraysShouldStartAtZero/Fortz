@@ -26,7 +26,7 @@ PIXI.loader.load(setUp);
 	var pos={}
 	pos.posX=dX;
 	pos.posY=dY;
-		socket.emit('unit-purchase-client', {type: 'soldier' , position: pos});//only handle soldiers for now
+		socket.emit('unit-purchase-client', {type: 'ARTLRY' , position: pos});//only handle soldiers for now
 	});//buys a unit
 	 app.stage.addChild(but1);
 but2=new PIXI.Sprite(PIXI.loader.resources["sprites/radDec_bttn.png"].texture);
@@ -56,7 +56,7 @@ but4.interactive=true;
 	var pos={}
 	pos.posX=dX;
 	pos.posY=dY;
-		socket.emit('unit-purchase-client', {type: 'calvary' , position: pos});
+		socket.emit('unit-purchase-client', {type: 'INFNTR' , position: pos});
 	});//purchase unit
 	 app.stage.addChild(but4);
 but5=new PIXI.Sprite(PIXI.loader.resources["sprites/buy_units_bttn_tri.png"].texture);
@@ -68,7 +68,7 @@ but5.interactive=true;
 	var pos={}
 	pos.posX=dX;
 	pos.posY=dY;
-		socket.emit('unit-purchase-client', {type: 'artillery' , position: pos});
+		socket.emit('unit-purchase-client', {type: 'CAVLRY' , position: pos});
 	});//purchase unit
 	 app.stage.addChild(but5);
 but6=new PIXI.Sprite(PIXI.loader.resources["sprites/Upgrade_bttn.png"].texture);
@@ -106,7 +106,7 @@ return this.sprite;
 function getSpriteFromSheet(sprite, owner, posX, posY){
 PIXI.loader.load(setUp);
 	function setUp(){
-	PIXI.loader.resources[sprite].texture.frame=new PIXI.Rectangle((Math.random()*4)*16,(Math.random()*4)*16,16,16);
+	PIXI.loader.resources[sprite].texture.frame=new PIXI.Rectangle(Math.floor(Math.random()*4)*16,Math.floor(Math.random()*4)*16,16,16);
 	var dispObjTemp=new PIXI.Sprite(PIXI.loader.resources[sprite].texture);
 	dispObjTemp.x=posX;
 dispObjTemp.y=posY;
