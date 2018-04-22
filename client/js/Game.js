@@ -7,26 +7,41 @@ app.stage.addChild(counter);
 
 }
 
-function removeChanged(objects){
+function updateChanged(objects){
 unitCont.removeChildren();
-structCont.removeChildren();//use this for now
-//for(val i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
-//	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'||objects//[i].type=='RESRCE'){
-//	let rmvble=false;
-//	for(val j=0;j<objs.length;j++){
-//		if(objs[j].id==objects[i].id){
-//		if(objs[j].pos_x==objects[i].pos_x&&objs[j].pos_y==objects[i].pos_y){
-//		break;
-//		}else{//handle
-//		
-//		}
-//		}
-//	}
-//	if(rmvble){
-//	
-//	}
-//	}
-//}
+//structCont.removeChildren();//use this for now
+val k=0;
+for(val i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
+	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'||objects//[i].type=='RESRCE'){
+	let rmvble=true;
+	let addable=false;
+	for(val j=0;j<objs.length;j++){
+		if(objs[j].id==objects[i].id){
+		rmvble=false;
+		addable=false;
+		if(objs[j].pos_x==objects[i].pos_x&&objs[j].pos_y==objects[i].pos_y){
+		break;
+		}else{//handle
+		structCont.removeChildAt(k);
+		k--;
+		addable=true;
+		break;
+		}
+		}else{
+		addable=true;
+		}
+	}
+	if(rmvble){
+	structCont.removeChildAt(k);
+	k--;
+	}else if(addable){
+addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
+	}
+k++;
+	}else{
+addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
+}
+}
 }
 
 function addGameObject(type, uid, posX, posY, health, owner){
