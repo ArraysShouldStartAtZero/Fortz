@@ -33,8 +33,15 @@ function fort_placement_server(socket) {
         posX: Math.floor(Math.random() * MAP_SIZE),
         posY: Math.floor(Math.random() * MAP_SIZE)
       };
-      db.buildFort(position, socketPlayerMap.get(socket.id));
-      socket.emit('fort-placement-server', position);
+      db.findClosestFort(position, function(distance) {
+        if(distance >= 10) {
+        db.buildFort(position, socketPlayerMap.get(socket.id));
+        db.prepareUser(socketPlayerMap.get(socket), position);
+        socket.emit('fort-placement-server', position);
+        } else {
+          fort_placement_server(socket);
+        }
+      });
     } else {
       db.getFortPosition(socketPlayerMap.get(socket.id), function(posX, posY) {
         var position = {
@@ -74,7 +81,6 @@ function hello_client(resp, socket) {
 
   if(isValid) {
     socketPlayerMap.set(socket.id, resp.username);
-    db.prepareUser(resp.username);
     fort_placement_server(socket);
   } else {
     user_unknown_server(resp.username, socket);
@@ -82,8 +88,8 @@ function hello_client(resp, socket) {
 }
 
 //TODO later - not vital to basic game functioning
-function object_upgrade_client(socket) {
-
+function object_upgrade_client(socket, id) {
+  db.upgradeObject(socketPlayerMap.get(socket.id), id);
 }
 
 function worker_radius_change_client(socket, newRadius) {

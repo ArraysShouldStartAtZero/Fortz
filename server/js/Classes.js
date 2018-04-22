@@ -8,21 +8,11 @@ module.exports = {
   Player: Player
 };
 
-function GameObject (type, uid, posX, posY, health, owner) {
-  this.type = type;
-  this.uid = uid;  
-  this.posX = posX;
-  this.posY = posY;
-  this.health = health;
-  this.owner = owner;
-
-//TODO send to database, send to players
-}
-
-
-function Player (name, resources, worker_radius, targets) {
+function Player (name, resources, worker_radius, stronghold_x, stronghold_y, targets) {
   this.name = name;
   this.resources = resources;
   this.worker_radius = worker_radius;
+  this.stronghold_x = stronghold_x;
+  this.stronghold_y = stronghold_y;
   this.targets = targets;
 }

@@ -30,12 +30,14 @@ module.exports = {
   addPlayerRes: addPlayerRes,
   subtractPlayerRes, subtractPlayerRes,
   createObject: createObject,
+  upgradeObject: upgradeObject,
   removeAllPlayerObjects: removeAllPlayerObjects,
   objectExists: objectExists,
   addTarget: addTarget,
   authUser: authUser,
   prepareUser: prepareUser,
   buildFort: buildFort,
+  findClosestFort: findClosestFort,
   getFortPosition: getFortPosition,
   updateRadius: updateRadius,
   collectResource: collectResource,
@@ -66,6 +68,15 @@ function getAllObjects(callback) {
       objArr.push(element);
     });
     callback(objArr);
+  });
+}
+
+function objectInPosition(pos, callback) {
+  var sql = "SELECT * FROM game_objects WHERE pos_x = ? and pos_y = ?";
+  conn.query(sql, [pos.posX, pos.posY], function(err, result) {
+    if(err) throw err;
+    if(result.length >= 1) callback(true);
+    else callback(false);
   });
 }
 
@@ -126,7 +137,7 @@ function getPlayerData(name, callback) {
   var sql = "SELECT * FROM users WHERE username = ?";
   conn.query(sql, [name], function(err, result) {
     if(err) throw err;
-    var player = new Player(result[0].username, result[0].resources, result[0].worker_radius, []);
+    var player = new Player(result[0].username, result[0].resources, result[0].worker_radius, result[0].stronghold_x, result[0].stronghold_y, []);
     getPlayerTargets(player, callback);
   });
 }
@@ -153,7 +164,7 @@ function getAllPlayers(callback) {
     if(err) throw err;
     var players = new Map();
     result.forEach((element, index, array) => {
-      var player = new classes.Player(element.username, element.resources, element.worker_radius, []);
+      var player = new classes.Player(element.username, element.resources, element.worker_radius, element.stronghold_x, element.stronghold_y, []);
       players.set(player.name, player);
     });
     getAllPlayerTargets(players, callback);
@@ -195,11 +206,33 @@ function addPlayerRes(player, amount) {
   });
 }
 
-//TODO implement health per unit
 function createObject(type, player, position) {
   var sql = "INSERT INTO game_objects (type, pos_x, pos_y, owner, health) VALUES (?, ?, ?, ?, ?)";
   conn.query(sql, [type, position.posX, position.posY, player, 100], function(err, result) {
     if(err) throw err;
+  });
+}
+
+function getObjectHealth(id, callback) {
+  var sql = "SELECT * FROM game_objects WHERE id = ?";
+  conn.query(sql, [id], function(err, result) {
+    if(err) throw err;
+    callback(result[0].health);
+  });
+}
+
+function upgradeObject(username, id) {
+  getObjectHealth(id, function(health) {
+    getPlayerRes(username, function(resources) {
+      var upgradeCost = Math.floor(1.5*health);
+      if(upgradeCost < resources) {
+        subtractPlayerRes(username, upgradeCost, resources);
+        var sql = "UPDATE game_objects SET health = ? WHERE id = ?";
+        conn.query(sql, [health+100, id], function(err, result) {
+          if(err) throw err;
+        });
+      }
+    });
   });
 }
 
@@ -239,9 +272,9 @@ function authUser(username) {
 
 /* Updates the resources and worker_radius of the player with the given name
    in the users table to starting values and logs a message when complete. */
-function prepareUser(username) {
-  var sql = "UPDATE users SET resources = ?, worker_radius = ? WHERE username = ?";
-  conn.query(sql, [500, 10, username], function(err, result) {
+function prepareUser(username, position) {
+  var sql = "UPDATE users SET resources = ?, worker_radius = ?, stronghold_x = ?, stronghold_y = ? WHERE username = ?";
+  conn.query(sql, [500, 10, position.posX+1, position.posY+1, username], function(err, result) {
     if(err) throw err;
     console.log('Set initial resources and worker radius for \'', username, '\'.');
   });
@@ -269,6 +302,20 @@ function buildFort(position, playerName) {
   conn.query(sql, [values], function(err, result) {
     if(err) throw err;
     console.log('Built Fort for \'', playerName, '\' at position (', position.posX, ', ', position.posY, ')');
+  });
+}
+
+function findClosestFort(position, callback) {
+  var sql = "SELECT * FROM game_objects WHERE type = 'STRGHD'";
+  conn.query(sql, function(err, result) {
+    var shortestDistance = 1000;
+    result.forEach((element, index, array) => {
+      var dx = Math.abs(element.pos_x - position.posX);
+      var dy = Math.abs(element.pos_y - position.posY);
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < shortestDistance) shortestDistance = dist;
+    });
+    callback(shortestDistance);
   });
 }
 
@@ -301,9 +348,15 @@ function spawnNewResource() {
     posX: Math.floor(Math.random() * MAP_SIZE),
     posY: Math.floor(Math.random() * MAP_SIZE)
   }
-  var sql = "INSERT INTO game_objects (type, pos_x, pos_y, health, owner) VALUES (?, ?, ?, ?, ?)";
-  conn.query(sql, ['RESRCE', position.posX, position.posY, Math.random() * MAX_RESOURCE, 'server'], function(err, result) {
-    if(err) throw err;
+  objectInPosition(position, function(objectExists) {
+    if(objectExists) {
+      spawnNewResource();
+    } else {
+      var sql = "INSERT INTO game_objects (type, pos_x, pos_y, health, owner) VALUES (?, ?, ?, ?, ?)";
+      conn.query(sql, ['RESRCE', position.posX, position.posY, Math.random() * MAX_RESOURCE, 'server'], function(err, result) {
+        if(err) throw err;
+      });
+    }
   });
 }
 
@@ -312,4 +365,5 @@ function generateResources() {
   for(i = 0; i < START_RESOURCE_NUM; i++) {
     spawnNewResource();
   }
+  console.log("Generated Resources!");
 }

@@ -7,6 +7,7 @@ module.exports = {
 
 function updateWorker(unit, resources, player, move) {
   var targetRes = findNearestResource(unit, resources, player);
+  if(targetRes === null) return;
   if(Math.abs(targetRes.pos_x - unit.pos_x) <= 1 && Math.abs(targetRes.pos_y - unit.pos_y) <= 1) { //Collect resource
     db.collectResource(targetRes, player);
     db.spawnNewResource();
@@ -46,17 +47,27 @@ function updateSoldier(unit, player, move) {
   //If at other enemy object, attack object
 }
 
-//TODO limit this to worker_radius from stronghold
+//TODO set up stronghold_x and stronghold_y
 function findNearestResource(worker, resources, player) {
   var close_resource;
   var res_dist = 1000
   resources.forEach((res, index, array) => {
     var dist = getDistance(res, worker);
     if(dist < res_dist) {
-      res_dist = dist;
-      close_resource = res;
+      var fortPos = {
+        pos_x: player.stronghold_x,
+        pos_y: player.stronghold_y
+      };
+      var distFromFort = getDistance(res, fortPos);
+      if(distFromFort <= player.worker_radius) {
+        res_dist = dist;
+        close_resource = res;
+      }
     }
   });
+  if(Object.keys(close_resource).length === 0 && close_resource.constructor === Object) {
+    return null;
+  }
   return close_resource;
 }
 
