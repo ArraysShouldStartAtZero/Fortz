@@ -88,14 +88,14 @@ let shift = Keyboard(16);//shift for mov speed
 let space = Keyboard(32);//space for camera recentering
 	space.press = () => {
 	var i;
-	var qwertyX=dX-cX;
-	var qwertyY=dY-cY;
+	var qwertyX=dcX-cX;
+	var qwertyY=dcY-cY;
 	for(i=0;i<objCont.children.length;i++){
 		objCont.getChildAt(i).x-=qwertyX;
 		objCont.getChildAt(i).y-=qwertyY;
 	}
-	cX=dX;
-	cY=dY;
+	cX=dcX;
+	cY=dcY;
 	};
 
 }

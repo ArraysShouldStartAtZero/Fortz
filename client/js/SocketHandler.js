@@ -27,10 +27,10 @@ function sock_handler_init() {
     //console.log("Server says our position is: (" + pos.posX + ", " + pos.posY + ")");
 
 	dX=pos.posX*64;
-
+	dcX=dX-window.innerWidth/4;
 	dY=pos.posY*64;
-
-	cX=dX;cY=dY;
+	dcY=dY-window.innerHeight/4;
+	cX=dcX;cY=dcY;
 
 	
 
