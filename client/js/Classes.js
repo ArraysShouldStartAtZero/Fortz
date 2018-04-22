@@ -28,7 +28,7 @@ let uniT={};
 	}else if(type=="ARTLRY"){
   GameObject.call(this,uniT,'sprites/gry_sqr.png', posX, posY, owner);
 	}else{
-  GameObject.call(this,uniT,'sprites/gry_sqr.png', posX, posY, owner);
+  GameObject.call(this,uniT,'sprites/gry_wkr.png', posX, posY, owner);
   }
 return uniT;
 };

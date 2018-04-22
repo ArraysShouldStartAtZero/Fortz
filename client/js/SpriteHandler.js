@@ -12,6 +12,9 @@ function initAssets(){
 	PIXI.loader.add("sprites/buy_units_bttn_circ.png");
 	PIXI.loader.add("sprites/buy_units_bttn_tri.png");
 	PIXI.loader.add("sprites/Upgrade_bttn.png");
+	PIXI.loader.add("sprites/wrk_bnd.png");
+	PIXI.loader.add("sprites/gry_strghd.png");
+	PIXI.loader.add("sprites/gry_wkr.png");
 }
 
 function makeButtons(){
@@ -28,7 +31,7 @@ PIXI.loader.load(setUp);
 	pos.posY=dY/64-1;
 		socket.emit('unit-purchase-client', {type: 'ARTLRY' , position: pos});//only handle soldiers for now
 	});//buys a unit
-	 app.stage.addChild(but1);
+	 uiCont.addChild(but1);
 but2=new PIXI.Sprite(PIXI.loader.resources["sprites/radDec_bttn.png"].texture);
 but2.interactive=true;
 	but2.buttonMode=true;
@@ -37,7 +40,7 @@ but2.interactive=true;
 	but2.on("click",function(event){
 		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius-1});
 	});//decreases radius
-	 app.stage.addChild(but2);
+	 uiCont.addChild(but2);
 but3=new PIXI.Sprite(PIXI.loader.resources["sprites/radInc_bttn.png"].texture);
 but3.interactive=true;
 	but3.buttonMode=true;
@@ -46,7 +49,7 @@ but3.interactive=true;
 	but3.on("click",function(event){
 		socket.emit('worker-radius-change-client' ,{ radius: player.workerRadius+1});
 	});//increases radius
-	 app.stage.addChild(but3);
+	 uiCont.addChild(but3);
 but4=new PIXI.Sprite(PIXI.loader.resources["sprites/buy_units_bttn_circ.png"].texture);
 but4.interactive=true;
 	but4.buttonMode=true;
@@ -58,7 +61,7 @@ but4.interactive=true;
 	pos.posY=dY/64-1;
 		socket.emit('unit-purchase-client', {type: 'INFNTR' , position: pos});
 	});//purchase unit
-	 app.stage.addChild(but4);
+	 uiCont.addChild(but4);
 but5=new PIXI.Sprite(PIXI.loader.resources["sprites/buy_units_bttn_tri.png"].texture);
 but5.interactive=true;
 	but5.buttonMode=true;
@@ -70,7 +73,7 @@ but5.interactive=true;
 	pos.posY=dY/64-1;
 		socket.emit('unit-purchase-client', {type: 'CAVLRY' , position: pos});
 	});//purchase unit
-	 app.stage.addChild(but5);
+	 uiCont.addChild(but5);
 but6=new PIXI.Sprite(PIXI.loader.resources["sprites/Upgrade_bttn.png"].texture);
 but6.interactive=true;
 	but6.buttonMode=true;
@@ -79,8 +82,23 @@ but6.interactive=true;
 	but6.on("click",function(event){
 		upgrade();
 	});//upgrade unit
-	 app.stage.addChild(but6);
+	 uiCont.addChild(but6);
 
+};
+}
+
+function adjustRadius(rad){
+//structCont.removeChild(workerCircle);
+PIXI.loader.load(setUp);
+	function setUp(){//default
+	workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);
+	workerCircle.width=rad*128;
+	workerCircle.height=rad*128;
+	workerCircle.anchor.x=0.5;
+	workerCircle.anchor.y=0.5;
+	workerCircle.x=dX+224;
+	workerCircle.y=dY+224;
+structCont.addChild(workerCircle);
 };
 }
 
@@ -96,9 +114,13 @@ this.sprite.y=posY;
 if((player.name!=owner&&"server"!=owner)||sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
 	this.sprite.on("click",function(event){//add specific listeners
 	highlight(event.target);
-	});//Add mouse click listeners/actions to controlHandler
+	});
 	}
-	 app.stage.addChild(this.sprite);
+if(sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"||sprite=="sprites/gry_strghd.png"){ structCont.addChild(this.sprite);
+}else{
+unitCont.addChild(this.sprite);
+}
+	 
 return this.sprite;
 	};
 }
@@ -110,7 +132,7 @@ PIXI.loader.load(setUp);
 	var dispObjTemp=new PIXI.Sprite(PIXI.loader.resources[sprite].texture);
 	dispObjTemp.x=posX;
 dispObjTemp.y=posY;
-	 app.stage.addChild(dispObjTemp);
+	 structCont.addChild(dispObjTemp);
 	};
 }
 

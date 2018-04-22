@@ -18,7 +18,7 @@ function sock_handler_init() {
 
   socket.on('update-server',function(objects){//update object locations to stage from server
 console.log("Got update!");
-app.stage.removeChildren(6,app.stage.children.length-1);
+removeChanged(objects);
 objs=objects;
 var i;
 for(i=0;i<objects.length;i++){
@@ -33,6 +33,7 @@ resourceCounter();
 player.resources=playerData.resources;
 player.workerRadius=playerData.workerRadius;
 player.targets=playerData.targets;
+adjustRadius(player.workerRadius);
 
 });
 

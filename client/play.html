@@ -24,28 +24,33 @@
     app.renderer.backgroundColor = 0x33cc33;
     app.renderer.autoResize = true;
     app.stage.interactiveChildren=true;
+	let unitCont=new PIXI.Container();
+	let structCont=new PIXI.Container();
+	let uiCont=new PIXI.Container();
+	let objCont=new PIXI.Container();
+	objCont.addChild(unitCont);objCont.addChild(structCont);
+	app.stage.addChild(uiCont);app.stage.addChild(objCont);
+var workerCircle;
+var but1,but2,but3,but4,but5,but6;
+var cX=0, cY=0, dX=0,dY=0;//d is default camera position for recentering , c is current camera position
 	initAssets();
 	makeButtons();
 
+//var nick= unit('nick',dX,dY,1,'sprites/nickCage.png','player');//add a sprite\
+
 var player=Player();
-	var but1,but2,but3,but4,but5,but6;
-	var cX=0, cY=0, dX=0,dY=0;//d is default camera position for recentering , c is current camera position
+	
 
     //Create socket handler and begin communication
     sock_handler_init(); 
-	
-
-var nick= unit('nick',dX,dY,1,'sprites/nickCage.png','player');//add a sprite\
 	
 //listeners for key presses 
 function playerCamera_move(difX,difY){
 	cX+=difX;cY+=difY;
 	var i;
-	for(i=6;i<app.stage.children.length;i++){
-//if(app.stage.getChildIndex(but1)!=i||app.stage.getChildAt(but2)!=i||app.stage.getChildAt(but3)!=i){
-		app.stage.getChildAt(i).x-=difX;
-		app.stage.getChildAt(i).y-=difY;
-//}
+	for(i=0;i<objCont.children.length;i++){
+		objCont.getChildAt(i).x-=difX;
+		objCont.getChildAt(i).y-=difY;
 	}
 }
 
