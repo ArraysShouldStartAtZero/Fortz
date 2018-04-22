@@ -14,6 +14,7 @@ function initAssets(){
 	PIXI.loader.add("sprites/Upgrade_bttn.png");
 	PIXI.loader.add("sprites/wrk_bnd.png");
 	PIXI.loader.add("sprites/gry_strghd.png");
+	PIXI.loader.add("sprites/gry_wkr.png");
 }
 
 function makeButtons(){
