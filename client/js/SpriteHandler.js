@@ -12,6 +12,8 @@ function initAssets(){
 	PIXI.loader.add("sprites/buy_units_bttn_circ.png");
 	PIXI.loader.add("sprites/buy_units_bttn_tri.png");
 	PIXI.loader.add("sprites/Upgrade_bttn.png");
+	PIXI.loader.add("sprites/wrk_bnd.png");
+	PIXI.loader.add("sprites/gry_strghd.png");
 }
 
 function makeButtons(){
@@ -85,11 +87,17 @@ but6.interactive=true;
 }
 
 function adjustRadius(rad){
-//uiCont.removeChild(workerCircle);
+//structCont.removeChild(workerCircle);
 PIXI.loader.load(setUp);
-	function setUp(){
-
-
+	function setUp(){//default
+	workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);
+	workerCircle.width=rad*128;
+	workerCircle.height=rad*128;
+	workerCircle.anchor.x=0.5;
+	workerCircle.anchor.y=0.5;
+	workerCircle.x=dX+224;
+	workerCircle.y=dY+224;
+structCont.addChild(workerCircle);
 };
 }
 
