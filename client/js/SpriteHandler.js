@@ -84,6 +84,15 @@ but6.interactive=true;
 };
 }
 
+function adjustRadius(rad){
+//uiCont.removeChild(workerCircle);
+PIXI.loader.load(setUp);
+	function setUp(){
+
+
+};
+}
+
 
 function getSprite(sprite, owner, posX, posY){
 	PIXI.loader.load(setUp);
