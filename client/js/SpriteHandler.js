@@ -125,10 +125,12 @@ return this.sprite;
 	};
 }
 
+var spriteNum = 0;
+
 function getSpriteFromSheet(sprite, owner, posX, posY){
 PIXI.loader.load(setUp);
 	function setUp(){
-	PIXI.loader.resources[sprite].texture.frame=new PIXI.Rectangle(Math.floor(Math.random()*4)*16,Math.floor(Math.random()*4)*16,16,16);
+	PIXI.loader.resources[sprite].texture.frame=new PIXI.Rectangle((spriteNum%4)*16,Math.floor(spriteNum/4)*16,16,16);
 	var dispObjTemp=new PIXI.Sprite(PIXI.loader.resources[sprite].texture);
 	dispObjTemp.x=posX;
 dispObjTemp.y=posY;
