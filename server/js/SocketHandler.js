@@ -26,8 +26,8 @@ function user_unknown_server(username, socket) {
   socket.emit('user-unknown-server', username);
 }
 
-function fort_placement_server(socket) {
-  db.playerHasFort(socketPlayerMap.get(socket.id), function(hasFort) {
+function fort_placement_server(socket, username) {
+  db.playerHasFort(username, function(hasFort) {
     if(!hasFort) {
       var position = {
         posX: Math.floor(Math.random() * MAP_SIZE),
@@ -36,14 +36,14 @@ function fort_placement_server(socket) {
       db.findClosestFort(position, function(distance) {
         if(distance >= 10) {
         db.buildFort(position, socketPlayerMap.get(socket.id));
-        db.prepareUser(socketPlayerMap.get(socket), position);
+        db.prepareUser(username, position);
         socket.emit('fort-placement-server', position);
         } else {
           fort_placement_server(socket);
         }
       });
     } else {
-      db.getFortPosition(socketPlayerMap.get(socket.id), function(posX, posY) {
+      db.getFortPosition(username, function(posX, posY) {
         var position = {
           posX: posX,
           posY: posY
@@ -81,7 +81,7 @@ function hello_client(resp, socket) {
 
   if(isValid) {
     socketPlayerMap.set(socket.id, resp.username);
-    fort_placement_server(socket);
+    fort_placement_server(socket, resp.username);
   } else {
     user_unknown_server(resp.username, socket);
   }
