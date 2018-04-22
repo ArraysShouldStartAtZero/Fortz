@@ -33,6 +33,7 @@ resourceCounter();
 player.resources=playerData.resources;
 player.workerRadius=playerData.workerRadius;
 player.targets=playerData.targets;
+adjustRadius(player.workerRadius);
 
 });
 
