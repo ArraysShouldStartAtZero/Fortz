@@ -1,5 +1,6 @@
 <?php
   $username = $_SESSION['username'];
+  echo "USERNAME IS: $username";
 ?>
 <html>
 <head>
