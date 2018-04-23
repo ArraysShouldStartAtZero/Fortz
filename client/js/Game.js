@@ -52,8 +52,8 @@ addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,ob
 }
 
 function addGameObject(type, uid, posX, posY, health, owner){
-var adjX=posX*64;//-cX;//adjusted positions for camera position
-var adjY=posY*64;//-cY;
+var adjX=posX*64-dcX;//adjusted positions for camera position
+var adjY=posY*64-dcY;
 if(type=='WALL'){
 Structure(type,adjX,adjY,health, 'sprites/gry_wall.png' ,owner);
 }else if(type=='TOWER'){
