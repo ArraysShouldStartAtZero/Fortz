@@ -21,7 +21,7 @@
 </head>
 <body>
   <script>
-    let username = <?php echo "$username"?>;
+    let username = <?php echo "$username";?>;
     let app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
     document.body.appendChild(app.view);
     app.renderer.backgroundColor = 0x33cc33;
