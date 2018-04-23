@@ -1,6 +1,35 @@
 <?php
+  $username = "";
   session_start();
-  $username = $_SESSION['username'];
+  if(isset(_SESSION['username'];) {
+    $username = $_SESSION['username'];
+  } else {
+    header("Location: index.php");
+  }
+
+  function db_connect() {
+    $servername = "localhost";
+    $sqlname = "fortz_server";
+    $password = "5%forNothing";
+    $dbname = "world-data";
+    $conn = new mysqli($servername, $sqlname, $password, $dbname);
+    if($conn->connect_error) {
+      die("Connection Failed: " . $conn->connect_error);
+    }
+    return $conn;
+  }
+
+  if($username != "") {
+    $conn = db_connect();
+    sql = "SELECT * FROM users WHERE username = '$username'";
+    $result = $conn->query($sql);
+    if($result->num_rows <= 0) {
+      header("Location: index.php");
+    }
+  } else {
+    header("Location: index.php");
+  }
+
 ?>
 <html>
 <head>
