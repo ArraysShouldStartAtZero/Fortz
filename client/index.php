@@ -25,6 +25,18 @@
   if($name != "") {
     $sql = "SELECT * FROM users WHERE username = $name";
     $conn = db_connect();
+    $result = $conn->query($sql);
+    if($result->num_rows > 0) {
+
+    } else {
+      $sql = "INSERT INTO users (username, resources, worker_radius, stronghold_x, stronghold_y) VALUES ('$name', 500, 10, 0, 0)";
+      if($conn->query($sql) === TRUE) {
+        $_SESSION['username'] = $name;
+        header("Location: play.php");
+      } else {
+        die("Error in sending query!");
+      }
+    }
     $conn->close();
   }
 ?>

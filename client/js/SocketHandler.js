@@ -16,7 +16,7 @@ function sock_handler_init() {
 
     console.log("The server said hello");
 
-    socket.emit('hello-client', { username: "Pete Boilermaker" });
+    socket.emit('hello-client', { username: username });
 
   });
 
