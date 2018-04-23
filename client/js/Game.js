@@ -20,6 +20,11 @@ for(val i=0;i<objects.length;i++){//implement a system of removing items, exclud
 		rmvble=false;
 		addable=false;
 		if(objs[j].pos_x==objects[i].pos_x&&objs[j].pos_y==objects[i].pos_y){
+			if(objs[j].health!=objects[i].health){
+			var u=1;
+				if(objects[i].type=='STRGHD'){u=9;}
+			structCont.getChildAt(k).mask=healthDisplay(objects[i].health,objects[i].pos_x,objects[i].pos_y,u);
+			}
 		break;
 		}else{//handle
 		structCont.removeChildAt(k);

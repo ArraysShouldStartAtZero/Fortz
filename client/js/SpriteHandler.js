@@ -15,6 +15,30 @@ function initAssets(){
 	PIXI.loader.add("sprites/wrk_bnd.png");
 	PIXI.loader.add("sprites/gry_strghd.png");
 	PIXI.loader.add("sprites/gry_wkr.png");
+	PIXI.loader.add("sprites/damage.png");
+}
+
+function healthDisplay( hp, x, y, units){
+PIXI.loader.load(setUp);
+	function setUp(){
+	var txt=PIXI.loader.resources["sprites/buy_units_bttn.png"].texture;
+	if(hp<=25){
+	txt.frame=new PIXI.Rectangle(64,64,64,64);
+	}else if(hp<=50){
+	txt.frame=new PIXI.Rectangle(0,64,64,64);
+	}else if(hp<=75){
+	txt.frame=new PIXI.Rectangle(64,0,64,64);
+	}else{
+	txt.frame=new PIXI.Rectangle(0,0,64,64);
+	}
+	var dmg=new PIXI.Sprite(txt);
+	dmg.x=x;
+	dmg.y=y;
+	dmg.width=64*units;
+	dmg.height=64*units;	
+//	strctCont.addChild(dmg);
+return dmg;
+};
 }
 
 function makeButtons(){
@@ -88,7 +112,6 @@ but6.interactive=true;
 }
 
 function adjustRadius(rad){
-//structCont.removeChild(workerCircle);
 PIXI.loader.load(setUp);
 	function setUp(){//default
 	workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);
@@ -103,7 +126,7 @@ structCont.addChild(workerCircle);
 }
 
 
-function getSprite(sprite, owner, posX, posY){
+function getSprite(sprite, owner, posX, posY, hp){
 	PIXI.loader.load(setUp);
 	function setUp(){
 	this.sprite=new PIXI.Sprite(PIXI.loader.resources[sprite].texture);
@@ -116,7 +139,12 @@ if((player.name!=owner&&"server"!=owner)||sprite=="sprites/gry_twr.png"||sprite=
 	highlight(event.target);
 	});
 	}
-if(sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"||sprite=="sprites/gry_strghd.png"){ structCont.addChild(this.sprite);
+if(sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
+this.sprite.mask=healthDisplay(hp, posX, posY, 1);
+structCont.addChild(this.sprite);
+}else if(sprite=="sprites/gry_strghd.png"){ 
+this.sprite.mask=healthDisplay(hp, posX, posY, 9);
+structCont.addChild(this.sprite);
 }else{
 unitCont.addChild(this.sprite);
 }
