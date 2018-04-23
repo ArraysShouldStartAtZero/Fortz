@@ -11,11 +11,11 @@ function updateChanged(objects){
 unitCont.removeChildren();
 //structCont.removeChildren();//use this for now
 var k=0;
-for(val i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
+for(var i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
 	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'||objects//[i].type=='RESRCE'){
 	let rmvble=true;
 	let addable=false;
-	for(val j=0;j<objs.length;j++){
+	for(var j=0;j<objs.length;j++){
 		if(objs[j].id==objects[i].id){
 		rmvble=false;
 		addable=false;
