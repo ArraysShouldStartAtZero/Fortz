@@ -52,6 +52,7 @@ io.on('connection', function(socket) {
 console.log('Socket Handler Setup Complete');
 
 db.clearAllObjects();
+db.clearAllPlayers();
 
 db.generateResources();
 

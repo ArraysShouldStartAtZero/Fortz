@@ -20,6 +20,7 @@ conn.connect(function(err) {
 module.exports = {
   getAllObjects: getAllObjects,
   clearAllObjects: clearAllObjects,
+  clearAllPlayers: clearAllPlayers,
   playerHasFort: playerHasFort,
   getAllResources: getAllResources,
   getAllUnits: getAllUnits,
@@ -85,6 +86,14 @@ function clearAllObjects() {
   conn.query(sql, function(err, result) {
     if(err) throw err;
     console.log("Cleared all Game Objects");
+  });
+}
+
+function clearAllPlayers() {
+  var sql = "DELETE FROM users";
+  conn.query(sql, function(err, result) {
+    if(err) throw err;
+    console.log("Ceared all users");
   });
 }
 
