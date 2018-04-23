@@ -34,9 +34,7 @@
       if($conn->query($sql) === TRUE) {
         $_SESSION['username'] = $name;
         $session_name = $_SESSION['username'];
-        echo "Name is: $name";
-        echo "Username is: $session_name";
-        //header("Location: play.php");
+        header("Location: play.php");
       } else {
         die("Error in sending query!");
       }
