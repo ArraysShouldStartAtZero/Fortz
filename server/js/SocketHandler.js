@@ -20,7 +20,7 @@ module.exports = {
 };
 
 function disconnect(socket) {
-  console.log("Player \'" + socketPlayerMap.get(socket.id) + "\' Disconnected.";
+  console.log("Player \'" + socketPlayerMap.get(socket.id) + "\' Disconnected.");
   socketPlayerMap.delete(socket.id);
 }
 
