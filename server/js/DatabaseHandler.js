@@ -275,8 +275,13 @@ function addTarget(player, object_id) {
 /* LOL, this will be implemented once we actualy get
    the game up and running. Returns true currently
    for simplicity sake while testing. */
-function authUser(username) {
-  return true; //TODO
+function authUser(username, callback) {
+  var sql = "SELECT * FROM users WHERE username = ?";
+  conn.query(sql, [username], function(err, result) {
+    if(err) throw err;
+    if(result.length >= 1) callback(true);
+    else callback(false);
+  });
 }
 
 /* Updates the resources and worker_radius of the player with the given name

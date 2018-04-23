@@ -82,15 +82,15 @@ function update_server(io) {
 }
 
 function hello_client(resp, socket) {
-  console.log(resp.username + " said hello!");
   var isValid = db.authUser(resp.username);
-
-  if(isValid) {
-    socketPlayerMap.set(socket.id, resp.username);
-    fort_placement_server(socket, resp.username);
-  } else {
-    user_unknown_server(resp.username, socket);
-  }
+  db.authUser(resp.username, function(isValid) {
+    if(isValid) {
+      socketPlayerMap.set(socket.id, resp.username);
+      fort_placement_server(socket, resp.username);
+    } else {
+      user_unknown_server(resp.username, socket);
+    }
+  });
 }
 
 //TODO later - not vital to basic game functioning

@@ -64,7 +64,9 @@ resourceCounter();
 
 
 
- socket.on('user-unknown-server',function(){});
+socket.on('user-unknown-server', function(message){
+  window.location.reload(true);   
+});
 
 
 
