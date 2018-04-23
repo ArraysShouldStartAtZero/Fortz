@@ -33,7 +33,10 @@
       $sql = "INSERT INTO users (username, resources, worker_radius, stronghold_x, stronghold_y) VALUES ('$name', 500, 10, 0, 0)";
       if($conn->query($sql) === TRUE) {
         $_SESSION['username'] = $name;
-        header("Location: play.php");
+        $session_name = $_SESSION['username'];
+        echo "Name is: $name";
+        echo "Username is: $session_name";
+        //header("Location: play.php");
       } else {
         die("Error in sending query!");
       }
