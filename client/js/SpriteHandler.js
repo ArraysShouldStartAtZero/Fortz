@@ -16,6 +16,21 @@ function initAssets(){
 	PIXI.loader.add("sprites/gry_strghd.png");
 	PIXI.loader.add("sprites/gry_wkr.png");
 	PIXI.loader.add("sprites/damage.png");
+	PIXI.loader.add("sprites/grass.png");
+}
+
+function tileBkGrnd(){
+PIXI.loader.load(setUp);
+	function setUp(){
+	for(var i=0;i<128;i++){
+	for(var j=0;j<128;j++){
+		var sprt=new PIXI.Sprite(PIXI.loader.resources["sprites/grass.png"].texture);
+		sprt.x=i*64;
+		sprt.y=j*64;
+		background.addChild(sprt);
+	}
+	}
+};
 }
 
 function healthDisplay( hp, x, y, units){
