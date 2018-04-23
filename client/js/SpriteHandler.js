@@ -177,7 +177,7 @@ PIXI.loader.load(setUp);
 	var dispObjTemp=new PIXI.Sprite(PIXI.loader.resources[sprite].texture);
 	dispObjTemp.x=posX;
 dispObjTemp.y=posY;
-	 structCont.addChild(dispObjTemp);
+	 unitCont.addChild(dispObjTemp);
 	};
 }
 
