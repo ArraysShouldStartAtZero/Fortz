@@ -82,7 +82,6 @@ function update_server(io) {
 }
 
 function hello_client(resp, socket) {
-  var isValid = db.authUser(resp.username);
   db.authUser(resp.username, function(isValid) {
     if(isValid) {
       socketPlayerMap.set(socket.id, resp.username);
