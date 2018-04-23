@@ -36,15 +36,61 @@ function updateSoldier(unit, player, move) {
   if(!player.targets) return;
   if(player.targets.length<1) return;
   else nearestTarget=player.targets[0];
-  
+
   for(var i=1;i<player.targets.length;i++){
     if(getDistance(unit,nearestTarget)>getDistance(unit,player.targets.length)){
       nearestTarget=player.targets[i];
     }
   }
   //Head toward target
+if(unit.pos_x<nearestTarget.pos_x){
+unit.pos_x++;
+}else if(unit.pos_x==nearestTarget.pos_x){
+}else{
+unit.pos_x--;
+}
+if(unit.pos_y<nearestTarget.pos_y){
+unit.pos_y++;
+}else if(unit.pos_y==nearestTarget.pos_y){
+}else{
+unit.pos_y--;
+}
   //If at target, attack target
   //If at other enemy object, attack object
+var enemy=collision(unit,1);
+if(enemy!=NULL){
+unitAttack(unit,enemy);
+}
+}
+
+function collision(unit, dist){//TODO
+//search all and return first found within provided collision distance   else NULL
+
+return NULL;
+}
+
+function unitAttack(p1, p2){
+var mult=1;
+if(p1.type=='INFNTR'){
+	 if(p2.type=='CAVLRY'){
+	mult=.5;
+	}else if(p2.type=='ARTLRY'){
+	mult=2;
+	}else{}
+}else if(p1.type=='CAVLRY'){
+	 if(p2.type=='ARTLRY'){
+	mult=.5;
+	}else if(p2.type=='INFNTR'){
+	mult=2;
+	}else{}
+}else{
+	 if(p2.type=='INFNTR'){
+	mult=.5;
+	}else if(p2.type=='CAVLRY'){
+	mult=2;
+	}else{}
+}
+p2.health-=10*mult;
 }
 
 //TODO set up stronghold_x and stronghold_y
