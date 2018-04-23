@@ -5,6 +5,7 @@ var MAP_SIZE = 128;
 var MAX_RADIUS = 32;
 
 module.exports = {
+  disconnect: disconnect,
   hello_server: hello_server,
   user_unknown_server: user_unknown_server,
   fort_placement_server: fort_placement_server,
@@ -17,6 +18,11 @@ module.exports = {
   unit_purchase_client: unit_purchase_client,
   target_object_client: target_object_client,
 };
+
+function disconnect(socket) {
+  console.log("Player \'" + socketPlayerMap.get(socket.id) + "\' Disconnected.";
+  socketPlayerMap.delete(socket.id);
+}
 
 function hello_server(socket) {
   socket.emit('hello-server', 'Hello');
