@@ -10,7 +10,7 @@ app.stage.addChild(counter);
 function updateChanged(objects){
 unitCont.removeChildren();
 //structCont.removeChildren();//use this for now
-val k=0;
+var k=0;
 for(val i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
 	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'||objects//[i].type=='RESRCE'){
 	let rmvble=true;
