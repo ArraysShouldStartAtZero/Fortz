@@ -23,7 +23,7 @@
     }
   }
   if($name != "") {
-    $sql = "SELECT * FROM users WHERE username = $name";
+    $sql = "SELECT * FROM users WHERE username = '$name'";
     $conn = db_connect();
     $result = $conn->query($sql);
     if($result->num_rows > 0) {
