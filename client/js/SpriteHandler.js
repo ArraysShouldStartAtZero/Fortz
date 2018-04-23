@@ -16,7 +16,7 @@ function initAssets(){
 	PIXI.loader.add("sprites/gry_strghd.png");
 	PIXI.loader.add("sprites/gry_wkr.png");
 	PIXI.loader.add("sprites/damage.png");
-	PIXI.loader.add("sprites/grass.png");
+	PIXI.loader.add("sprites/grassv2.png");
 }
 
 function tileBkGrnd(){
@@ -24,7 +24,7 @@ PIXI.loader.load(setUp);
 	function setUp(){
 	for(var i=0;i<32;i++){
 	for(var j=0;j<32;j++){
-		var sprt=new PIXI.Sprite(PIXI.loader.resources["sprites/grass.png"].texture);
+		var sprt=new PIXI.Sprite(PIXI.loader.resources["sprites/grassv2.png"].texture);
 		sprt.x=i*256;
 		sprt.y=j*256;
 		background.addChild(sprt);
