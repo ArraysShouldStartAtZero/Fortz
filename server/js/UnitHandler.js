@@ -7,7 +7,7 @@ module.exports = {
 
 function updateWorker(unit, resources, player, move) {
   var targetRes = findNearestResource(unit, resources, player);
-  if(Object.keys(targetRes).length === 0 && targetRes.constructor === Object) return;
+  if(targetRes == null) return;
   if(Math.abs(targetRes.pos_x - unit.pos_x) <= 1 && Math.abs(targetRes.pos_y - unit.pos_y) <= 1) { //Collect resource
     db.collectResource(targetRes, player);
     db.spawnNewResource();
@@ -121,7 +121,7 @@ function findNearestResource(worker, resources, player) {
       }
     }
   });
-  if(Object.keys(close_resource).length === 0 && close_resource.constructor === Object) {
+  if(close_resource == null) {
     return null;
   }
   return close_resource;
