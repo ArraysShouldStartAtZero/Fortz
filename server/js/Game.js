@@ -16,6 +16,7 @@ function update(units) {
   }
   db.getAllPlayers(function (players) {
     db.getAllResources(function (resources) {
+      console.log("players: " + players);
       units.forEach((unit, index, array) => {
         if(unit.type === "WORKER") {
           uh.updateWorker(unit, resources, players.get(unit.owner), move);
