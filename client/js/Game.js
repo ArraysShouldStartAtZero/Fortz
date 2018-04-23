@@ -12,7 +12,7 @@ unitCont.removeChildren();
 //structCont.removeChildren();//use this for now
 var k=0;
 for(var i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
-	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'||objects[i].type=='RESRCE'){
+	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'){
 	let rmvble=true;
 	let addable=false;
 	for(var j=0;j<objs.length;j++){
