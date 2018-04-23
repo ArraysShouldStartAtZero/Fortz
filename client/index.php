@@ -27,7 +27,7 @@
     $conn = db_connect();
     $result = $conn->query($sql);
     if($result->num_rows > 0) {
-
+      $nameErr = "That username is already taken";
     } else {
       $sql = "INSERT INTO users (username, resources, worker_radius, stronghold_x, stronghold_y) VALUES ('$name', 500, 10, 0, 0)";
       if($conn->query($sql) === TRUE) {
