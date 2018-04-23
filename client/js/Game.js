@@ -28,7 +28,7 @@ for(var i=0;i<objects.length;i++){//implement a system of removing items, exclud
 		break;
 		}else{//handle
 		if(k<structCont.children.length){
-		structCont.removeChildAt(k);
+		//structCont.removeChildAt(k);
 		k--;
 		}
 		addable=true;
@@ -39,7 +39,7 @@ for(var i=0;i<objects.length;i++){//implement a system of removing items, exclud
 		}
 	}
 	if(rmvble&&k<structCont.children.length){
-	structCont.removeChildAt(k);
+	//structCont.removeChildAt(k);
 	k--;
 	}else if(addable){
 addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
