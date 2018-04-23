@@ -55,6 +55,7 @@ unit.pos_y++;
 }else{
 unit.pos_y--;
 }
+        db.moveUnit(unit, unit.pos_x, unit.pos_y);
   //If at target, attack target
   //If at other enemy object, attack object
 var enemy=collision(unit,1);
@@ -65,7 +66,16 @@ unitAttack(unit,enemy);
 
 function collision(unit, dist){//TODO
 //search all and return first found within provided collision distance   else NULL
-
+for(var i=0;i<objects.length;i++){
+var objects=db.getAllObjects();
+	if(objects[i].owner!='SERVER'&&objects[i].owner!=unit.owner){
+	if(objects[i].pos_x-unit.pos_x<=dist&&objects[i].pos_x-unit.pos_x>-dist){
+	if(objects[i].pos_y-unit.pos_y<=dist&&objects[i].pos_y-unit.pos_y>-dist){
+	return objects[i];
+	}
+	}
+}
+}
 return NULL;
 }
 
