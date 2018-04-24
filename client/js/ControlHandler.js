@@ -124,6 +124,7 @@ highlighted=false;
 if(obj.type=='wall'||obj.type=='tower'){
 highlighted=true;
 }else{
+console.log("sent target");
 socket.emit('target-object-client', { object_id: tempID });
 highlighted=false;
 }
