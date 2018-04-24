@@ -68,6 +68,7 @@
     div#ad_bottom {
       width: 100%;
       height: 20%;
+      display: inline-block;
       background-color: orange;
     }
 
