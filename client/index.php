@@ -76,7 +76,7 @@
     }
 
     div#ad_right {
-      width: 20%;
+      width: 19%;
       height: 60%;
       float: left;
     }
