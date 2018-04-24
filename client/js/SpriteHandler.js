@@ -155,7 +155,7 @@ this.sprite.y=posY;
 if((username!==owner&&"server"!==owner)||sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
 	this.sprite.on("click",function(event){//add specific listeners
 	console.log("clicked target");
-	highlight(event.target);
+	highlight(event.currentTarget);
 	});
 	}
 if(sprite==="sprites/gry_twr.png"||sprite==="sprites/gry_wall.png"){
