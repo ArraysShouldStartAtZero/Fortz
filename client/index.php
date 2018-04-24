@@ -91,6 +91,7 @@
     div#logo_div {
       width: 100%;
       height: 40%;
+      text-align: center;
     }
 
     div#content_div {
@@ -107,9 +108,9 @@
 </head>
 <body>
   <div id="ad_top">
-    <p>Ads Here</p>
+    <p>&nbsp;</p>
   </div><div id="ad_left">
-    <p>Ads Here</p>
+    <p>&nbsp;</p>
   </div><div id="center_box">
     <div id="logo_div">
       <h1>Welcome to Fortz.io</h1>
@@ -122,9 +123,9 @@
       <p style="color: red"><?php echo $nameErr?></p>
     </div>
   </div><div id="ad_right">
-    <p>Ads Here</p>
+    <p>&nbsp;</p>
   </div><div id="ad_bottom">
-    <p>Ads Here</p>
+    <p>&nbsp;</p>
   </div>
 </body>
 </html>
