@@ -87,14 +87,14 @@
 </head>
 <body>
   <div id="ad-top">
-    <p>Ads Here</p>
+    Ads Here
   </div>
   <div id="ad-left">
-    <p>Ads Here</p>
+    Ads Here
   </div>
   <div id="center-box">
     <div id="logo_div">
-
+      This is the logo
     </div>
     <div id="content_div">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -105,10 +105,10 @@
     </div>
   </div>
   <div id="ad-right">
-    <p>Ads Here</p>
+    Ads Here
   </div>
   <div id="ad-bottom">
-    <p>Ads Here</p>
+    Ads Here
   </div>
 </body>
 </html>
