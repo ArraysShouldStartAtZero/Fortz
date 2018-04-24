@@ -262,8 +262,10 @@ function objectExists(object_id, callback) {
 }
 
 function addTarget(player, object_id) {
+  console.log("Target_ID = " + object_id);
   objectExists(object_id, function(exists) {
     if(exists) {
+      console.log("Target Existed");
       var sql = "INSERT INTO targets (object_id, player) VALUES (?, ?)"
       conn.query(sql, [object_id, player], function(err, result) {
         if(err) throw err;
