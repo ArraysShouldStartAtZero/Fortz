@@ -14,23 +14,23 @@ function updateChanged(objects){///////
   for(var i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
   if(j<objs.length){
     if(objs[j]===objects[i]){
-     if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGHD'){}
-	else{
+     if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGHD'){
+	}else{
 		if(objs[j].pos_x===objects[i].pos_x&&objs[j].pos_y===objects[i].pos_y){}else{
 	unitCont.removeChild(l);
 	addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
 	l--;
 		}
-        }
-    }else{
+	}
+        }else{
      if(objs[j].type==='TOWER'||objs[j].type==='WALL'||objs[j].type==='STRGHD'){
 	structCont.removeChild(k);
 	k--;
 	}else{
 	unitCont.removeChild(l);
-	i--;
+	l--;
 	}
-    j--;
+    i--;
     }	
     j++;
   }else{
