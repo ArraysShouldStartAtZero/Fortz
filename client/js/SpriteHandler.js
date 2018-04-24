@@ -151,20 +151,20 @@ function getSprite(sprite, owner, posX, posY, hp){
 this.sprite.x=posX;
 this.sprite.y=posY;
 
-if((player.name!=owner&&"server"!=owner)){//enemy units/structures are red
+if((username!==owner&&"server"!==owner)){//enemy units/structures are red
 	this.sprite.tint=0xff0000;
 }
 
-if((player.name!=owner&&"server"!=owner)||sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
+if((username!==owner&&"server"!==owner)||sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
 	this.sprite.on("click",function(event){//add specific listeners
 	console.log("clicked target");
 	highlight(event.target);
 	});
 	}
-if(sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
+if(sprite==="sprites/gry_twr.png"||sprite==="sprites/gry_wall.png"){
 this.sprite.mask=healthDisplay(hp, posX, posY, 1);
 structCont.addChild(this.sprite);
-}else if(sprite=="sprites/gry_strghd.png"){ 
+}else if(sprite==="sprites/gry_strghd.png"){ 
 this.sprite.mask=healthDisplay(hp, posX, posY, 9);
 structCont.addChild(this.sprite);
 }else{

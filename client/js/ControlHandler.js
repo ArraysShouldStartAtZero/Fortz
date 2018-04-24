@@ -115,17 +115,17 @@ highlighted=false;
 }
 
 function highlight(obj){
-var tempID=getIdByLoc(obj.x,obj.y);
-if(upgradable==true){
-socket.emit('object-upgrade-client' ,{ object_id: temp_ID });
+var temp=getByLoc(obj.x,obj.y);
+if(upgradable===true){
+socket.emit('object-upgrade-client' ,{ object_id: temp.id });
 upgradable =false;
 highlighted=false;
 }else{
-if(obj.type=='wall'||obj.type=='tower'){
+if(username===obj.owner&&(obj.type==='WALL'||obj.type==='TOWER')){
 highlighted=true;
 }else{
 console.log("sent target");
-socket.emit('target-object-client', { object_id: tempID });
+socket.emit('target-object-client', { object_id: temp.id });
 highlighted=false;
 }
 }
