@@ -102,7 +102,7 @@
     }
 
     form#the_form {
-      margin-top: 40%;
+      margin-top: 15%;
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
