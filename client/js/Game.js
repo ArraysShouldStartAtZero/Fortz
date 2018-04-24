@@ -42,42 +42,42 @@ addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,ob
 }
 
 function updateChangedNew(objects) {
+  unitCont.removeChildren();
+
+  //Add new structures and all units
   var structureCounter = 0;
-  var unitCounter = 0;
   for(var i=0; i<objects.length; i++) {
-    var isNew = true;
-    for(var j=0; i<objs.length; j++) {
-      if(objs[j].id === objects[i].id) {
-        isNew = true;
-        break;
+    if(objects[i].type === 'TOWER' || objects[i].type === 'WALL' || objects[i].type === 'STRGHD') {
+      var isNew = true;
+      for(var j=0; i<objs.length; j++) {
+        if(objs[j].id === objects[i].id) {
+          isNew = true;
+          break;
+        }
       }
-    }
-    if(isNew) {
+      if(isNew) {
+        addGameObject(objects[i].type, objects[i].id, objects[i].pos_x, objects[i].pos_y, objects[i].health, objects[i].owner);
+      }
+    } else {
       addGameObject(objects[i].type, objects[i].id, objects[i].pos_x, objects[i].pos_y, objects[i].health, objects[i].owner);
     }
   }
+
+  //Remove deleted structures
   for(var i=0; i<objs.length; i++) {
-    if(objs[i].type === 'TOWER' || objs[i].type === 'WALL' || objs[i].type === 'STRGHD') structureCounter++;
-    else unitCounter++;
-    var isGone = true;
-    for(var j=0; j<objects.length; j++) {
-      if(objects[j].id === objs[i].id) {
-        isGone = false;
-        break;
+    if(objs[i].type === 'TOWER' || objs[i].type === 'WALL' || objs[i].type === 'STRGHD') {
+      structureCounter++;
+      var isGone = true;
+      for(var j=0; j<objects.length; j++) {
+        if(objects[j].id === objs[i].id) {
+          isGone = false;
+          break;
+        }
       }
-    }
-    if(isGone) {
-      if(objs[i].type === 'TOWER' || objs[i].type === 'WALL' || objs[i].type === 'STRGHD') {
+      if(isGone) {
         structCont.removeChildAt(structureCounter);
-        structureCounter--; 
-      } else {
-        unitCont.removeChildAt(unitCounter);
-        unitCounter--;
+        structureCounter--;
       }
-    } else if(objs[i].type === 'RESRCE' || objs[i].type === 'WORKER' || objs[i].type === 'ARTLRY' || objs[i].type === 'CAVLRY' || objs[i].type === 'INFNTR') {
-      unitCont.removeChildAt(unitCounter);
-      unitCounter--;
-      addGameObject(objs[i].type, objs[j].id, objs[i].pos_x, objs[i].pos_y, objs[i].health, objs[i].owner);
     }
   }
 }
