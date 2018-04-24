@@ -56,36 +56,40 @@
     }
 
     div {
-      border: 1px solid;
       vertical-align: top;
     }
 
     div#ad_top {
       width: 100%;
       height: 20%;
+      background-color: yellow;
     }
 
     div#ad_bottom {
       width: 100%;
       height: 20%;
+      background-color: orange;
     }
 
     div#ad_left {
       width: 20%;
       height: 60%;
       display: inline-block;
+      background-color: red;
     }
 
     div#ad_right {
       width: 19%;
       height: 60%;
       display: inline-block;
+      background-color: lightblue;
     }
 
     div#center_box {
       width: 60%;
       height: 60%;
       display: inline-block;
+      background-color: lime;
     }
 
     div#logo_div {
