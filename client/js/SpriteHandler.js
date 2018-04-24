@@ -129,7 +129,7 @@ but6.interactive=true;
 function adjustRadius(rad){
 //unitCont.removeChild(workerCircle);
 //PIXI.loader.load(setUp);
-	function setUp(){//default
+	//function setUp(){//default
 	//workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);
 	workerCircle.width=rad*128;
 	workerCircle.height=rad*128;
