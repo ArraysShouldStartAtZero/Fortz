@@ -101,12 +101,11 @@
     div#content_div {
       width: 100%;
       height: 60%;
+      text-align: center;
     }
 
     form#the_form {
-      margin-left: auto;
-      margin-right: auto;
-      vertical-align: middle;
+      margin-top: 40%;
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
