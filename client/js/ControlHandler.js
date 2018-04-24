@@ -124,7 +124,7 @@ socket.emit('object-upgrade-client' ,{ object_id: temp.id });
 upgradable =false;
 highlighted=false;
 }else{
-if(username===obj.owner&&(obj.type==='WALL'||obj.type==='TOWER')){
+if(username===temp.owner&&(obj.type==='WALL'||obj.type==='TOWER')){
 highlighted=true;
 }else{
 socket.emit('target-object-client', { object_id: temp.id });
