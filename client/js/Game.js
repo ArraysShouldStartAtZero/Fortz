@@ -20,7 +20,7 @@ function updateChanged(objects){///////
 	addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
 	l--;
         }
-    }else
+    }else{
      if(objs[j].type==='TOWER'||objs[j].type==='WALL'||objs[j].type==='STRGHD'){
 	structCont.removeChild(k);
 	k--;
