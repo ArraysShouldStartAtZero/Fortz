@@ -148,8 +148,19 @@ function moveUnit(unit, posX, posY) {
 }
 
 function unitSetHealth(id, health) {
-  var sql = "UPDATE game_objects SET health = ? WHERE id = ?";
-  conn.query(sql, [health, id], function(err, result) {
+  if(health <= 0) {
+    removeObject(id);
+  } else {
+    var sql = "UPDATE game_objects SET health = ? WHERE id = ?";
+    conn.query(sql, [health, id], function(err, result) {
+      if(err) throw err;
+    });
+  }
+}
+
+function removeObject(id) {
+  var sql = "DELETE FROM game_objects WHERE id = ?";
+  conn.query(sql, [id], function(err, result) {
     if(err) throw err;
   });
 }
