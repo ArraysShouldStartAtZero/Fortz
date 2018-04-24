@@ -40,7 +40,7 @@ function fort_placement_server(socket, username) {
         posY: Math.floor(Math.random() * MAP_SIZE)
       };
       db.findClosestFort(position, function(distance) {
-        if(distance >= 10) {
+        if(distance >= 10 && position.posX <= 120 && position.posY <= 120) {
         db.buildFort(position, socketPlayerMap.get(socket.id));
         db.prepareUser(username, position);
         console.log("Sending Fort Placement Server to: " + socketPlayerMap.get(socket.id));
