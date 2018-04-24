@@ -108,11 +108,9 @@
 <body>
   <div id="ad_top">
     <p>Ads Here</p>
-  </div>
-  <div id="ad_left">
+  </div><div id="ad_left">
     <p>Ads Here</p>
-  </div>
-  <div id="center_box">
+  </div><div id="center_box">
     <div id="logo_div">
       This is the logo
     </div>
@@ -123,11 +121,9 @@
       </form>
       <p style="color: red"><?php echo $nameErr?></p>
     </div>
-  </div>
-  <div id="ad_right">
+  </div><div id="ad_right">
     <p>Ads Here</p>
-  </div>
-  <div id="ad_bottom">
+  </div><div id="ad_bottom">
     <p>Ads Here</p>
   </div>
 </body>
