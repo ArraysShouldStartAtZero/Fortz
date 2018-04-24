@@ -59,27 +59,27 @@
       border: 1px solid;
     }
 
-    div#ad-top {
+    div#ad_top {
       width: 100%;
       height: 20%;
     }
 
-    div#ad-bottom {
+    div#ad_bottom {
       width: 100%;
       height: 20%;
     }
 
-    div#ad-left {
+    div#ad_left {
       width: 20%;
       height: 60%;
     }
 
-    div#ad-right {
+    div#ad_right {
       width: 20%;
       height: 60%;
     }
 
-    div#center-box {
+    div#center_box {
       width: 60%;
       height: 60%;
     }
@@ -98,13 +98,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
 </head>
 <body>
-  <div id="ad-top">
-    Ads Here
+  <div id="ad_top">
+    <p>Ads Here</p>
   </div>
-  <div id="ad-left">
-    Ads Here
+  <div id="ad_left">
+    <p>Ads Here</p>
   </div>
-  <div id="center-box">
+  <div id="center_box">
     <div id="logo_div">
       This is the logo
     </div>
@@ -116,11 +116,11 @@
       <p style="color: red"><?php echo $nameErr?></p>
     </div>
   </div>
-  <div id="ad-right">
-    Ads Here
+  <div id="ad_right">
+    <p>Ads Here</p>
   </div>
-  <div id="ad-bottom">
-    Ads Here
+  <div id="ad_bottom">
+    <p>Ads Here</p>
   </div>
 </body>
 </html>
