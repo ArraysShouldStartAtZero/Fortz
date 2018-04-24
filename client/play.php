@@ -90,6 +90,8 @@ function playerCamera_move(difX,difY){
 		objCont.getChildAt(i).x-=difX;
 		objCont.getChildAt(i).y-=difY;
 	}
+	background.x-=difX;
+	background.y-=difY;
 }
 
 var changeInX=0, changeInY=0;

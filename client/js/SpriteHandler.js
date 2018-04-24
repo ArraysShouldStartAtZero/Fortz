@@ -136,7 +136,7 @@ PIXI.loader.load(setUp);
 	workerCircle.anchor.y=0.5;
 	workerCircle.x=dX+224;
 	workerCircle.y=dY+224;
-structCont.addChild(workerCircle);
+background.addChild(workerCircle);
 };
 }
 

@@ -7,7 +7,7 @@ app.stage.addChild(counter);
 
 }
 
-function updateChanged(objects){
+function updateChanged(objects){///////
 unitCont.removeChildren();
 //structCont.removeChildren();//use this for now
 var k=0;
@@ -15,8 +15,8 @@ for(var i=0;i<objects.length;i++){//implement a system of removing items, exclud
 	if(objects[i].type=='TOWER'||objects[i].type=='WALL'||objects[i].type=='STRGHD'){
 	let rmvble=true;
 	let addable=false;
-	for(var j=0;j<objs.length;j++){
-		if(objs[j].id==objects[i].id){
+	for(var j=0;j<objs.length;j++){///
+		if(objs[j].id==objects[i].id){//
 		rmvble=false;
 		addable=false;
 		if(objs[j].pos_x==objects[i].pos_x&&objs[j].pos_y==objects[i].pos_y){
@@ -25,18 +25,19 @@ for(var i=0;i<objects.length;i++){//implement a system of removing items, exclud
 				if(objects[i].type=='STRGHD'){u=9;}
 			structCont.getChildAt(k).mask=healthDisplay(objects[i].health,objects[i].pos_x,objects[i].pos_y,u);
 			}
-		break;
 		}else{//handle
 		structCont.removeChildAt(k);
 		k--;
 		addable=true;
-		break;
 		}
+		break;
+
 		}else{
 		addable=true;
 		break;
-		}
-	}
+		}//
+	}///
+
 	if(rmvble&&k<structCont.children.length){
 	structCont.removeChildAt(k);
 	k--;
@@ -47,8 +48,8 @@ k++;
 	}else{
 addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
 }
-}
-}
+}// //
+}///////
 
 function addGameObject(type, uid, posX, posY, health, owner){
 var adjX=posX*64-dcX;//adjusted positions for camera position
