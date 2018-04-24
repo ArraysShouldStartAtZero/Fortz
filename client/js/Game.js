@@ -77,6 +77,7 @@ function updateChangedNew(objects) {
     } else if(objs[i].type === 'RESRCE' || objs[i].type === 'WORKER' || objs[i].type === 'ARTLRY' || objs[i].type === 'CAVLRY' || objs[i].type === 'INFNTR') {
       unitCont.removeChildAt(unitCounter);
       unitCounter--;
+      addGameObject(objs[i].type, objs[j].id, objs[i].pos_x, objs[i].pos_y, objs[i].health, objs[i].owner);
     }
   }
 }
