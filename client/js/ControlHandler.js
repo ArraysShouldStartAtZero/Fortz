@@ -115,7 +115,7 @@ highlighted=false;
 }
 
 function highlight(obj){
-var temp=getByLoc(obj.x,obj.y);
+var temp=getByLoc(obj.x+cX,obj.y+cY);
 if(upgradable===true){
 socket.emit('object-upgrade-client' ,{ object_id: temp.id });
 upgradable =false;
