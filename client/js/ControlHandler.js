@@ -111,6 +111,7 @@ if(wallPlace){
 	pos.posX =Math.floor((app.renderer.plugins.interaction.mouse.global.x+dcX)/64);
 	pos.posY =Math.floor((app.renderer.plugins.interaction.mouse.global.y+dcY)/64);
 
+console.log("target x:"+pos.posX+" y:"+pos.posY);
 		socket.emit('unit-purchase-client', {type: 'WALL' , position: pos});
 
 wallPlace=false;
