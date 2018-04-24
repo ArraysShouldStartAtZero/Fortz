@@ -40,6 +40,46 @@ if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGH
   }
 }
 
+function updateChangedNew(objects) {
+  var structureCounter = 0;
+  var unitCounter = 0;
+  for(var i=0; i<objects.length; i++) {
+    var isNew = true;
+    for(var j=0; i<objs.length; j++) {
+      if(objs[j].id === objects[i].id) {
+        isNew = true;
+        break;
+      }
+    }
+    if(isNew) {
+      addGameObject(objects[i].type, objects[i].id, objects[i].pos_x, objects[i].pos_y, objects[i].health, objects[i].owner);
+    }
+  }
+  for(var i=0; i<objs.length; i++) {
+    if(objs[i].type === 'TOWER' || objs[i].type === 'WALL' || objs[i].type === 'STRGHD') structureCounter++;
+    else unitCounter++;
+    var isGone = true;
+    for(var j=0; j<objects.length; j++) {
+      if(objects[j].id === objs[i].id) {
+        isGone = false;
+        break;
+      }
+    }
+    if(isGone) {
+      if(objs[i].type === 'TOWER' || objs[i].type === 'WALL' || objs[i].type === 'STRGHD') {
+        structCont.removeChildAt(structureCounter);
+        structureCounter--; 
+      } else {
+        unitCont.removeChildAt(unitCounter);
+        unitCounter--;
+      }
+    } else if(objs[i].type === 'RESRCE' || objs[i].type === 'WORKER' || objs[i].type === 'ARTLRY' || objs[i].type === 'CAVLRY' || objs[i].type === 'INFNTR') {
+      unitCont.removeChildAt(unitCounter);
+      unitCounter--;
+    }
+  }
+}
+
 function addGameObject(type, uid, posX, posY, health, owner){
   var adjX=posX*64-dcX;//adjusted positions for camera position
   var adjY=posY*64-dcY;
