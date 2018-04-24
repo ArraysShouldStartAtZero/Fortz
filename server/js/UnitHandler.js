@@ -58,6 +58,7 @@ function updateSoldier(unit, player, move, objects) {
     }
   }
   //Head toward target
+  if(targetObject == null) return;
   var dx = Math.abs(targetObject.pos_x - unit.pos_x);
   var dy = Math.abs(targetObject.pos_y - unit.pos_y);
   if(dx > dy) { //Move in x direction
