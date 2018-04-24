@@ -8,10 +8,12 @@ function resourceCounter(){
 }
 
 function updateChanged(objects){///////
-  var k=0;
-  var l=0;
+  var k=-1;
+  var l=-1;
   var j=0;
   for(var i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
+if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGHD'){k++;}else{l++;}
+  }
   if(j<objs.length){
     if(objs[j]===objects[i]){
      if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGHD'){
@@ -36,8 +38,7 @@ function updateChanged(objects){///////
   }else{
 addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
   }
-if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGHD'){k++;}else{l++;}
-  }
+
 }
 
 function addGameObject(type, uid, posX, posY, health, owner){
