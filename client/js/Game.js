@@ -2,7 +2,8 @@ var MAX_SIZE=128;
 var objs=[];
 
 function resourceCounter(){
-let counter=new PIXI.Text("Resources:"+player.resources);
+uiCont.removeChild(counter);
+counter=new PIXI.Text("Resources:"+player.resources);
 uiCont.addChild(counter);
 
 }
