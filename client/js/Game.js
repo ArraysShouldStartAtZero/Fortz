@@ -3,7 +3,7 @@ var objs=[];
 
 function resourceCounter(){
 let counter=new PIXI.Text("Resources:"+player.resources);
-app.stage.addChild(counter);
+uiCont.addChild(counter);
 
 }
 

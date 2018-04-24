@@ -58,7 +58,7 @@ updateChanged(objects);
 
 objs=objects;
 
-resourceCounter();
+//resourceCounter();
 
 });
 
@@ -78,6 +78,7 @@ player.workerRadius=playerData.workerRadius;
 
 player.targets=playerData.targets;
 
+resourceCounter();
 adjustRadius(player.workerRadius);
 
 
