@@ -32,7 +32,7 @@ function sock_handler_init() {
 	dcY=dY-window.innerHeight/4;
 	cX=dcX;cY=dcY;
 
-	
+	tileBkGrnd();
 
 });
 
