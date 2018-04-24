@@ -57,6 +57,7 @@
 
     div {
       border: 1px solid;
+      vertical-align: top;
     }
 
     div#ad_top {
