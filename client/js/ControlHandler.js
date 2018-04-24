@@ -115,8 +115,8 @@ highlighted=false;
 }
 
 function highlight(obj){
-var posX = Math.floor((obj.x-dcX)/64);
-var posY = Math.floor((obj.y-dcY)/64);
+var posX = Math.floor((obj.x+dcX)/64);
+var posY = Math.floor((obj.y+dcY)/64);
 console.log("target x:"+posX+" y:"+posY);
 var temp=getByLoc(posX, posY);
 if(upgradable===true){
