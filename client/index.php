@@ -59,12 +59,22 @@
       border: 1px solid;
     }
 
-    div#ad-top, div#ad-bottom {
+    div#ad-top {
       width: 100%;
       height: 20%;
     }
 
-    div#ad-left, div#ad-right {
+    div#ad-bottom {
+      width: 100%;
+      height: 20%;
+    }
+
+    div#ad-left {
+      width: 20%;
+      height: 60%;
+    }
+
+    div#ad-right {
       width: 20%;
       height: 60%;
     }
