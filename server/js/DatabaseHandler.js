@@ -146,7 +146,7 @@ function getPlayerData(name, callback) {
   var sql = "SELECT * FROM users WHERE username = ?";
   conn.query(sql, [name], function(err, result) {
     if(err) throw err;
-    var player = new Player(result[0].username, result[0].resources, result[0].worker_radius, result[0].stronghold_x, result[0].stronghold_y, []);
+    var player = new classes.Player(result[0].username, result[0].resources, result[0].worker_radius, result[0].stronghold_x, result[0].stronghold_y, []);
     getPlayerTargets(player, callback);
   });
 }
