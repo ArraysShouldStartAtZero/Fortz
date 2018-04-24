@@ -65,7 +65,7 @@
 	objCont.addChild(structCont);objCont.addChild(unitCont);
 	app.stage.addChild(background);app.stage.addChild(objCont);app.stage.addChild(uiCont);
 	
-	app.stage.on("click",function(event){
+	objCont.on("click",function(event){
 		
 console.log("clickity");
 		placeWall();
