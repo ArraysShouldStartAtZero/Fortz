@@ -21,6 +21,7 @@ module.exports = {
   getAllObjects: getAllObjects,
   clearAllObjects: clearAllObjects,
   clearAllPlayers: clearAllPlayers,
+  clearAllTargets: clearAllTargets,
   playerHasFort: playerHasFort,
   getAllResources: getAllResources,
   getAllUnits: getAllUnits,
@@ -94,6 +95,14 @@ function clearAllPlayers() {
   conn.query(sql, function(err, result) {
     if(err) throw err;
     console.log("Cleared all users");
+  });
+}
+
+function clearAllTargets() {
+  var sql = "DELETE FROM targets";
+  conn.query(sql, function(err, result) {
+    if(err) throw err;
+    console.log("Cleared all targets");
   });
 }
 

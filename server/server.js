@@ -54,6 +54,7 @@ console.log('Socket Handler Setup Complete');
 
 db.clearAllObjects();
 db.clearAllPlayers();
+db.clearAllTargets();
 
 db.generateResources();
 
