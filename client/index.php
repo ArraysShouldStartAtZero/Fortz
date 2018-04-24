@@ -72,16 +72,19 @@
     div#ad_left {
       width: 20%;
       height: 60%;
+      float: left;
     }
 
     div#ad_right {
       width: 20%;
       height: 60%;
+      float: left;
     }
 
     div#center_box {
       width: 60%;
       height: 60%;
+      float: left;
     }
 
     div#logo_div {
