@@ -68,7 +68,6 @@ function game_over_server(socket) {
 
 function player_update_server(io) {
   socketPlayerMap.forEach((value, key, map) => {
-    console.log("Sending player update for: " + value);
     db.getPlayerData(value, function(playerData) {
       io.to(key).emit('player-update-server', playerData);
     });
