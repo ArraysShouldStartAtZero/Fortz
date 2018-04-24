@@ -65,7 +65,7 @@
 	objCont.addChild(structCont);objCont.addChild(unitCont);
 	app.stage.addChild(background);app.stage.addChild(objCont);app.stage.addChild(uiCont);
 	objCont.interactive=true;
-	//objCont.buttonMode=true;
+	objCont.buttonMode=true;
 	objCont.on("click",function(event){
 		
 console.log("clickity");
