@@ -102,6 +102,12 @@
       width: 100%;
       height: 60%;
     }
+
+    form#the_form {
+      margin-left: auto;
+      margin-right: auto;
+      vertical-align: middle;
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
@@ -116,7 +122,7 @@
       This is the logo
     </div>
     <div id="content_div">
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+      <form id="the_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         Username: <input type="text" name="username">&nbsp;
         <input type="submit">
       </form>
