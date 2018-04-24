@@ -79,7 +79,7 @@
     }
 
     div#ad_right {
-      width: 19%;
+      width: 20%;
       height: 60%;
       display: inline-block;
       background-color: lightblue;
