@@ -55,6 +55,7 @@ if(spriteChangeCtr >= 5) {
 spriteChangeCtr++;
 
 updateChanged(objects);
+adjustRadius(player.workerRadius);
 
 objs=objects;
 
@@ -79,7 +80,7 @@ player.workerRadius=playerData.workerRadius;
 player.targets=playerData.targets;
 
 resourceCounter();
-adjustRadius(player.workerRadius);
+//adjustRadius(player.workerRadius);
 
 
 

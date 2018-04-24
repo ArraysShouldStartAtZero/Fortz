@@ -55,7 +55,7 @@
     console.log("Username: " + username);
     let app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
     document.body.appendChild(app.view);
-    app.renderer.backgroundColor = 0x33cc33;
+    app.renderer.backgroundColor = 0x808080;
     app.renderer.autoResize = true;
     app.stage.interactiveChildren=true;
 	let unitCont=new PIXI.Container();
@@ -67,7 +67,7 @@
 	app.stage.addChild(background);app.stage.addChild(objCont);app.stage.addChild(uiCont);
 	
 
-var workerCircle;
+var workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);unitCont.addChild(workerCircle);
 var counter=new PIXI.Text("Resources:"+69);uiCont.addChild(counter);
 var but1,but2,but3,but4,but5,but6;
 var cX=0, cY=0, dX=0,dY=0, dcX=0, dcY=0;//d is default camera position for recentering , c is current camera position
