@@ -4,12 +4,13 @@
 
   $username = "";
   session_start();
-  if(isset($_SESSION['username'];) {
+  $username = $_SESSION['username'];
+  /*if(isset($_SESSION['username'];) {
     $username = $_SESSION['username'];
   } else {
     header("Location: index.php");
   }
-/*
+
   function db_connect() {
     $servername = "localhost";
     $sqlname = "fortz_server";
