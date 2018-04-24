@@ -62,7 +62,7 @@
 	let background=new PIXI.Container();
 	let uiCont=new PIXI.Container();
 	let objCont=new PIXI.Container();
-	objCont.addChild(unitCont);objCont.addChild(structCont);
+	objCont.addChild(structCont);objCont.addChild(unitCont);
 	app.stage.addChild(background);app.stage.addChild(objCont);app.stage.addChild(uiCont);
 	
 

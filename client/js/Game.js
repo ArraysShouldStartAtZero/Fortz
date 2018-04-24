@@ -17,6 +17,8 @@ for(var i=0;i<objects.length;i++){//implement a system of removing items, exclud
 	let rmvble=true;
 	let addable=false;
 	for(var j=0;j<objs.length;j++){///
+	rmvble=true;
+	addable=false;
 		if(objs[j].id===objects[i].id){//
 		rmvble=false;
 		addable=false;
@@ -34,6 +36,7 @@ for(var i=0;i<objects.length;i++){//implement a system of removing items, exclud
 		break;
 
 		}else{
+		rmvble=false;
 		addable=true;
 		}//
 	}///
