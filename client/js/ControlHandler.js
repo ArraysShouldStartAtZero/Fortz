@@ -103,6 +103,20 @@ let space = Keyboard(32);//space for camera recentering
 
 }
 
+var wallPlace=false;
+
+function placeWall(){
+if(wallPlace){
+	var pos={};
+	pos.posX =app.renderer.plugins.interaction.mouse.global.x;
+	pos.posY =app.renderer.plugins.interaction.mouse.global.y;
+
+		socket.emit('unit-purchase-client', {type: 'WALL' , position: pos});
+
+wallPlace=false;
+}
+}
+
 function upgrade(){
 if(highlighted){
 socket.emit('object-upgrade-client' ,{ ID: 0 });//implement when all other basics are done
