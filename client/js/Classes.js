@@ -45,7 +45,8 @@ function Player(){
 var user={}
 user.resources=100;
 user.alive=true;
-user.workerRadius=2;
+user.workerRadius=10;
+user.targets=[];
 
 return user;
 };
