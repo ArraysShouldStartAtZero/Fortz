@@ -22,7 +22,7 @@ function sock_handler_init() {
 
 
 
-  socket.on('fort-placement-server', function(pos){//spawn fort parts and camera start location
+  socket.on('fort-placement-server', function(pos){//set fort parts spawn and camera start location and bkgrnd
 
     //console.log("Server says our position is: (" + pos.posX + ", " + pos.posY + ")");
 
