@@ -48,19 +48,67 @@
     Welcome to Forts.io!
   </title>
   <style>
-    body {margin: 0;}
-    canvas {width: 100%; height: 100%;}
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    div {
+      border: 1px solid;
+    }
+
+    div.ad-top, div.ad-bottom {
+      width: 100%;
+      height: 20%;
+    }
+
+    div.ad-left, div.ad-right {
+      width: 20%;
+      height: 60%;
+    }
+
+    div.center-box {
+      width: 60%;
+      height: 60%;
+    }
+
+    div.logo_div {
+      width: 100%;
+      height: 40%;
+    }
+
+    div.content_div {
+      width: 100%;
+      height: 60%;
+    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
 </head>
 <body>
-  <h1>Welcome to Forts.io!</h1>
-  <a href="play.html">Play Fortz.io</a>
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-    Username: <input type="text" name="username">&nbsp;
-    <input type="submit">
-  </form><br>
-  <p style="color: red"><?php echo $nameErr?></p>
+  <div id="ad-top">
+    <p>Ads Here</p>
+  </div>
+  <div id="ad-left">
+    <p>Ads Here</p>
+  </div>
+  <div id="center-box">
+    <div id="logo_div">
+
+    </div>
+    <div id="content_div">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        Username: <input type="text" name="username">&nbsp;
+        <input type="submit">
+      </form>
+      <p style="color: red"><?php echo $nameErr?></p>
+    </div>
+  </div>
+  <div id="ad-right">
+    <p>Ads Here</p>
+  </div>
+  <div id="ad-bottom">
+    <p>Ads Here</p>
+  </div>
 </body>
 </html>
