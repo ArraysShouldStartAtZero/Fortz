@@ -58,49 +58,51 @@ unit.pos_y--;
         db.moveUnit(unit, unit.pos_x, unit.pos_y);
   //If at target, attack target
   //If at other enemy object, attack object
-var enemy=collision(unit,1);
-if(enemy!=NULL){
-unitAttack(unit,enemy);
-}
+  collision(unit, 1, function(enemy) {
+    if(enemy!=NULL){
+      unitAttack(unit,enemy);
+    }
+  });
 }
 
-function collision(unit, dist){//TODO
-//search all and return first found within provided collision distance   else NULL
-for(var i=0;i<objects.length;i++){
-var objects=db.getAllObjects();
-	if(objects[i].owner!='SERVER'&&objects[i].owner!=unit.owner){
-	if(objects[i].pos_x-unit.pos_x<=dist&&objects[i].pos_x-unit.pos_x>-dist){
-	if(objects[i].pos_y-unit.pos_y<=dist&&objects[i].pos_y-unit.pos_y>-dist){
-	return objects[i];
-	}
-	}
-}
-}
-return NULL;
+function collision(unit, dist, callback){//TODO
+  //search all and return first found within provided collision distance   else NULL
+  db.getAllObjects(function(objects) {
+    for(var i=0;i<objects.length;i++){
+	    if(objects[i].owner!='SERVER'&&objects[i].owner!=unit.owner){
+	      if(objects[i].pos_x-unit.pos_x<=dist&&objects[i].pos_x-unit.pos_x>-dist){
+	        if(objects[i].pos_y-unit.pos_y<=dist&&objects[i].pos_y-unit.pos_y>-dist){
+	          callback(objects[i]);
+	        }
+	      }
+      }
+    }
+    callback(null);
+  });
 }
 
 function unitAttack(p1, p2){
-var mult=1;
-if(p1.type=='INFNTR'){
-	 if(p2.type=='CAVLRY'){
-	mult=.5;
-	}else if(p2.type=='ARTLRY'){
-	mult=2;
-	}else{}
-}else if(p1.type=='CAVLRY'){
-	 if(p2.type=='ARTLRY'){
-	mult=.5;
-	}else if(p2.type=='INFNTR'){
-	mult=2;
-	}else{}
-}else{
-	 if(p2.type=='INFNTR'){
-	mult=.5;
-	}else if(p2.type=='CAVLRY'){
-	mult=2;
-	}else{}
-}
-p2.health-=10*mult;
+  var mult=1;
+  if(p1.type=='INFNTR'){
+	  if(p2.type=='CAVLRY'){
+	    mult=.5;
+	  }else if(p2.type=='ARTLRY'){
+	    mult=2;
+	  }else{}
+  }else if(p1.type=='CAVLRY'){
+	  if(p2.type=='ARTLRY'){
+	    mult=.5;
+	  }else if(p2.type=='INFNTR'){
+	    mult=2;
+	  }else{}
+  }else{
+	  if(p2.type=='INFNTR'){
+	    mult=.5;
+	  }else if(p2.type=='CAVLRY'){
+	    mult=2;
+	  }else{}
+  }
+  db.unitSetHealth(p2.id, p2.health - 10*mult);
 }
 
 //TODO set up stronghold_x and stronghold_y

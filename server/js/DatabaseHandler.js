@@ -26,6 +26,7 @@ module.exports = {
   getAllResources: getAllResources,
   getAllUnits: getAllUnits,
   moveUnit: moveUnit,
+  unitSetHealth: unitSetHealth,
   getPlayerData: getPlayerData,
   getAllPlayers: getAllPlayers,
   getPlayerRes: getPlayerRes,
@@ -142,6 +143,13 @@ function getAllUnits(callback) {
 function moveUnit(unit, posX, posY) {
   var sql = "UPDATE game_objects SET pos_x = ?, pos_y = ? where id = ?";
   conn.query(sql, [posX, posY, unit.id], function(err, result) {
+    if(err) throw err;
+  });
+}
+
+function unitSetHealth(id, health) {
+  var sql = "UPDATE game_objects SET health = ? WHERE id = ?";
+  conn.query(sql, [health, id], function(err, result) {
     if(err) throw err;
   });
 }
