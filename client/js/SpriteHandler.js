@@ -127,18 +127,18 @@ but6.interactive=true;
 }
 
 function adjustRadius(rad){
-//unitCont.removeChild(workerCircle);
-//PIXI.loader.load(setUp);
-	//function setUp(){//default
-	//workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);
+background.removeChild(workerCircle);
+PIXI.loader.load(setUp);
+	function setUp(){//default
+	workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);
 	workerCircle.width=rad*128;
 	workerCircle.height=rad*128;
 	workerCircle.anchor.x=0.5;
 	workerCircle.anchor.y=0.5;
 	workerCircle.x=dX+224;
 	workerCircle.y=dY+224;
-// unitCont.addChild(workerCircle);
-//};
+ background.addChild(workerCircle);
+};
 }
 
 
