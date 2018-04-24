@@ -81,8 +81,6 @@ var player=Player();
     //Create socket handler and begin communication
     sock_handler_init(); 
 
-
-	tileBkGrnd();
 	
 //listeners for key presses 
 function playerCamera_move(difX,difY){
