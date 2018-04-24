@@ -16,12 +16,14 @@ function update(units) {
   }
   db.getAllPlayers(function (players) {
     db.getAllResources(function (resources) {
-      units.forEach((unit, index, array) => {
-        if(unit.type === "WORKER") {
-          uh.updateWorker(unit, resources, players.get(unit.owner), move);
-        } else {
-          uh.updateSoldier(unit, players.get(unit.owner), move);
-        }
+      db.getAllObjects(function (objects) {
+        units.forEach((unit, index, array) => {
+          if(unit.type === "WORKER") {
+            uh.updateWorker(unit, resources, players.get(unit.owner), move);
+          } else {
+            uh.updateSoldier(unit, players.get(unit.owner), move, objects);
+          }
+        });
       });
     });
   });
