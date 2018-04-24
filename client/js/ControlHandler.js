@@ -40,7 +40,7 @@ function Keyboard( keyCode ){
 }
 
 function initListeners(){
-var moveSpd=5;
+var moveSpd=10;
 
 let w=Keyboard(87);//w
 	let a=Keyboard(65);//a
@@ -80,10 +80,10 @@ let w=Keyboard(87);//w
 	};
 let shift = Keyboard(16);//shift for mov speed
 	shift.press = () => {
-	moveSpd=10;
+	moveSpd=20;
 	};
    	shift.release = () => {
-	moveSpd=5;
+	moveSpd=10;
 	};
 let space = Keyboard(32);//space for camera recentering
 	space.press = () => {

@@ -72,7 +72,7 @@ Resource(health,adjX,adjY);
 function getByLoc(x, y){
 var i;
 for(i=0;i<objs.length;i++){
-if(objs[i].pos_x*64==x&&objs[i].pos_y*64==y){
+if(objs[i].pos_x*64===x&&objs[i].pos_y*64===y){
 return objs[i];
 }
 }
