@@ -30,16 +30,31 @@ function updateWorker(unit, resources, player, move) {
   }
 }
 
-function updateSoldier(unit, player, move) {
+function findObject(id, objects) {
+  for(var i = 0; i < objects.length; i++) {
+    if(objects[i].id === id) {
+      return objects[i];
+    }
+  }
+  return null;
+}
+
+function updateSoldier(unit, player, move, objects) {
   //Find nearest target
   var nearestTarget;
-  if(!player.targets) return;
   if(player.targets.length<1) return;
-  else nearestTarget=player.targets[0];
+  var nearestTarget;
+  var nearestDistance = 1000;
+  var targetObject;
 
-  for(var i=1;i<player.targets.length;i++){
-    if(getDistance(unit,nearestTarget)>getDistance(unit,player.targets.length)){
-      nearestTarget=player.targets[i];
+  for(var i=1; i < player.targets.length; i++){
+    var object = findObject(player.targets[0].object_id, objects);
+    if(object == null) return;
+    var dist = getDistance(unit, object);
+    if(dist < nearestDistance){
+      nearestTarget = player.targets[i];
+      nearestDistance = dist;
+      targetObject = object;
     }
   }
   //Head toward target
