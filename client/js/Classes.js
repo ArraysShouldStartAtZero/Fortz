@@ -1,20 +1,20 @@
 function GameObject (object,sprite, hp, posX, posY,owner) {
-object.posX = posX;
+  object.posX = posX;
   object.posY = posY;
-object.owner=owner;
-if(sprite=="sprites/resources.png"){
-object.sprite = getSpriteFromSheet(sprite,owner,posX,posY);
-}else{
-  object.sprite = getSprite(sprite,owner,posX,posY,hp);
-}  
+  object.owner=owner;
+  if(sprite=="sprites/resources.png"){
+    object.sprite = getSpriteFromSheet(sprite,owner,posX,posY);
+  }else{
+    object.sprite = getSprite(sprite,owner,posX,posY,hp);
+  }  
 };
 
 function Structure (type, posX, posY, health, sprite, owner) {
- let struct={};
- GameObject.call(this,struct, sprite,health , posX, posY, owner);
- struct.health = health;
+  let struct={};
+  GameObject.call(this,struct, sprite,health , posX, posY, owner);
+  struct.health = health;
   struct.type = type;
-return struct;
+  return struct;
 };
 
 function unit (type, posX, posY, health, sprite, owner) {

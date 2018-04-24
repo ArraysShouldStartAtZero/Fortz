@@ -53,19 +53,19 @@ function updateChanged(objects){///////
 }///////
 
 function addGameObject(type, uid, posX, posY, health, owner){
-var adjX=posX*64-dcX;//adjusted positions for camera position
-var adjY=posY*64-dcY;
-if(type==='WALL'){
-Structure(type,adjX,adjY,health, 'sprites/gry_wall.png' ,owner);
-}else if(type==='TOWER'){
-Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
-}else if(type==='STRGHD'){
-Structure(type,adjX,adjY,health, 'sprites/gry_strghd.png' ,owner);
-}else if(type==='INFNTR'||type==='CAVLRY'||type==='ARTLRY'||type==='WORKER'){
-unit(type,adjX,adjY,health,owner);
-}else if(type==='RESRCE'){
-Resource(health,adjX,adjY);
-}
+  var adjX=posX*64-dcX;//adjusted positions for camera position
+  var adjY=posY*64-dcY;
+  if(type==='WALL'){
+    Structure(type,adjX,adjY,health, 'sprites/gry_wall.png' ,owner);
+  }else if(type==='TOWER'){
+    Structure(type,adjX,adjY,health, 'sprites/gry_twr.png' ,owner);
+  }else if(type==='STRGHD'){
+    Structure(type,adjX,adjY,health, 'sprites/gry_strghd.png' ,owner);
+  }else if(type==='INFNTR'||type==='CAVLRY'||type==='ARTLRY'||type==='WORKER'){
+    unit(type,adjX,adjY,health,owner);
+  }else if(type==='RESRCE'){
+    Resource(health,adjX,adjY);
+  }
 }
 
 
@@ -81,6 +81,6 @@ function getByLoc(x, y){
 }
 
 function gameOver(){
-player.alive=false;
-window.location="gameover.html";
+  player.alive=false;
+  window.location="gameover.html";
 }
