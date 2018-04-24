@@ -42,6 +42,7 @@ io.on('connection', function(socket) {
 
   socket.on('target-object-client', function(resp) {
     sh.target_object_client(socket, resp.object_id);
+    console.log("Target requested");
   });
 
   socket.on('disconnect', function() {
