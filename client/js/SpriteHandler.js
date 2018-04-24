@@ -151,7 +151,7 @@ function getSprite(sprite, owner, posX, posY, hp){
 this.sprite.x=posX;
 this.sprite.y=posY;
 
-if((username!==owner&&"server"!==owner)){//enemy units/structures are red
+if((username!==owner&&'server'!==owner)){//enemy units/structures are red
 	this.sprite.tint=0xff0000;
 }
 
