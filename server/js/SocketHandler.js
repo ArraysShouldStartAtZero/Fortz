@@ -67,10 +67,10 @@ function game_over_server(socket) {
 }
 
 function player_update_server(io) {
-  Object.keys(io.sockets.clients).forEach(function(socket) {
-    console.log("Sending player update for: " + socketPlayerMap.get(socket.id));
-    db.getPlayerData(socketPlayerMap.get(socket.id), function(playerData) {
-      socket.emit('player-update-server', playerData);
+  socketPlayerMap.forEach((value, key, map) => {
+    console.log("Sending player update for: " + value);
+    db.getPlayerData(value, function(playerData) {
+      io.to(key).emit('player-update-server', playerData);
     });
   });
 }
