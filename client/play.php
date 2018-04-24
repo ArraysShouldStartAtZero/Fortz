@@ -71,7 +71,6 @@ var workerCircle;
 var but1,but2,but3,but4,but5,but6;
 var cX=0, cY=0, dX=0,dY=0, dcX=0, dcY=0;//d is default camera position for recentering , c is current camera position
 	initAssets();
-	tileBkGrnd();
 	makeButtons();
 
 //var nick= unit('nick',dX,dY,1,'sprites/nickCage.png','player');//add a sprite\
@@ -81,6 +80,9 @@ var player=Player();
 
     //Create socket handler and begin communication
     sock_handler_init(); 
+
+
+	tileBkGrnd();
 	
 //listeners for key presses 
 function playerCamera_move(difX,difY){

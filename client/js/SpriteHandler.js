@@ -25,8 +25,8 @@ PIXI.loader.load(setUp);
 	for(var i=0;i<32;i++){
 	for(var j=0;j<32;j++){
 		var sprt=new PIXI.Sprite(PIXI.loader.resources["sprites/grass.png"].texture);
-		sprt.x=i*256;
-		sprt.y=j*256;
+		sprt.x=i*256-dcX;
+		sprt.y=j*256-dcY;
 		background.addChild(sprt);
 	}
 	}
