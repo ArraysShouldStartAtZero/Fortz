@@ -43,6 +43,7 @@ function fort_placement_server(socket, username) {
         if(distance >= 10) {
         db.buildFort(position, socketPlayerMap.get(socket.id));
         db.prepareUser(username, position);
+        console.log("Sending Fort Placement Server to: " + socketPlayerMap.get(socket.id));
         socket.emit('fort-placement-server', position);
         } else {
           fort_placement_server(socket);
