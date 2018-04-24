@@ -128,7 +128,7 @@ but6.interactive=true;
 
 function adjustRadius(rad){
 //unitCont.removeChild(workerCircle);
-PIXI.loader.load(setUp);
+//PIXI.loader.load(setUp);
 	function setUp(){//default
 	//workerCircle=new PIXI.Sprite(PIXI.loader.resources["sprites/wrk_bnd.png"].texture);
 	workerCircle.width=rad*128;
@@ -138,7 +138,7 @@ PIXI.loader.load(setUp);
 	workerCircle.x=dX+224;
 	workerCircle.y=dY+224;
 // unitCont.addChild(workerCircle);
-};
+//};
 }
 
 
@@ -159,19 +159,19 @@ if((username!==owner&&"server"!==owner)||sprite=="sprites/gry_twr.png"||sprite==
 	});
 	}
 if(sprite==="sprites/gry_twr.png"||sprite==="sprites/gry_wall.png"){
-if((username!==owner&&"server"!==owner)){//enemy structures are red
+if((username!==owner)){//enemy structures are red
 	this.sprite.tint=0xff0000;
 }
 this.sprite.mask=healthDisplay(hp, posX, posY, 1);
 structCont.addChild(this.sprite);
 }else if(sprite==="sprites/gry_strghd.png"){ 
-if((username!==owner&&"server"!==owner)){//enemy structures are red
+if((username!==owner)){//enemy structures are red
 	this.sprite.tint=0xff0000;
 }
 this.sprite.mask=healthDisplay(hp, posX, posY, 9);
 structCont.addChild(this.sprite);
 }else{
-if((username!=owner&&"server"!=owner)){//enemy units are red
+if((username!=owner)){//enemy units are red
 	this.sprite.tint=0xff0000;
 }
 unitCont.addChild(this.sprite);
