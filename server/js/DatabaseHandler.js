@@ -93,7 +93,7 @@ function clearAllPlayers() {
   var sql = "DELETE FROM users";
   conn.query(sql, function(err, result) {
     if(err) throw err;
-    console.log("Ceared all users");
+    console.log("Cleared all users");
   });
 }
 
