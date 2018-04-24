@@ -101,7 +101,6 @@
     div#content_div {
       width: 100%;
       height: 60%;
-      text-align: center;
     }
 
     form#the_form {
@@ -121,7 +120,7 @@
       This is the logo
     </div>
     <div id="content_div">
-      <form id="the_form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+      <form id="the_form" align="center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         Username: <input type="text" name="username">&nbsp;
         <input type="submit">
       </form>
