@@ -60,11 +60,11 @@ function updateSoldier(unit, player, move) {
   }
   //If at target, attack target
   //If at other enemy object, attack object
-  collision(unit, 1, function(enemy) {
+  /*collision(unit, 1, function(enemy) {
     if(enemy!=null){
       unitAttack(unit,enemy);
     }
-  });
+  });*/
 }
 
 function collision(unit, dist, callback){//TODO
