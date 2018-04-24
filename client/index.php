@@ -51,6 +51,8 @@
     body {
       margin: 0;
       padding: 0;
+      background-color: #828282;
+      color: #e5e5e5;
     }
 
     div {
@@ -60,35 +62,30 @@
     div#ad_top {
       width: 100%;
       height: 20%;
-      background-color: yellow;
     }
 
     div#ad_bottom {
       width: 100%;
       height: 20%;
       display: inline-block;
-      background-color: orange;
     }
 
     div#ad_left {
       width: 20%;
       height: 60%;
       display: inline-block;
-      background-color: red;
     }
 
     div#ad_right {
       width: 20%;
       height: 60%;
       display: inline-block;
-      background-color: lightblue;
     }
 
     div#center_box {
       width: 60%;
       height: 60%;
       display: inline-block;
-      background-color: lime;
     }
 
     div#logo_div {
@@ -115,7 +112,7 @@
     <p>Ads Here</p>
   </div><div id="center_box">
     <div id="logo_div">
-      This is the logo
+      <h1>Welcome to Fortz.io</h1>
     </div>
     <div id="content_div">
       <form id="the_form" align="center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
