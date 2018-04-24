@@ -1,6 +1,6 @@
 //Make connection
 
-socket = io.connect('http://ec2-18-218-106-24.us-east-2.compute.amazonaws.com:3000');
+socket = io.connect('http://ec2-18-188-11-160.us-east-2.compute.amazonaws.com:3000');
 
 
 
