@@ -43,19 +43,21 @@ function updateSoldier(unit, player, move) {
     }
   }
   //Head toward target
-if(unit.pos_x<nearestTarget.pos_x){
-unit.pos_x++;
-}else if(unit.pos_x==nearestTarget.pos_x){
-}else{
-unit.pos_x--;
-}
-if(unit.pos_y<nearestTarget.pos_y){
-unit.pos_y++;
-}else if(unit.pos_y==nearestTarget.pos_y){
-}else{
-unit.pos_y--;
-}
-        db.moveUnit(unit, unit.pos_x, unit.pos_y);
+  var dx = Math.abs(nearestTarget.pos_x - unit.pos_x);
+  var dy = Math.abs(nearestTarget.pos_y - unit.pos_y);
+  if(dx > dy) { //Move in x direction
+    if(nearestTarget.pos_x > unit.pos_x) {
+      db.moveUnit(unit, unit.pos_x + 1, unit.pos_y);
+    } else {
+      db.moveUnit(unit, unit.pos_x - 1, unit.pos_y);
+    }
+  } else { //Move in y direction
+    if(nearestTarget.pos_y > unit.pos_y) {
+      db.moveUnit(unit, unit.pos_x, unit.pos_y + 1);
+    } else {
+      db.moveUnit(unit, unit.pos_x, unit.pos_y - 1);
+    }
+  }
   //If at target, attack target
   //If at other enemy object, attack object
   collision(unit, 1, function(enemy) {
