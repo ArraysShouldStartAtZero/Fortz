@@ -21,7 +21,7 @@ function unit (type, posX, posY, health, sprite, owner) {
 let uniT={};
   uniT.health = health;
   uniT.type = type;
-	if(type=="INFTR"){
+	if(type=="INFNTR"){
   GameObject.call(this,uniT,'sprites/gry_circ.png',health ,posX, posY, owner);
 	}else if(type=="CAVLRY"){
   GameObject.call(this,uniT,'sprites/gry_tri.png', health ,posX, posY, owner);
