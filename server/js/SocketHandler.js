@@ -126,6 +126,8 @@ function getUnitPrice(type) {
       return 200;
     case "ARTLRY":
       return 200;
+    case "WALL":
+      return 50;
     default:
       return -1;
   }
