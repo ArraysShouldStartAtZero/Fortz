@@ -47,7 +47,6 @@
   <script src="js/ControlHandler.js"></script>
   <script src="js/SpriteHandler.js"></script>
   <script src="js/SocketHandler.js"></script>
-  <script src="js/MenuHandler.js"></script>
 </head>
 <body>
   <script>
