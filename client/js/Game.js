@@ -13,35 +13,35 @@ function updateChanged(objects){///////
   var k=0;
   for(var i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
 	  if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGHD'){
-	    let rmvble=true;
-	    let addable=false;
-	      for(var j=0;j<objs.length;j++){///
-	        rmvble=true;
-	        addable=false;
-		      if(objs[j].id===objects[i].id){//
-		        rmvble=false;
-		        addable=false;
-		        if(objs[j].pos_x===objects[i].pos_x&&objs[j].pos_y===objects[i].pos_y){
-			        if(objs[j].health!==objects[i].health){
-			          var u=1;
-				        if(objects[i].type==='STRGHD'){u=9;}
-			          structCont.getChildAt(k).mask=healthDisplay(objects[i].health,objects[i].pos_x,objects[i].pos_y,u);
-			        }
-		        }else{//handle impossible case
-            structCont.removeChildAt(k);
-		          k--;
-		          addable=true;
-		        }
-		        break;
-		      }else{
-		        rmvble=false;
+	    let rmvble=false;
+	    let addable=true;
+	    for(var j=0;j<objs.length;j++){///
+	      rmvble=true;
+	      addable=false;
+     	  if(objs[j].id===objects[i].id){//
+		      rmvble=false;
+		      addable=false;
+          if(objs[j].pos_x===objects[i].pos_x&&objs[j].pos_y===objects[i].pos_y){
+			      if(objs[j].health!==objects[i].health){
+			        var u=1;
+				      if(objects[i].type==='STRGHD'){u=9;}
+			        structCont.getChildAt(k).mask=healthDisplay(objects[i].health,objects[i].pos_x,objects[i].pos_y,u);
+	          }
+		      }else{//handle impossible case
+          structCont.removeChildAt(k);
+		        k--;
+		        addable=true;
+		      }
+		      break;
+		    }else{
+		      rmvble=false;
           addable=true;
-		      }//
-	      }///
+	      }//
+	    }///
 
-	      if(rmvble&&k<structCont.children.length){
+	    if(rmvble&&k<structCont.children.length){
 	      structCont.removeChildAt(k);
-	      k--;
+        k--;
 	    }else if(addable){
         addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
 	    }
@@ -49,8 +49,8 @@ function updateChanged(objects){///////
 	  }else{
       addGameObject(objects[i].type,objects[i].id,objects[i].pos_x,objects[i].pos_y,objects[i].health,objects[i].owner);
     }
-  }// //
-}///////
+  }
+}
 
 function addGameObject(type, uid, posX, posY, health, owner){
   var adjX=posX*64-dcX;//adjusted positions for camera position
