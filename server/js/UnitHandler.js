@@ -59,7 +59,7 @@ unit.pos_y--;
   //If at target, attack target
   //If at other enemy object, attack object
   collision(unit, 1, function(enemy) {
-    if(enemy!=NULL){
+    if(enemy!=null){
       unitAttack(unit,enemy);
     }
   });
