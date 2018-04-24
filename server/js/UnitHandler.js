@@ -59,7 +59,9 @@ function updateSoldier(unit, player, move, objects) {
   }
   //Head toward target
   if(targetObject == null) return;
-  if(move) {
+  if(Math.abs(targetObject.pos_x - unit.pos_x) <= 1 && Math.abs(targetObject.pos_y - unit.pos_y) <= 1) { //Collect resource
+    unitAttack(unit, targetObject);
+  } else if(move) {
     var dx = Math.abs(targetObject.pos_x - unit.pos_x);
     var dy = Math.abs(targetObject.pos_y - unit.pos_y);
     if(dx > dy) { //Move in x direction
@@ -78,11 +80,11 @@ function updateSoldier(unit, player, move, objects) {
   }
   //If at target, attack target
   //If at other enemy object, attack object
-  collision(unit, 1, function(enemy) {
+  /*collision(unit, 1, function(enemy) {
     if(enemy!=null){
       unitAttack(unit,enemy);
     }
-  });
+  });*/
 }
 
 function collision(unit, dist, callback){//TODO
