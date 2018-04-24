@@ -121,7 +121,16 @@ but6.interactive=true;
 	but6.on("click",function(event){
 		upgrade();
 	});//upgrade unit
-	 uiCont.addChild(but6);
+uiCont.addChild(but6);
+but7=new PIXI.Sprite(PIXI.loader.resources["sprites/gry_wall.png"].texture);
+but7.interactive=true;
+	but7.buttonMode=true;
+	but7.x=window.innerWidth-384;
+	but7.y=window.innerHeight-64;
+	but7.on("click",function(event){
+		wallPlace=true;
+	});//buy wall
+	 uiCont.addChild(but7);
 
 };
 }

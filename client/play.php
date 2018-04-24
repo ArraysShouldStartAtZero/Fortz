@@ -64,11 +64,18 @@
 	let objCont=new PIXI.Container();
 	objCont.addChild(structCont);objCont.addChild(unitCont);
 	app.stage.addChild(background);app.stage.addChild(objCont);app.stage.addChild(uiCont);
-	
+	background.interactive=true;
+	background.buttonMode=true;
+	background.on("click",function(event){
+		
+console.log("clickity");
+		placeWall();
+	});
+
 
 var workerCircle;
 var counter=new PIXI.Text("Resources:"+69);uiCont.addChild(counter);
-var but1,but2,but3,but4,but5,but6;
+var but1,but2,but3,but4,but5,but6,but7;
 var cX=0, cY=0, dX=0,dY=0, dcX=0, dcY=0;//d is default camera position for recentering , c is current camera position
 	initAssets();	
 	makeButtons();
