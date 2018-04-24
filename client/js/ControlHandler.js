@@ -94,6 +94,9 @@ let space = Keyboard(32);//space for camera recentering
 		objCont.getChildAt(i).x-=qwertyX;
 		objCont.getChildAt(i).y-=qwertyY;
 	}
+	
+	background.x-=qwertyX;
+	background.y-=qwertyY;
 	cX=dcX;
 	cY=dcY;
 	};
