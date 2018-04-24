@@ -129,9 +129,8 @@ but7.interactive=true;
 	but7.y=window.innerHeight-64;
 	but7.on("click",function(event){
 		wallPlace=true;
-	});//upgrade unit
+	});//buy wall
 	 uiCont.addChild(but7);
-
 
 };
 }

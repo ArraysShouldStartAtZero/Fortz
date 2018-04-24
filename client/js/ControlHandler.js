@@ -108,8 +108,8 @@ var wallPlace=false;
 function placeWall(){
 if(wallPlace){
 	var pos={};
-	pos.posX =app.renderer.plugins.interaction.mouse.global.x;
-	pos.posY =app.renderer.plugins.interaction.mouse.global.y;
+	pos.posX =Math.floor((app.renderer.plugins.interaction.mouse.global.x+dcX)/64);
+	pos.posY =Math.floor((app.renderer.plugins.interaction.mouse.global.y+dcY)/64);
 
 		socket.emit('unit-purchase-client', {type: 'WALL' , position: pos});
 
