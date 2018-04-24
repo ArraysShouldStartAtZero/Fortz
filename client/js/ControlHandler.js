@@ -115,6 +115,7 @@ highlighted=false;
 }
 
 function highlight(obj){
+console.log("target x:"+(obj.x+cX-(obj.x+cX)%64)+" y:"+(obj.y+cY-(obj.y+cY)%64));
 var temp=getByLoc(obj.x+cX-(obj.x+cX)%64,obj.y+cY-(obj.y+cY)%64);
 if(upgradable===true){
 socket.emit('object-upgrade-client' ,{ object_id: temp.id });
@@ -124,7 +125,6 @@ highlighted=false;
 if(username===obj.owner&&(obj.type==='WALL'||obj.type==='TOWER')){
 highlighted=true;
 }else{
-console.log("sent target");
 socket.emit('target-object-client', { object_id: temp.id });
 highlighted=false;
 }
