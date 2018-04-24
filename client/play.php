@@ -9,7 +9,7 @@
   } else {
     header("Location: index.php");
   }
-
+/*
   function db_connect() {
     $servername = "localhost";
     $sqlname = "fortz_server";
@@ -32,7 +32,7 @@
   } else {
     header("Location: index.php");
   }
-
+*/
 ?>
 <html>
 <head>
