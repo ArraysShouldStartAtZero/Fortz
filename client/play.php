@@ -1,11 +1,8 @@
 <?php
-  error_reporting(E_ALL);
-  ini_set('display_errors', 1);
-
   $username = "";
   session_start();
   $username = $_SESSION['username'];
-  if(isset($_SESSION['username']) {
+  if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
   } else {
     header("Location: index.php");
