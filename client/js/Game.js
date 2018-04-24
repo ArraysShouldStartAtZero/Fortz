@@ -11,13 +11,12 @@ uiCont.addChild(counter);
 function updateChanged(objects){///////
 unitCont.removeChildren();
 //structCont.removeChildren();//use this for now
-var q=0;
 var k=0;
 for(var i=0;i<objects.length;i++){//implement a system of removing items, excluding those that stayed in //place
 	if(objects[i].type==='TOWER'||objects[i].type==='WALL'||objects[i].type==='STRGHD'){
 	let rmvble=true;
 	let addable=false;
-	for(var j=q;j<objs.length;j++){///
+	for(var j=0;j<objs.length;j++){///
 		if(objs[j].id===objects[i].id){//
 		rmvble=false;
 		addable=false;
@@ -27,7 +26,7 @@ for(var i=0;i<objects.length;i++){//implement a system of removing items, exclud
 				if(objects[i].type==='STRGHD'){u=9;}
 			structCont.getChildAt(k).mask=healthDisplay(objects[i].health,objects[i].pos_x,objects[i].pos_y,u);
 			}
-		}else{//handle
+		}else{//handle impossible case
 		structCont.removeChildAt(k);
 		k--;
 		addable=true;

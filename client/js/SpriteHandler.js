@@ -151,9 +151,6 @@ function getSprite(sprite, owner, posX, posY, hp){
 this.sprite.x=posX;
 this.sprite.y=posY;
 
-if((username!==owner&&"server"!==owner)){//enemy units/structures are red
-	this.sprite.tint=0xff0000;
-}
 
 if((username!==owner&&"server"!==owner)||sprite=="sprites/gry_twr.png"||sprite=="sprites/gry_wall.png"){
 	this.sprite.on("click",function(event){//add specific listeners
@@ -162,12 +159,21 @@ if((username!==owner&&"server"!==owner)||sprite=="sprites/gry_twr.png"||sprite==
 	});
 	}
 if(sprite==="sprites/gry_twr.png"||sprite==="sprites/gry_wall.png"){
+if((username!==owner&&"server"!==owner)){//enemy structures are red
+	this.sprite.tint=0xff0000;
+}
 this.sprite.mask=healthDisplay(hp, posX, posY, 1);
 structCont.addChild(this.sprite);
 }else if(sprite==="sprites/gry_strghd.png"){ 
+if((username!==owner&&"server"!==owner)){//enemy structures are red
+	this.sprite.tint=0xff0000;
+}
 this.sprite.mask=healthDisplay(hp, posX, posY, 9);
 structCont.addChild(this.sprite);
 }else{
+if((username!=owner&&"server"!=owner)){//enemy units are red
+	this.sprite.tint=0xff0000;
+}
 unitCont.addChild(this.sprite);
 }
 	 
